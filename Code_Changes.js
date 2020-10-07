@@ -51,6 +51,19 @@ function getChangeRequestForm() {
     return html;
 }
 
+
+// getCovidManufacturingForm : n/a -> HTML
+// return HTML display output for COVID manufacturing google form
+function getCovidManufacturingForm() {
+    var html = `<div class="change-form">
+                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeNklFqPT7L0P5WXTGtKIDECGjJ4bWFGCc08AFnP3i1EAtJUg/viewform?embedded=true" 
+                                    width="700" height="520" frameborder="0" marginheight="0" marginwidth="0">
+                        Loading…
+                    </iframe>
+                </div>`;
+    return html;
+}
+
 // getStatusUpdateContent : String -> HTML
 // Produce HTML display output for given WBS #'s work package
 function getStatusUpdateContent(wbsNum) {
