@@ -59,7 +59,7 @@ function getChangeRequestForm() {
 function getCovidManufacturingForm() {
     var html = `<div class="change-form">
                     <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeNklFqPT7L0P5WXTGtKIDECGjJ4bWFGCc08AFnP3i1EAtJUg/viewform?embedded=true" 
-                                    height="1800" frameborder="0" marginheight="0" marginwidth="0">
+                                    height="2000" frameborder="0" marginheight="0" marginwidth="0">
                         Loading…
                     </iframe>
                 </div>`;
