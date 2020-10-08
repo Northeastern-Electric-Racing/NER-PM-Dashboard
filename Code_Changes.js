@@ -10,6 +10,8 @@ function getChangeForm(changeType) {
         return getStatusUpdateForm();
     } else if (changeType == "change") {
         return getChangeRequestForm();
+    } else if (changeType === "covid") {
+        return getCovidManufacturingForm();
     } else {
         throw "Change type not recognized";
     }
@@ -45,6 +47,22 @@ function getChangeRequestForm() {
     var html = `<div class="change-form">
                     <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdofsnmBQJFXOpPMG7-WPGrgDAASAlu4EMryaH8oEDw9mPMDA/viewform?embedded=true" 
                                     height="1500" frameborder="0" marginheight="0" marginwidth="0">
+                        Loading…
+                    </iframe>
+                </div>`;
+    return html;
+}
+
+
+/**
+ * Provides HTML content for embedding COVID Manufacturing Google Form.
+ *
+ * @return {!string} HTML for embedded Google form
+ */
+function getCovidManufacturingForm() {
+    var html = `<div class="change-form">
+                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeNklFqPT7L0P5WXTGtKIDECGjJ4bWFGCc08AFnP3i1EAtJUg/viewform?embedded=true" 
+                                    height="2000" frameborder="0" marginheight="0" marginwidth="0">
                         Loading…
                     </iframe>
                 </div>`;
