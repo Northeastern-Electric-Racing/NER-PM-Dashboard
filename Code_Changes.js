@@ -54,8 +54,11 @@ function getChangeRequestForm() {
 }
 
 
-// getCovidManufacturingForm : n/a -> HTML
-// return HTML display output for COVID manufacturing google form
+/**
+ * Provides HTML content for embedding COVID Manufacturing Google Form.
+ *
+ * @return {!string} HTML for embedded Google form
+ */
 function getCovidManufacturingForm() {
     var html = `<div class="change-form">
                     <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeNklFqPT7L0P5WXTGtKIDECGjJ4bWFGCc08AFnP3i1EAtJUg/viewform?embedded=true" 
