@@ -5,21 +5,23 @@
 function getEntireGanttSheet(width, height) {
     var widthScalar = 0.75;
     var heightScalar = 0.85;
+    var modalWidth = width * widthScalar * 1.1;
+    var modalHeight = height * heightScalar * 1.1 + 20;
     var html = `<div>
                     <div>
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#centeredFullGantt">
                             View Full Gantt
                         </button>
                         <div class="modal fade" id="centeredFullGantt" tabindex="-1" role="dialog" aria-labelledby="centeredFullGantt" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content" style="width: ` + width * widthScalar * 1.1 + `px; height: ` + height * heightScalar * 1.1 + `px">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content" style="width: ` + modalWidth + `px; height: ` + modalHeight + `px; left: 50%; transform: translate(-50%, 0%);">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Full Gantt</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <div class="modal-body" style="width: ` + width * widthScalar + `px; height: ` + height * heightScalar + `px">
+                                    <div class="modal-body" style="width: ` +  + `px; height: ` + height * heightScalar + `px">
                                         <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQ21BbKSgpjzx-GgFu8OymjbgaaWcp-VnTcNdeFYiMmcib_LTpYQcs4229ZvGBwUNrB8zBpOqzYvF7v/pubhtml?gid=100811517&amp;single=true&amp;widget=true&amp;headers=false"
                                                 style="width: ` + width * widthScalar + `px; height: ` + height * heightScalar + `px">
                                         </iframe>
