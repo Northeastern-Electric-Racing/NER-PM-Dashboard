@@ -2,7 +2,9 @@
 Document: JS code connecting the COVID Fab form to the spreadsheet
 */
 
-var counter = getNextCovidRequestId();
+
+
+// var counter = getNextCovidRequestId();
 
 /**
  * Pulls the most recent COVID manufacturing request and places it in the PM 21 spreadsheet.
@@ -16,7 +18,7 @@ function onCovidRequestSubmit() {
   var responseData = latestResponse.getItemResponses();
   responseData = responseData.map(ele => ele.getResponse()); // convert items to item responses
   // var requestId = getNextChangeRequestId(responseData.splice(2, 1)[0]); // convert request type to id num
-  var requestId = counter(); // convert request type to id num
+  var requestId = counter.increment(); // convert request type to id num
   responseData.unshift(requestId, latestResponse.getTimestamp()); // add id num and timestamp to front of array
   var sheet = getSheetInfo('mainSheetID', 'Fab & Weld', 'sheet');
   sheet.appendRow(responseData);
@@ -27,12 +29,12 @@ function onCovidRequestSubmit() {
  *
  * @returns {function(): number} The next COVID manufacturing request ID.
  */
-function getNextCovidRequestId() {
+var counter = (function() {
   var counter = 0;
 
-  function increment() {
-    counter++;
-    return counter;
-  }
-  return increment;
-}
+  return {
+    increment: function() {
+      return ++counter;
+    }
+  };
+})();
