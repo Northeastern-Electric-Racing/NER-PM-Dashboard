@@ -27,7 +27,7 @@ function onCovidRequestSubmit() {
 /**
  * Increments and returns the counter used for the next COVID manufacturing request ID.
  *
- * @returns {function(): number} The next COVID manufacturing request ID.
+ * @type {{increment: (function(): number)}}
  */
 var counter = (function() {
   var counter = 0;
