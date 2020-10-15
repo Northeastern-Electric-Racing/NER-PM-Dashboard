@@ -12,9 +12,9 @@ Document: JS code connecting the COVID Fab form to the spreadsheet
  * @return {void}
  */
 function onCovidRequestSubmit() {
-  console.log('covid form id: ' + scriptProps.getProperty('covidFabForm'));
-  console.log('change form id: ' + scriptProps.getProperty('changeForm'));
-  var form = FormApp.openById('1SCoXxnkSVbMwCRCVD-TN0edUoPhId6KLYE4zkpFlJzA');
+  // console.log('covid form id: ' + scriptProps.getProperty('covidFabForm'));
+  // console.log('change form id: ' + scriptProps.getProperty('changeForm'));
+  var form = FormApp.openById('covidFabForm');
   var responses = form.getResponses();
   var latestResponse = responses[responses.length - 1];
   var responseData = latestResponse.getItemResponses();
@@ -32,8 +32,10 @@ function onCovidRequestSubmit() {
  * @returns {number} The next COVID manufacturing request ID.
  */
 function getNextCovidRequestId() {
-  const data = getSheetInfo('mainSheetID', 'Settings', 'data');
-  let id = data[3][1];
-  id.setValue(++id);
+  const sheet = getSheetInfo('mainSheetID', 'Settings', 'sheet');
+  let cell = sheet.getRange(7, 2);
+  let value = cell.getValues();
+  let id = value[0][0];
+  cell.setValue(++id);
   return id;
 }
