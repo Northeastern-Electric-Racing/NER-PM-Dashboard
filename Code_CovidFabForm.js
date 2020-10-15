@@ -14,7 +14,7 @@ Document: JS code connecting the COVID Fab form to the spreadsheet
 function onCovidRequestSubmit() {
   // console.log('covid form id: ' + scriptProps.getProperty('covidFabForm'));
   // console.log('change form id: ' + scriptProps.getProperty('changeForm'));
-  var form = FormApp.openById('covidFabForm');
+  var form = FormApp.openById(scriptProps.getProperty('covidFabForm'));
   var responses = form.getResponses();
   var latestResponse = responses[responses.length - 1];
   var responseData = latestResponse.getItemResponses();
