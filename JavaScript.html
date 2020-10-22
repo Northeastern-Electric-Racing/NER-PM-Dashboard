@@ -55,6 +55,9 @@
         var wp_content = $("#wp-content");
         runnerHTML.withUserObject(wp_content).getWorkPackage(wp_input);
     });
+    $("#wp-lookup-form").on("click", function(e) {
+        e.preventDefault();
+    })
 
     /* Changes page functions */
 
