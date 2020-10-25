@@ -99,7 +99,7 @@ function buildListHTML(text, delimiter) {
 // buildTableHTML : Content[][] String -> HTML
 // construct an HTML tale give the content (with header row) and modifiers
 function buildTableHTML(content, modifiers) {
-    var html = `<table class="table ` + modifiers + `"><thead><tr>`;
+    var html = `<div class="table-container"><table class="table ` + modifiers + `"><thead><tr>`;
     for (var hCol = 0; hCol < content[0].length; hCol++) {
         html += `<th scope="col">` + content[0][hCol] + `</th>`;
     }
@@ -111,7 +111,7 @@ function buildTableHTML(content, modifiers) {
         }
         html += `</tr>`;
     }
-  return html + `</tbody></table>`;
+  return html + `</tbody></table></div>`;
 }
 
 // getPlaceholderHTML : String -> HTML
