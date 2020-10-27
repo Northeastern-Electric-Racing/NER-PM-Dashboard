@@ -4,23 +4,25 @@
     Pull reports and understand insights about NER projects.
 </p>
 
-<div class="main-input">
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text">Type</span>
-        </div>
-        <select class="custom-select" id="report-type-go-input" aria-label="Report type select with go button">
-            <option selected disabled>Choose...</option>
-            <option value="dashboard">Status Dashboard</option>
-            <option value="deadlines">Upcoming Deadlines</option>
-            <option value="changes">Change Requests</option>
-            <option value="fab">Manufacturing & Welding</option>
-        </select>
-        <div class="input-group-append">
-            <button class="btn btn-primary" type="submit" id="report-type-go-btn">Go</button>
+<form action="" id="submit-form-enter">
+    <div class="main-input">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Type</span>
+            </div>
+            <select class="custom-select" id="report-type-go-input" aria-label="Report type select with go button">
+                <option selected disabled>Choose...</option>
+                <option value="dashboard">Status Dashboard</option>
+                <option value="deadlines">Upcoming Deadlines</option>
+                <option value="changes">Change Requests</option>
+                <option value="fab">Manufacturing & Welding</option>
+            </select>
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="submit" id="report-type-go-btn">Go</button>
+            </div>
         </div>
     </div>
-</div>
+</form>
 
 <div class="main-content" id="report-content">
 </div>

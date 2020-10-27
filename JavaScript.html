@@ -22,6 +22,11 @@
 
     /* General website functions */
 
+    // submit form with enter key function
+    $("#submit-form-enter").on("click", function (e) {
+        e.preventDefault();
+    })
+
     // load page elements via async
     $(function () {
         // load placeholder content
@@ -55,9 +60,6 @@
         var wp_content = $("#wp-content");
         runnerHTML.withUserObject(wp_content).getWorkPackage(wp_input);
     });
-    $("#wp-lookup-form").on("click", function (e) {
-        e.preventDefault();
-    })
 
     /* Changes page functions */
 
