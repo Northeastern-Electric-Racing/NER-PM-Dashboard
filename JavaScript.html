@@ -22,11 +22,6 @@
 
     /* General website functions */
 
-    // submit form with enter key function
-    $("#sub-on-ent").on("click", function (e) {
-        e.preventDefault();
-    })
-
     // load page elements via async
     $(function () {
         // load placeholder content
@@ -46,20 +41,34 @@
     /* Gantt page functions */
 
     // click Go button on Gantt page
-    $("#gantt-go-btn").on("click", function () {
+    function getGanttChart() {
         var gantt_input = $("#gantt-go-input").val();
         var gantt_content = $("#gantt-content");
         runnerHTML.withUserObject(gantt_content).getEntireGanttSheet(window.innerWidth, window.innerHeight);
+    }
+    $("#gantt-go-btn").on("click", function () {
+        getGanttChart()
     });
+    $("#g-sub-on-ent").on("submit", function (e) {
+        e.preventDefault();
+        getGanttChart()
+    })
 
     /* WP Lookup page functions */
 
     // click Go button on WP Lookup page
-    $("#wp-go-btn").on("click", function () {
+    function getWPData() {
         var wp_input = $("#wp-go-input").val();
         var wp_content = $("#wp-content");
         runnerHTML.withUserObject(wp_content).getWorkPackage(wp_input);
+    }
+    $("#wp-go-btn").on("click", function () {
+        getWPData()
     });
+    $("#wp-sub-on-ent").on("submit", function (e) {
+        e.preventDefault();
+        getWPData()
+    })
 
     /* Changes page functions */
 
@@ -89,8 +98,7 @@
         });
     }
 
-    // click Go button on Changes page for change type
-    $("#change-type-go-btn").on("click", function () {
+    function changesBtnClick() {
         var change_type = $("#change-type-go-input").val();
         var change_content = $("#change-content");
         // use different success handler functions to add proper click handlers to buttons
@@ -100,14 +108,32 @@
         } else {
             runnerHTML.withUserObject(change_content).getChangeForm(change_type);
         }
+    }
+
+    $("#c-sub-on-ent").on("submit", function (e) {
+        e.preventDefault();
+        changesBtnClick()
+    })
+
+    // click Go button on Changes page for change type
+    $("#change-type-go-btn").on("click", function () {
+        changesBtnClick()
     });
 
     /* Reports page functions */
-
-    // click Go button on Reports page
-    $("#report-type-go-btn").on("click", function () {
+    function getReportForm() {
         var report_type = $("#report-type-go-input").val();
         var report_content = $("#report-content");
         runnerHTML.withUserObject(report_content).getReport(report_type);
+    }
+
+    $("#r-sub-on-ent").on("submit", function (e) {
+        e.preventDefault();
+        getReportForm()
+    })
+
+    // click Go button on Reports page
+    $("#report-type-go-btn").on("click", function () {
+        getReportForm()
     });
 </script>
