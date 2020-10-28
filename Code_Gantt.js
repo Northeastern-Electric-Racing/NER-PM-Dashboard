@@ -7,7 +7,7 @@ function getEntireGanttSheet(width, height) {
     var heightScalar = 0.85;
     var modalWidth = width * widthScalar * 1.1;
     var modalHeight = height * heightScalar * 1.1 + 20;
-    var iFrameWidth = width * widthScalar;
+    var iFrameWidth = modalWidth - 32;
     var iFrameHeight = height * heightScalar;
     var html = `<div>
                     <div>
