@@ -1,27 +1,37 @@
+/*
+ * Document: JS code specific for Gantt chart tab
+ */
 
-
-// getEntireGanttSheet : HTMLWindow -> HTML
-// return HTML iframe display for the Gantt in the Database spreadsheet
+/**
+ * Provides HTML content for viewing the Gantt chart in a small viewer or a full-page view 
+ * built using a modal and sized with the provided width and height for the page
+ * 
+ * @param { number } width HTML page widht
+ * @param { number } height HTML page height
+ * @return { string } Formatted HTML string content containing iframes for the Gantt chart
+ */
 function getEntireGanttSheet(width, height) {
-    var widthScalar = 0.75;
-    var heightScalar = 0.85;
+    var modalWidth = width * 0.85;
+    var modalHeight = height * 0.95;
+    var iFrameWidth = modalWidth - 32;
+    var iFrameHeight = modalHeight - 94;
     var html = `<div>
-                    <div>
+                    <div class="p-3">
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#centeredFullGantt">
                             View Full Gantt
                         </button>
                         <div class="modal fade" id="centeredFullGantt" tabindex="-1" role="dialog" aria-labelledby="centeredFullGantt" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content" style="width: ` + width * widthScalar * 1.1 + `px; height: ` + height * heightScalar * 1.1 + `px">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content" style="width: ` + modalWidth + `px; height: ` + modalHeight + `px; left: 50%; transform: translate(-50%, 0%);">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Full Gantt Chart</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <div class="modal-body" style="width: ` + width * widthScalar + `px; height: ` + height * heightScalar + `px">
+                                    <div class="modal-body">
                                         <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQ21BbKSgpjzx-GgFu8OymjbgaaWcp-VnTcNdeFYiMmcib_LTpYQcs4229ZvGBwUNrB8zBpOqzYvF7v/pubhtml?gid=100811517&amp;single=true&amp;widget=true&amp;headers=false"
-                                                style="width: ` + width * widthScalar + `px; height: ` + height * heightScalar + `px">
+                                                style="width: ` + iFrameWidth + `px; height: ` + iFrameHeight + `px">
                                         </iframe>
                                     </div>
                                 </div>
