@@ -22,8 +22,12 @@ Northeastern Electric Racing Project Management Dashboard
 	- Type `git branch __name of branch__`
 	- By convention, your branch should contain your username to make it easier to track development progress and pull requests
 	- They type `git push` to push your branch to the repo
-	- If you have been working on your branch for a while and the main repo has changed, type `git rebase origin` to sync those changes to your branch
+	- If you have been working on your branch for a while and the main repo has changed, type `git rebase origin/master` to sync those changes to your branch
 	- If you close the terminal window and reopen it, you will be put back onto the master branch by default. This will give errors when trying to push so use `git switch __name of branch__` to switch back to your branch
+
+- Good coding practices:
+	- Add meaningful comments in the JSDoc style. See line #10 here: https://github.com/Northeastern-Electric-Racing/NER-PM-Dashboard/blob/master/Code_CovidFabForm.js as an example
+	- If you see that the rest of the code follows a pattern, say a pattern of how functions are laid out, then try to stick to this pattern to improve code uniformity
 
 - Creating commits:
 	- Commits are essentially the Cmd+S of github. As such, its useful to save your work often
