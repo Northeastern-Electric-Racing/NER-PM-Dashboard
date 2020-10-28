@@ -21,7 +21,7 @@ function getEntireGanttSheet(width, height) {
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <div class="modal-body" style="width: ` + width * widthScalar + `px; height: ` + height * heightScalar + `px">
+                                    <div class="modal-body">
                                         <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQ21BbKSgpjzx-GgFu8OymjbgaaWcp-VnTcNdeFYiMmcib_LTpYQcs4229ZvGBwUNrB8zBpOqzYvF7v/pubhtml?gid=100811517&amp;single=true&amp;widget=true&amp;headers=false"
                                                 style="width: ` + width * widthScalar + `px; height: ` + height * heightScalar + `px">
                                         </iframe>
