@@ -1,7 +1,13 @@
 
 
-// getEntireGanttSheet : HTMLWindow -> HTML
-// return HTML iframe display for the Gantt in the Database spreadsheet
+/**
+ * Provides HTML content for viewing the Gantt chart in a small viewer or a full-page view 
+ * built using a modal and sized with the provided width and height for the page
+ * 
+ * @param { number } width HTML page widht
+ * @param { number } height HTML page height
+ * @return { string } Formatted HTML string content containing iframes for the Gantt chart
+ */
 function getEntireGanttSheet(width, height) {
     var modalWidth = width * 0.85;
     var modalHeight = height * 0.95;
