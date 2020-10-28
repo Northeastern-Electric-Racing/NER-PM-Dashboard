@@ -22,7 +22,7 @@ Northeastern Electric Racing Project Management Dashboard
 	- Type `git branch __name of branch__`
 	- By convention, your branch should contain your username to make it easier to track development progress and pull requests
 	- They type `git push` to push your branch to the repo
-	- If you have been working on your branch for a while and the main repo has changed, type `git rebase origin/master` to sync those changes to your branch
+	- If you have been working on your branch for a while and the main repo has changed, type `git pull --rebase` to sync those changes to your branch
 	- If you close the terminal window and reopen it, you will be put back onto the master branch by default. This will give errors when trying to push so use `git switch __name of branch__` to switch back to your branch
 
 - Good coding practices:
