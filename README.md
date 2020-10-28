@@ -33,7 +33,7 @@ Northeastern Electric Racing Project Management Dashboard
 
 - Creating commits:
 	- Commits are essentially the Cmd+S of github. As such, its useful to save your work often
-	- Type `git commit -a -m [message here]` to commit
+	- Type `git commit -a -m [message]` to commit
 	- Style your message in the format: `i[issue number] - [description of changes made]`
 
 - To test code using /dev:
