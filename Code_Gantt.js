@@ -7,6 +7,8 @@ function getEntireGanttSheet(width, height) {
     var heightScalar = 0.85;
     var modalWidth = width * widthScalar * 1.1;
     var modalHeight = height * heightScalar * 1.1 + 20;
+    var iFrameWidth = width * widthScalar;
+    var iFrameHeight = height * heightScalar;
     var html = `<div>
                     <div>
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#centeredFullGantt">
@@ -23,7 +25,7 @@ function getEntireGanttSheet(width, height) {
                                     </div>
                                     <div class="modal-body">
                                         <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQ21BbKSgpjzx-GgFu8OymjbgaaWcp-VnTcNdeFYiMmcib_LTpYQcs4229ZvGBwUNrB8zBpOqzYvF7v/pubhtml?gid=100811517&amp;single=true&amp;widget=true&amp;headers=false"
-                                                style="width: ` + width * widthScalar + `px; height: ` + height * heightScalar + `px">
+                                                style="width: ` + iFrameWidth + `px; height: ` + iFrameHeight + `px">
                                         </iframe>
                                     </div>
                                 </div>
