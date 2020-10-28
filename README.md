@@ -14,7 +14,7 @@ Northeastern Electric Racing Project Management Dashboard
 	- Open the github URL online
 	- Go to the issues tab and click add new issue
 	- Give it a name that gives the reader an idea of whats going on. Save all detailed info for the description
-	- The naming convention is as follows: `[page on site changed] - [Name of change]`. (e.g. Gantt - Restyle & Move the "View Full Gantt" Button)
+	- The naming convention is as follows: `[page on site changed] - [name of change]`. (e.g. Gantt - Restyle & Move the "View Full Gantt" Button)
 	- On the right hand coloumn add labels to your issue to categorise it meaningfully
 	- Add it to board_1 **To Do** initially.
 	- When you are ready to work on the issue, assign yourself to it and then move it to the **In Progress** board
