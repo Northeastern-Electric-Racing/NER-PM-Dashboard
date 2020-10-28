@@ -3,10 +3,8 @@
 // getEntireGanttSheet : HTMLWindow -> HTML
 // return HTML iframe display for the Gantt in the Database spreadsheet
 function getEntireGanttSheet(width, height) {
-    var widthScalar = 0.75;
-    var heightScalar = 0.85;
-    var modalWidth = width * widthScalar * 1.1;
-    var modalHeight = height * heightScalar * 1.1 + 20;
+    var modalWidth = width * 0.85;
+    var modalHeight = height * 0.95;
     var iFrameWidth = modalWidth - 32;
     var iFrameHeight = modalHeight - 32;
     var html = `<div>
