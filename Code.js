@@ -96,8 +96,13 @@ function buildListHTML(text, delimiter) {
     return list;
 }
 
-// buildTableHTML : Content[][] String -> HTML
-// construct an HTML tale give the content (with header row) and modifiers
+/**
+ * Construct an HTML table given the content (with header row) and modifiers.
+ *
+ * @param {Object[][]} content - The content to construct the HTML table with (includes headers).
+ * @param {string} modifiers - The class modifiers to apply to the table.
+ * @returns {string} A constructed HTML table with the given content.
+ */
 function buildTableHTML(content, modifiers) {
     var html = `<div class="table-container"><table class="table ` + modifiers + `"><thead><tr>`;
     for (var hCol = 0; hCol < content[0].length; hCol++) {
