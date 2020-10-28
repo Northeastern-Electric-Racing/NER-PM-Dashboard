@@ -1,4 +1,6 @@
-
+/*
+ * Document: JS code specific for Gantt chart tab
+ */
 
 /**
  * Provides HTML content for viewing the Gantt chart in a small viewer or a full-page view 
