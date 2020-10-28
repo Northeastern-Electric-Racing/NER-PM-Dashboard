@@ -8,7 +8,7 @@ function getEntireGanttSheet(width, height) {
     var modalWidth = width * widthScalar * 1.1;
     var modalHeight = height * heightScalar * 1.1 + 20;
     var iFrameWidth = modalWidth - 32;
-    var iFrameHeight = height * heightScalar;
+    var iFrameHeight = modalHeight - 32;
     var html = `<div>
                     <div>
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#centeredFullGantt">
