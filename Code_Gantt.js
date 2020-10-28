@@ -16,7 +16,7 @@ function getEntireGanttSheet(width, height) {
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content" style="width: ` + modalWidth + `px; height: ` + modalHeight + `px; left: 50%; transform: translate(-50%, 0%);">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLongTitle">Full Gantt</h5>
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Full Gantt Chart</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
