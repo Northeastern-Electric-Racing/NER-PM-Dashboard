@@ -40,21 +40,47 @@
 
     /* Gantt page functions */
 
-    // click Go button on Gantt page
-    $("#gantt-go-btn").on("click", function () {
+    /*
+    * Fetches the gantt chart and places it inside gantt_content wrapper
+    * 
+    * @return {void}
+    */
+    function getGanttChart() {
         var gantt_input = $("#gantt-go-input").val();
         var gantt_content = $("#gantt-content");
         runnerHTML.withUserObject(gantt_content).getEntireGanttSheet(window.innerWidth, window.innerHeight);
+    }
+    // click Go button on Gantt page
+    $("#gantt-go-btn").on("click", function () {
+        getGanttChart();
     });
+    // hit Enter key while focused on the gantt form
+    $("#g-sub-on-ent").on("submit", function (e) {
+        e.preventDefault();
+        getGanttChart();
+    })
 
     /* WP Lookup page functions */
 
-    // click Go button on WP Lookup page
-    $("#wp-go-btn").on("click", function () {
+    /*
+    * Gets the appropriate work package according to wp_input and places it inside the wp_content wrapper
+    * 
+    * @return {void}
+    */
+    function getWPData() {
         var wp_input = $("#wp-go-input").val();
         var wp_content = $("#wp-content");
         runnerHTML.withUserObject(wp_content).getWorkPackage(wp_input);
+    }
+    // click Go button on WP Lookup page
+    $("#wp-go-btn").on("click", function () {
+        getWPData();
     });
+    // hit Enter key while focused on the WP lookup field
+    $("#wp-sub-on-ent").on("submit", function (e) {
+        e.preventDefault();
+        getWPData();
+    })
 
     /* Changes page functions */
 
@@ -84,8 +110,12 @@
         });
     }
 
-    // click Go button on Changes page for change type
-    $("#change-type-go-btn").on("click", function () {
+    /*
+    * Gets the appropriate work package according to the option selected in the dropdow wp_input and places it inside the wp_content wrapper
+    * 
+    * @return {void}
+    */
+    function changesBtnClick() {
         var change_type = $("#change-type-go-input").val();
         var change_content = $("#change-content");
         // use different success handler functions to add proper click handlers to buttons
@@ -95,14 +125,41 @@
         } else {
             runnerHTML.withUserObject(change_content).getChangeForm(change_type);
         }
+    }
+
+    // click Go button on Changes page for change type
+    $("#change-type-go-btn").on("click", function () {
+        changesBtnClick();
     });
+
+    // hit Enter key while focused on the dropdown box or submit button on the changes form
+    $("#c-sub-on-ent").on("submit", function (e) {
+        e.preventDefault();
+        changesBtnClick();
+    })
 
     /* Reports page functions */
 
-    // click Go button on Reports page
-    $("#report-type-go-btn").on("click", function () {
+    /*
+    * Gets the appropriate report according to the type selected in report_type dropdown and places it inside the wp_content wrapper
+    * 
+    * @return {void}
+    */
+    function getReportForm() {
         var report_type = $("#report-type-go-input").val();
         var report_content = $("#report-content");
         runnerHTML.withUserObject(report_content).getReport(report_type);
+    }
+
+    // click Go button on Reports page
+    $("#report-type-go-btn").on("click", function () {
+        getReportForm();
     });
+
+    // hit Enter key while focused on the dropdown or the submit button on the form
+    $("#r-sub-on-ent").on("submit", function (e) {
+        e.preventDefault();
+        getReportForm();
+    })
+
 </script>
