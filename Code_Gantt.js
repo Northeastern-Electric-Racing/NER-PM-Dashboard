@@ -8,7 +8,7 @@ function getEntireGanttSheet(width, height) {
     var iFrameWidth = modalWidth - 32;
     var iFrameHeight = modalHeight - 94;
     var html = `<div>
-                    <div>
+                    <div class="p-3">
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#centeredFullGantt">
                             View Full Gantt
                         </button>
