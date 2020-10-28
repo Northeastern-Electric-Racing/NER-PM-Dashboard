@@ -41,7 +41,7 @@
     /* Gantt page functions */
 
     /*
-    * Gets the corresponding gantt chart according to gantt_input and places it inside gantt_content wrapper
+    * Fetches the gantt chart and places it inside gantt_content wrapper
     * 
     * @return {void}
     */
@@ -127,16 +127,16 @@
         }
     }
 
+    // click Go button on Changes page for change type
+    $("#change-type-go-btn").on("click", function () {
+        changesBtnClick();
+    });
+
     // hit Enter key while focused on the dropdown box or submit button on the changes form
     $("#c-sub-on-ent").on("submit", function (e) {
         e.preventDefault();
         changesBtnClick();
     })
-
-    // click Go button on Changes page for change type
-    $("#change-type-go-btn").on("click", function () {
-        changesBtnClick();
-    });
 
     /* Reports page functions */
 
@@ -151,14 +151,15 @@
         runnerHTML.withUserObject(report_content).getReport(report_type);
     }
 
+    // click Go button on Reports page
+    $("#report-type-go-btn").on("click", function () {
+        getReportForm();
+    });
+
     // hit Enter key while focused on the dropdown or the submit button on the form
     $("#r-sub-on-ent").on("submit", function (e) {
         e.preventDefault();
         getReportForm();
     })
 
-    // click Go button on Reports page
-    $("#report-type-go-btn").on("click", function () {
-        getReportForm();
-    });
 </script>
