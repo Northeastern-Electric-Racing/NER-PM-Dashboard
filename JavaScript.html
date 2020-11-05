@@ -16,8 +16,14 @@
       window.scrollTo(0,0);
     }
 
-    // onSuccessHTML : HTML Object[HTML] -> n/a
-    // success handler for async server calls, inserts returned payload into provided element's HTML
+    /**
+     * Basic HTML data-loading success handler.
+     * Takes the HTML payload object returned by the server and places it within the specified HTML DOM object specified when executing the server call.
+     * Also scrolls the window to the top of the page to ensure users see relevant content and / or success messages.
+     * 
+     * @param { String } HTML string content payload returned from the server
+     * @param { Object } HTML DOM Object to provide the given HTML payload
+     */
     function onSuccessHTML(htmlPayload, htmlObject) {
         htmlObject.html(htmlPayload);
         window.scrollTo(0,0);
