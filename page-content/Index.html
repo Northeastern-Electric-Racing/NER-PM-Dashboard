@@ -3,7 +3,7 @@
 
 <head>
   <base target="_top">
-  <?!= include('Stylesheet'); ?>
+  <?!= include('client-code/Stylesheet'); ?>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -49,37 +49,37 @@
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
         <div class="container-lg page" id="page-home">
-          <?!= include('Page_Home'); ?>
+          <?!= include('page-content/Home'); ?>
         </div>
       </div>
 
       <div class="tab-pane fade" id="gantt" role="tabpanel" aria-labelledby="gantt-tab">
         <div class="container-lg page" id="page-gantt">
-          <?!= include('Page_Gantt'); ?>
+          <?!= include('page-content/Gantt'); ?>
         </div>
       </div>
 
       <div class="tab-pane fade" id="wp-lookup" role="tabpanel" aria-labelledby="wp-lookup-tab">
         <div class="container-lg page" id="page-wp-lookup">
-          <?!= include('Page_WP-Lookup'); ?>
+          <?!= include('page-content/WP-Lookup'); ?>
         </div>
       </div>
 
       <div class="tab-pane fade" id="changes" role="tabpanel" aria-labelledby="changes-tab">
         <div class="container-lg page" id="page-changes">
-          <?!= include('Page_Changes'); ?>
+          <?!= include('page-content/Changes'); ?>
         </div>
       </div>
 
       <div class="tab-pane fade" id="reports" role="tabpanel" aria-labelledby="reports-tab">
         <div class="container-lg page" id="page-reports">
-          <?!= include('Page_Reports'); ?>
+          <?!= include('page-content/Reports'); ?>
         </div>
       </div>
 
       <div class="tab-pane fade" id="glossary" role="tabpanel" aria-labelledby="glossary-tab">
         <div class="container-lg page" id="page-glossary">
-          <?!= include('Page_Glossary'); ?>
+          <?!= include('page-content/Glossary'); ?>
         </div>
       </div>
 
@@ -96,7 +96,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
     integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
     crossorigin="anonymous"></script>
-  <?!= include('JavaScript'); ?>
+  <?!= include('client-code/JavaScript'); ?>
 </body>
 
 </html>
