@@ -1,20 +1,32 @@
 <script>
-    // onFailure : Error -> n/a
-    // failure handler for async server calls, adds dismissable error alert to top of page
+    /**  
+     * Handle errors and failures when executing async server calls.
+     * Adds a dismissable Boostrap error alert to the top of the page with the error message, and scrolls the window to the top of the page.
+     * 
+     * @param { Object } Error object returned by the server
+     */
     function onFailure(error) {
-        var html = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <strong>Error!</strong> ` + error.message + `
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>`;
-        $(".error-box").html(html);
+      var html = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                      <strong>Error!</strong> ` + error.message + `
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>`;
+      $(".error-box").html(html);
+      window.scrollTo(0,0);
     }
 
-    // onSuccessHTML : HTML Object[HTML] -> n/a
-    // success handler for async server calls, inserts returned payload into provided element's HTML
+    /**
+     * Basic HTML data-loading success handler.
+     * Takes the HTML payload object returned by the server and places it within the specified HTML DOM object specified when executing the server call.
+     * Also scrolls the window to the top of the page to ensure users see relevant content and / or success messages.
+     * 
+     * @param { String } HTML string content payload returned from the server
+     * @param { Object } HTML DOM Object to provide the given HTML payload
+     */
     function onSuccessHTML(htmlPayload, htmlObject) {
         htmlObject.html(htmlPayload);
+        window.scrollTo(0,0);
     }
 
     var basicRunner = google.script.run.withFailureHandler(onFailure);
@@ -42,8 +54,6 @@
 
     /*
     * Fetches the gantt chart and places it inside gantt_content wrapper
-    * 
-    * @return {void}
     */
     function getGanttChart() {
         var gantt_input = $("#gantt-go-input").val();
@@ -64,8 +74,6 @@
 
     /*
     * Gets the appropriate work package according to wp_input and places it inside the wp_content wrapper
-    * 
-    * @return {void}
     */
     function getWPData() {
         var wp_input = $("#wp-go-input").val();
