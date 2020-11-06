@@ -4,7 +4,7 @@ Northeastern Electric Racing Project Management Dashboard
 
 ---
 ### Contributor guide:
-- Installing the project for the first time:
+- First time project installation:
 	- Decide which folder you would like to place the NER-PM-Dashboard folder in
 	- Open your Command Line Interface tool of choice in the folder (e.g. Terminal for Mac, Command Prompt for Windows)
 	- Use the `git clone [repo link]` command as such: `git clone https://github.com/Northeastern-Electric-Racing/NER-PM-Dashboard.git`
@@ -13,13 +13,12 @@ Northeastern Electric Racing Project Management Dashboard
 - To create an issue (or suggest a feature):
 	- Open the github URL online
 	- Go to the issues tab and click add new issue
-	- Give it a name that gives the reader an idea of whats going on. Save all detailed info for the description
+	- Give it a name that gives the reader an idea of whats going on. Names should follow this format: `[Page or "General"] - [Description]`. Save all detailed info for the description
 	- The naming convention is as follows: `[page on site changed] - [name of change]`. (e.g. Gantt - Restyle & Move the "View Full Gantt" Button)
 	- On the right hand coloumn add labels to your issue to categorise it meaningfully
 	- Add it to board_1 **To Do** initially.
-	- When you are ready to work on the issue, assign yourself to it and then move it to the **In Progress** board
 
-- Creating branches:
+- Creating a branch:
 	- In the NER-PM folder on your computer open a terminal window
 	- Type `git branch [name of branch]`
 	- Branches should follow this format: `i[issue #]-[contributor name]`. (e.g. `i18-james`)
