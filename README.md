@@ -22,7 +22,7 @@ Northeastern Electric Racing Project Management Dashboard
 	- In the NER-PM folder on your computer open a terminal window
 	- Type `git branch [name of branch]`
 	- Branches should follow this format: `i[issue #]-[contributor name]`. (e.g. `i18-james`)
-	- They type `git push` to push your branch to the repo
+	- They type `git push` to push your branch to the repo. If this throws an error `fatal: The current branch i12-rahul has no upstream branch` type `git push --set-upstream origin [name of branch]` and then `git push`
 	- If you have been working on your branch for a while and the main repo has changed, type `git pull --rebase` to sync those changes to your branch
 	- If you close the terminal window and reopen it, you will be put back onto the master branch by default. This will give errors when trying to push so use `git switch [name of branch]` to switch back to your branch
 
