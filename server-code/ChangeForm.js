@@ -17,8 +17,12 @@ function onRequestSubmit() {
     sheet.appendRow(responseData);
 }
 
-// getNextChangeRequestId : String -> String
-// returns the next request ID for the given request type based on previous requests
+/**
+ * Returns the next request ID for the given request type based on previous requests
+ *
+ * @param {String} requestType - The given request type based on previous requests
+ * @return {String} - The new request ID
+ */
 function getNextChangeRequestId(requestType) {
     var typeLetter = convertToTypeLetter(requestType);
     var data = getSheetInfo('mainSheetID', 'Change Requests', 'data');
@@ -36,7 +40,7 @@ function getNextChangeRequestId(requestType) {
         return typeLetter + "-001";
     } else {
         var numStr = "0." + latestId.substring(latestId.indexOf("-") + 1); // converts ID (N-001) into number string ("0.001")
-        var nextNum = (parseFloat(numStr) + 0.001).toFixed(3).toString() // converts string to float and increments by 1
+        var nextNum = (parseFloat(numStr) + 0.001).toFixed(3).toString(); // converts string to float and increments by 1
         return typeLetter + "-" + nextNum.substring(nextNum.indexOf(".") + 1); // converts back to string ID form
     }
 }
