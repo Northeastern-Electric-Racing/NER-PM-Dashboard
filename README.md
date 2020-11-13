@@ -28,7 +28,7 @@ Northeastern Electric Racing Project Management Dashboard
 	- If you close the terminal window and reopen it, you will be put back onto the master branch by default. This will give errors when trying to push so use `git switch [name of branch]` to switch back to your branch
 
 - Good coding practices:
-	- Add meaningful comments in the JSDoc style. [See line #10 of this code as an example](https://github.com/Northeastern-Electric-Racing/NER-PM-Dashboard/blob/master/Code_CovidFabForm.js)
+	- Add meaningful comments in the JSDoc style. [See line #10 of this code as an example](https://github.com/Northeastern-Electric-Racing/NER-PM-Dashboard/blob/master/server-code/CovidFabForm.js)
 	- If you see that the rest of the code follows a pattern, say a pattern of how functions are laid out, then try to stick to this pattern to improve code uniformity
 	- Generally it is good practice to follow the mantra: One Function, One Job. Utilizing helper functions / methods can assist with this.
 
