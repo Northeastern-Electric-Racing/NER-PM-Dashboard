@@ -5,8 +5,6 @@ Document: JS code connecting the Change Management Request form to the spreadshe
 
 /**
 * Pulls the new change request submitted to the form
-*
-* @return {void}
 */
 function onRequestSubmit() {
     var form = FormApp.openById(scriptProps.getProperty('changeForm'));
