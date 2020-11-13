@@ -3,8 +3,9 @@ Document: JS code connecting the Change Management Request form to the spreadshe
 
 */
 
-// onRequestSubmit : n/a -> n/a
-// Pull the new change request submitted to the form
+/**
+* Pulls the new change request submitted to the form, formats the Change Request data, and adds it to the database spreadsheet of all Change Requests. 
+*/
 function onRequestSubmit() {
     var form = FormApp.openById(scriptProps.getProperty('changeForm'));
     var responses = form.getResponses();
@@ -17,8 +18,12 @@ function onRequestSubmit() {
     sheet.appendRow(responseData);
 }
 
-// getNextChangeRequestId : String -> String
-// returns the next request ID for the given request type based on previous requests
+/**
+ * Returns the next request ID for the given request type based on previous requests
+ *
+ * @param {String} requestType - The given request type based on previous requests
+ * @return {String} - The new request ID
+ */
 function getNextChangeRequestId(requestType) {
     var typeLetter = convertToTypeLetter(requestType);
     var data = getSheetInfo('mainSheetID', 'Change Requests', 'data');
@@ -35,14 +40,18 @@ function getNextChangeRequestId(requestType) {
     if (latestId == null) {
         return typeLetter + "-001";
     } else {
-        var numStr = "0." + latestId.substring(latestId.indexOf("-") + 1); // converts ID (N-001) into number string ("0.001")
-        var nextNum = (parseFloat(numStr) + 0.001).toString(); // converts string to float and increments by 1
+        var numStr = "0." + latestId.substring(latestId.indexOf("-") + 1);     // converts ID (N-001) into number string ("0.001")
+        var nextNum = (parseFloat(numStr) + 0.001).toFixed(3).toString();      // converts string to float and increments by 1
         return typeLetter + "-" + nextNum.substring(nextNum.indexOf(".") + 1); // converts back to string ID form
     }
 }
 
-// convertToTypeLetter : String -> String
-// convert long-form string to single character short-form of change request type
+/**
+* Convert long-form string to single character short-form of change request type
+*
+* @param {String} - The long form change request type
+* @return {String} - Short form change request type
+*/
 function convertToTypeLetter(requestType) {
     if (requestType == "New Function") {
         return "N";
