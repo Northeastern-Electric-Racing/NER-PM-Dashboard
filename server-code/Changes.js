@@ -10,7 +10,7 @@ function getChangeForm(changeType) {
         return getStatusUpdateForm();
     } else if (changeType == "change") {
         return getChangeRequestForm();
-    } else if (changeType === "covid") {
+    } else if (changeType == "covid") {
         return getCovidManufacturingForm();
     } else {
         throw "Change type not recognized";

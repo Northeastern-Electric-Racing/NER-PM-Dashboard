@@ -68,7 +68,7 @@
     $("#g-sub-on-ent").on("submit", function (e) {
         e.preventDefault();
         getGanttChart();
-    })
+    });
 
     /* WP Lookup page functions */
 
@@ -84,11 +84,17 @@
     $("#wp-go-btn").on("click", function () {
         getWPData();
     });
+    // add keydown trigger to the select element for browsers such as firefox and IE
+    $('#change-type-go-input').keydown(function(e){  
+        if (e.keyCode == 13) {
+            $('#c-sub-on-ent').submit();
+        }
+    });
     // hit Enter key while focused on the WP lookup field
     $("#wp-sub-on-ent").on("submit", function (e) {
         e.preventDefault();
         getWPData();
-    })
+    });
 
     /* Changes page functions */
 
@@ -144,7 +150,7 @@
     $("#c-sub-on-ent").on("submit", function (e) {
         e.preventDefault();
         changesBtnClick();
-    })
+    });
 
     /* Reports page functions */
 
@@ -168,6 +174,6 @@
     $("#r-sub-on-ent").on("submit", function (e) {
         e.preventDefault();
         getReportForm();
-    })
+    });
 
 </script>
