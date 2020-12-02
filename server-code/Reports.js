@@ -44,39 +44,82 @@ function getUpcomingDeadlines() {
  *
  */
 function buildDeadlinesTable(data) {
-    let today = [];
-    let tomorrow = [];
+    let html;
+
     let thisWeek = [];
+    let nextWeek = [];
 
-    // iterate through data row by row, checking if the 'end' column is today, tmr, or this week
-        // if it is, create json with {wbs, project, name} and put in respective array
+
+    // add header
+    thisWeek.push(["WBS #", "Name", "Project"]);
+    nextWeek.push(["WBS #", "Name", "Project"]);
+
+    // iterate through data row by row, checking if the 'end' column is this week or next week
+        // if it is, create js object with {wbs, project, name} and put in respective array
     for(let row = 1; row < data.length; row++) {
-        let today = new Date();
 
-        let deadline = new Date(data[row][8]);
-        let differenceInDays = (deadline - today) / 1000 / 60 / 60 / 24;
-        if(differenceInDays < 1) {
-            // add to today
-        } else if(differenceInDays === 1) {
-            // add to tmr
-        } else if(differenceInDays > 1 && differenceInDays <= 7 ) {
-            // add to this week
+        let date = new Date();
+        let mondayOfCurrWeek = getMondayOfCurrWeek(date);
+        let deadline = new Date(data[row][9]);
+        let differenceInDays = (deadline - mondayOfCurrWeek) / 1000 / 60 / 60 / 24;
+
+        let task = [data[row][2], data[row][0], data[row][3]];
+
+        if(differenceInDays >-1 && differenceInDays <= 6) {
+            thisWeek.push(task);
+        } else if(differenceInDays > 6 && differenceInDays <= 13) {
+            nextWeek.push(task);
         }
 
-        //  html += `<div class="">
-        //                ` + deadline + `
-        //             </div>`
-
+        // nextWeek.push(task);
     }
+
+    // thisWeek.map(task => {
+    //     html += `<div class="">
+    //                ` + task.wbs + task.project + task.name + `
+    //             </div>`
+    // });
+    // nextWeek.map(task => {
+    //     html += `<div class="">
+    //                ` + task + `
+    //             </div>`
+    // });
+    // thisWeek.map(task => {
+    //     html += `<div class="">
+    //                ` + task + `
+    //             </div>`
+    // });
+
+     // html += `<div class="">
+     //               ` + deadline + `
+     //            </div>`
+
+
+
+
     // div class='content-container'
     // delegate to helper 3 times:
-        // create tables with the json arrays
+        // create tables with the js object arrays
             // div class='row' for each table
+    let thisWeekTable = buildTableHTML(thisWeek, "table-md");
+    let nextWeekTable = buildTableHTML(nextWeek, "table-md");
 
 
-    // add/combine 3 tables together and return
+    // add/combine tables together and return
+    return `<div class="upcoming-deadline-flex-container">
+           <h3>This Week</h3>
+            ` + thisWeekTable + `
+           <h3>Next Week</h3> 
+            ` + nextWeekTable + `
+      </div>`;
+}
 
 
+function getMondayOfCurrWeek(date) {
+    date = new Date(date);
+    let day = date.getDay();
+    let diff = date.getDate() - day + (day === 0 ? -6:1);
+    return new Date(date.setDate(diff));
 }
 
 
