@@ -51,8 +51,8 @@ function buildDeadlinesTable(data) {
 
 
     // add header
-    thisWeek.push(["WBS #", "Name", "Project"]);
-    nextWeek.push(["WBS #", "Name", "Project"]);
+    thisWeek.push(["WBS #", "Project", "Name"]);
+    nextWeek.push(["WBS #", "Project", "Name"]);
 
     // iterate through data row by row, checking if the 'end' column is this week or next week
         // if it is, create js object with {wbs, project, name} and put in respective array
