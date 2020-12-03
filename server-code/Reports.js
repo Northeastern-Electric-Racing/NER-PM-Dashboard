@@ -45,10 +45,8 @@ function getUpcomingDeadlines() {
 function buildDeadlinesTable(data) {
     let thisWeek = [];
     let nextWeek = []; // empty arrays to push values into
-
-    // add headers for tables
     thisWeek.push(["WBS #", "Project", "Name"]);
-    nextWeek.push(["WBS #", "Project", "Name"]);
+    nextWeek.push(["WBS #", "Project", "Name"]); // add headers for tables
 
     for(let row = 1; row < data.length; row++) {
         // check if work package is active or not
