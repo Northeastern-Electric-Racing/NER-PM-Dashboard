@@ -27,10 +27,9 @@ function getAllChangeRequests() {
     return buildTableHTML(data, "table-sm");
 }
 
-
-
 /**
  *
+ * @returns {string}
  */
 function getUpcomingDeadlines() {
     let data = getSheetInfo('mainSheetID', 'Work Packages', 'data');
@@ -42,36 +41,34 @@ function getUpcomingDeadlines() {
 
 /**
  *
+ * @param data
+ * @returns {string}
  */
 function buildDeadlinesTable(data) {
-    let html;
-
     let thisWeek = [];
     let nextWeek = [];
 
-
-    // add header
     thisWeek.push(["WBS #", "Project", "Name"]);
     nextWeek.push(["WBS #", "Project", "Name"]);
 
-    // iterate through data row by row, checking if the 'end' column is this week or next week
-        // if it is, create js object with {wbs, project, name} and put in respective array
     for(let row = 1; row < data.length; row++) {
 
-        let date = new Date();
-        let mondayOfCurrWeek = getMondayOfCurrWeek(date);
-        let deadline = new Date(data[row][9]);
-        let differenceInDays = (deadline - mondayOfCurrWeek) / 1000 / 60 / 60 / 24;
+        if(data[row][4] === "A") {
+            let date = new Date();
+            let mondayOfCurrWeek = getMondayOfCurrWeek(date);
+            let deadline = new Date(data[row][9]);
+            let differenceInDays = (deadline - mondayOfCurrWeek) / 1000 / 60 / 60 / 24;
 
-        let task = [data[row][2], data[row][0], data[row][3]];
+            let task = [data[row][2], data[row][0], data[row][3]];
 
-        if(differenceInDays >-1 && differenceInDays <= 6) {
-            thisWeek.push(task);
-        } else if(differenceInDays > 6 && differenceInDays <= 13) {
-            nextWeek.push(task);
+            if(differenceInDays >-1 && differenceInDays <= 6) {
+                thisWeek.push(task);
+            } else if(differenceInDays > 6 && differenceInDays <= 13) {
+                nextWeek.push(task);
+            }
         }
 
-        // nextWeek.push(task);
+
     }
 
     // thisWeek.map(task => {
@@ -114,7 +111,11 @@ function buildDeadlinesTable(data) {
       </div>`;
 }
 
-
+/**
+ *
+ * @param date
+ * @returns {Date}
+ */
 function getMondayOfCurrWeek(date) {
     date = new Date(date);
     let day = date.getDay();
