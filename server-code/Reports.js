@@ -84,8 +84,8 @@ function buildDeadlinesTable(data) {
  * Gets the beginning of the week by returning the date of the Monday of the provided date.
  * For instance, if the date 12/3/20 is provided, then the function will return 11/30/20.
  *
- * @param {Date} date - The date in which to get the beginning of the week for.
- * @returns {Date} The beginning of the week (Monday) for the provided date.
+ * @param { Date } date - The date in which to get the beginning of the week for.
+ * @returns { Date } The beginning of the week (Monday) for the provided date.
  */
 function getMondayOfCurrWeek(date) {
     date = new Date(date);
