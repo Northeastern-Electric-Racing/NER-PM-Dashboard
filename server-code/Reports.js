@@ -57,6 +57,7 @@ function buildDeadlinesTable(data) {
             let deadline = new Date(data[row][9]);
             let differenceInDays = (deadline - mondayOfCurrWeek) / 1000 / 60 / 60 / 24;
 
+            // push data into proper table
             if(differenceInDays >-1 && differenceInDays <= 6) {
                 thisWeek.push(task);
             } else if(differenceInDays > 6 && differenceInDays <= 13) {
