@@ -29,7 +29,7 @@ function getAllChangeRequests() {
 /**
  * Returns an HTML formatted table of all active work packages that are due this week and next week.
  *
- * @returns {string} An HTML table with work packages due this week and next week.
+ * @returns { String } An HTML table with work packages due this week and next week.
  */
 function getUpcomingDeadlines() {
     let data = getSheetInfo('mainSheetID', 'Work Packages', 'data');
