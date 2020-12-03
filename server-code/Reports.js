@@ -39,8 +39,8 @@ function getUpcomingDeadlines() {
 /**
  * Builds the HTML table with active work packages due this week and next week.
  *
- * @param {Object[][]} data - The content from the 'work packages' tab in the PM 21 spreadsheet.
- * @returns {string} An HTML table with the work packages due this week and next week.
+ * @param { Object[][] } data - The content from the 'work packages' tab in the PM 21 spreadsheet.
+ * @returns { String } An HTML table with the work packages due this week and next week.
  */
 function buildDeadlinesTable(data) {
     let thisWeek = [];
