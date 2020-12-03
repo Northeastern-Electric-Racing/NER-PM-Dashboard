@@ -65,9 +65,8 @@ function buildDeadlinesTable(data) {
             }
         }
     }
-    // constructing the tables separately
     let thisWeekTable = buildTableHTML(thisWeek, "table-md");
-    let nextWeekTable = buildTableHTML(nextWeek, "table-md");
+    let nextWeekTable = buildTableHTML(nextWeek, "table-md"); // constructing the tables separately
 
     // return combined table
     return `<div class="upcoming-deadline-flex-container">
