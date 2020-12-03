@@ -73,11 +73,11 @@ function buildDeadlinesTable(data) {
 
     // return combined table
     return `<div class="upcoming-deadline-flex-container">
-           <h3>This Week</h3>
-            ` + thisWeekTable + `
-           <h3>Next Week</h3> 
-            ` + nextWeekTable + `
-      </div>`;
+                     <h3>This Week</h3>
+                         ` + thisWeekTable + `
+                     <h3>Next Week</h3> 
+                         ` + nextWeekTable + `
+                 </div>`;
 }
 
 /**
