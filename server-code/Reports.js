@@ -44,7 +44,7 @@ function getUpcomingDeadlines() {
  */
 function buildDeadlinesTable(data) {
     let thisWeek = [];
-    let nextWeek = [];
+    let nextWeek = []; // empty arrays to push values into
 
     // add headers for tables
     thisWeek.push(["WBS #", "Project", "Name"]);
