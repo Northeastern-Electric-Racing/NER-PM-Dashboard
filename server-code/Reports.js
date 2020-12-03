@@ -49,8 +49,7 @@ function buildDeadlinesTable(data) {
     nextWeek.push(["WBS #", "Project", "Name"]); // add headers for tables
 
     for(let row = 1; row < data.length; row++) { // iterate through all given data
-        // check if work package is active or not
-        if(data[row][4] === "A") {
+        if(data[row][4] === "A") { // check if work package is active or not
             let task = [data[row][2], data[row][0], data[row][3]];
 
             let date = new Date();
