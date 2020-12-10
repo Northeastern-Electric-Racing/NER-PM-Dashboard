@@ -86,12 +86,18 @@ function buildListHTML(text, delimiter) {
     while(textRemaining.indexOf(delimiter) != -1) {
         nextIdx = textRemaining.indexOf(delimiter);
         var line = textRemaining.slice(0, nextIdx);
-        if (line.slice(0, 1) == "-") {
-            list += `<ul><li>` + line.slice(1) + `</li></ul>`;
+        if (line.slice(0, 1) == "\n") { // check and remove "\n" from the line
+            line = line.slice(1);
+        }
+        if (line.slice(0, 1) == "-") { // "-" to begin the line means a subbullet
+            list += `\n<ul><li>` + line.slice(1) + `</li></ul>`;
         } else {
-            list += `<li>` + line + `</li>`;
+            list += `\n<li>` + line + `</li>`;
         }
         textRemaining = textRemaining.slice(nextIdx + 1);
+    }
+    if (list.slice(0, 1) == "\n") { // check and remove "\n" from the front of the list
+        list = list.slice(1);
     }
     return list;
 }
