@@ -7,7 +7,7 @@ Document: JS code specific for delivering the reports
 // return HTML content for the specified report type
 function getReport(reportType) {
     if (reportType == "dashboard") {
-        return getPlaceholderHTML("* Coming Soon! *");
+        return getStatusDashboard();
     } else if (reportType == "deadlines") {
         return getUpcomingDeadlines();
     } else if (reportType == "changes") {
@@ -89,4 +89,58 @@ function getMondayOfCurrWeek(date) {
     let day = date.getDay();
     let diff = date.getDate() - day + (day === 0 ? -6:1);
     return new Date(date.setDate(diff));
+}
+
+/**
+ * Returns an HTML formatted table of active work packages that should already be done
+ * and active work packages that are behind (difference >= 25%).
+ *
+ * @returns { String } An HTML table with work packages that are expected to be done
+ *                     and work packages that are behind.
+ */
+function getStatusDashboard() {
+    let data = getSheetInfo('mainSheetID', 'Work Packages', 'data');
+    return buildStatusDashboard(data);
+}
+
+/**
+ * Builds the HTML table with work packages that are expected to be done and behind.
+ *
+ * @param { Object[][] } data - The content from the 'work packages' tab in the PM 21 spreadsheet.
+ * @returns { String } An HTML table with work packages that are expected to be done
+ *                     and work packages that are behind.
+ */
+function buildStatusDashboard(data) {
+    let expectedDone = [];
+    let behind = []; // empty arrays to push values into
+    expectedDone.push(["WBS #", "Project", "Name"]);
+    behind.push(["WBS #", "Project", "Name"]); // add headers for tables
+    let date = new Date();
+
+    for (let row = 1; row < data.length; row++) { // iterate through the work package data
+        if(data[row][4] === "A") { // check if work package is active or not
+            let task = [data[row][2], data[row][0], data[row][3]];
+            let deadline = new Date(data[row][9]);
+            let status = data[row][5];
+            let difference = data[row][7];
+
+            // push data into proper table
+            if(date.getTime() >= deadline.getTime() && status !== 1) {
+                expectedDone.push(task);
+            } else if(date.getTime() < deadline.getTime() && difference >= 0.25) {
+                behind.push(task);
+            }
+        }
+    }
+
+    let expectedDoneTable = buildTableHTML(expectedDone, "table-md");
+    let behindTable = buildTableHTML(behind, "table-md"); // constructing the tables separately
+
+    // return combined table
+    return `<div class="upcoming-deadline-flex-container">
+                 <h3>Expected Done</h3>
+                     ` + expectedDoneTable + `
+                 <h3>Behind</h3> 
+                     ` + behindTable + `
+            </div>`;
 }
