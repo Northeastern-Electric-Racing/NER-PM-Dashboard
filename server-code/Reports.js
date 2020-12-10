@@ -7,7 +7,8 @@ Document: JS code specific for delivering the reports
 // return HTML content for the specified report type
 function getReport(reportType) {
     if (reportType == "dashboard") {
-        return getPlaceholderHTML("* Coming Soon! *");
+        return getStatusDashboard();
+        // return getPlaceholderHTML("* Coming Soon! *");
     } else if (reportType == "deadlines") {
         return getUpcomingDeadlines();
     } else if (reportType == "changes") {
@@ -89,4 +90,54 @@ function getMondayOfCurrWeek(date) {
     let day = date.getDay();
     let diff = date.getDate() - day + (day === 0 ? -6:1);
     return new Date(date.setDate(diff));
+}
+
+/**
+ *
+ * @returns {*}
+ */
+function getStatusDashboard() {
+    let data = getSheetInfo('mainSheetID', 'Work Packages', 'data');
+    return buildStatusDashboard(data);
+}
+
+/**
+ *
+ * @param data
+ */
+function buildStatusDashboard(data) {
+    let expectedDone = [];
+    let behind = []; // empty arrays to push values into
+    expectedDone.push(["WBS #", "Project", "Name"]);
+    behind.push(["WBS #", "Project", "Name"]); // add headers for tables
+
+    let date = new Date();
+
+    for (let row = 1; row < data.length; row++) {
+        if(data[row][4] === "A") {
+            let task = [data[row][2], data[row][0], data[row][3]];
+
+            let deadline = new Date(data[row][9]);
+            let status = data[row][5];
+            let difference = data[row][7];
+
+            // push data into proper table
+            if(date.getTime() >= deadline.getTime() && status !== 1) {
+                expectedDone.push(task);
+            } else if(date.getTime() < deadline.getTime() && difference >= 0.25) {
+                behind.push(task);
+            }
+        }
+    }
+
+    let expectedDoneTable = buildTableHTML(expectedDone, "table-md");
+    let behindTable = buildTableHTML(behind, "table-md"); // constructing the tables separately
+
+    // return combined table
+    return `<div class="upcoming-deadline-flex-container">
+                 <h3>Expected Done</h3>
+                     ` + expectedDoneTable + `
+                 <h3>Behind</h3> 
+                     ` + behindTable + `
+            </div>`;
 }
