@@ -8,7 +8,6 @@ Document: JS code specific for delivering the reports
 function getReport(reportType) {
     if (reportType == "dashboard") {
         return getStatusDashboard();
-        // return getPlaceholderHTML("* Coming Soon! *");
     } else if (reportType == "deadlines") {
         return getUpcomingDeadlines();
     } else if (reportType == "changes") {
