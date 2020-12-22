@@ -39,7 +39,7 @@ Northeastern Electric Racing Project Management Dashboard
 
 - To run and check code in the Google runtime environment:
 	- Make sure you have clasp installed and working
-	- Make sure to go to (https://script.google.com/) then into settings and turn google appscript API on
+	- Make sure to go to https://script.google.com/ then into settings and turn google appscript API on
 	- Login to clasp using `clasp login` and using your @husky.neu.edu email address
 	- **IMPORTANT** ALWAYS inform the pm_dashboard before pushing to clasp. ALSO you are able to access PRODUCTION data so be careful what you upload
 	- Now in the terminal type `clasp push` to push your changes to the server
