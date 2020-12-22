@@ -6,14 +6,16 @@
      * @param { Object } Error object returned by the server
      */
     function onFailure(error) {
-      var html = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                      <strong>Error!</strong> ` + error.message + `
-                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                      </button>
-                  </div>`;
+        var html = `<div id="outer-message">
+                        <div id="inner-message" class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>Error!</strong> ` + error.message + `
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>`;
+
       $(".error-box").html(html);
-      window.scrollTo(0,0);
     }
 
     /**
@@ -112,10 +114,12 @@
         });
     }
 
-    // onSuccessHTMLStatusUpdate : HTML Object[HTML] -> n/a
-    // success handler for async server calls, inserts returned payload into provided element's HTML
-    function onSuccessHTMLStatusUpdate(htmlPayload, htmlObject) {
-        htmlObject.html(htmlPayload);
+    /**
+    * Handles fetching and populating the status field after status form submit
+    *
+    * @return {void}
+    */
+    function handleStatusUpdate() {
         $("#status-go-btn").on("click", function () {
             var status_lookup_input = $("#status-go-input").val();
             var status_content = $("#status-content");
@@ -123,6 +127,19 @@
             statusUpdateSubmitRunner.withUserObject(status_content).getStatusUpdateContent(status_lookup_input);
         });
     }
+
+    // onSuccessHTMLStatusUpdate : HTML Object[HTML] -> n/a
+    // success handler for async server calls, inserts returned payload into provided element's HTML
+    function onSuccessHTMLStatusUpdate(htmlPayload, htmlObject) {
+        htmlObject.html(htmlPayload);
+        handleStatusUpdate();
+    }
+
+    // hit enter Key while focused on the get status form
+    $("#status-sub-on-ent").on("submit", function (e) {
+        e.preventDefault();
+        handleStatusUpdate();
+    });
 
     /*
     * Gets the appropriate work package according to the option selected in the dropdow wp_input and places it inside the wp_content wrapper

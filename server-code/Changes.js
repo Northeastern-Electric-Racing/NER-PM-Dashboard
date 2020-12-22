@@ -21,22 +21,24 @@ function getChangeForm(changeType) {
 // return HTML display output for status update form
 function getStatusUpdateForm() {
     var html = `<div class="data-frame">
-                    <h4>Status Update</h4>
-                    <div class="secondary-input">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">WBS #</span>
-                            </div>
-                            <input type="text" class="form-control" placeholder="X.X.X" 
-                                    aria-label="Work Breakdown Structure Number"id="status-go-input">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="submit" id="status-go-btn">Go</button>
+                    <form action="" id="status-sub-on-ent">
+                        <h4>Status Update</h4>
+                        <div class="secondary-input">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">WBS #</span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="X.X.X" 
+                                        aria-label="Work Breakdown Structure Number"id="status-go-input">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="submit" id="status-go-btn">Go</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div id="status-content">
-                        ` + getPlaceholderHTML("Enter WBS # Above") + `
-                    </div>
+                        <div id="status-content">
+                            ` + getPlaceholderHTML("Enter WBS # Above") + `
+                        </div>
+                    </form>
                 </div>`;
     return html;
 }

@@ -12,13 +12,6 @@
     padding-right: 1em;
   }
 
-  .error-box {
-    width: 50%;
-    padding-top: 3px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
   .page-title {
     padding-top: 1em;
   }
@@ -95,6 +88,26 @@
     display: block;
     width: 96%;
     height: 1px;
+  }
+
+  /********* Alerts and messages ********/
+
+  .error-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding-top: 3px;
+    z-index: 999;
+  }
+
+  #outer-message {
+    padding: 5px;
+    width: 60%;
+  }
+
+  #inner-message {
+    margin: 0 auto;
   }
 
   /*************** Loader ***************/
