@@ -1,30 +1,46 @@
 /*
 Document: Main JS code
-
 */
 
 var scriptProps = PropertiesService.getScriptProperties(); // Google apps script properties
 
-// doGet : HttpsRequest -> HTML
-// Serve up the website HTML from Index.html
+
+/**
+ * Serves up the website HTML from Index.html
+ * 
+ * @return {HtmlOutput} request 
+ */
 function doGet(request) {
     return HtmlService.createTemplateFromFile('page-content/Index').evaluate();
 }
 
-// include : String -> HTML
-// Serve HTML content from the file specified by the string file name
+/**
+ * Serves HTML content from the file specified by the string file name
+ * 
+ * @param {String} filename 
+ * @return {String} 
+ */
 function include(filename) {
     return HtmlService.createHtmlOutputFromFile(filename).getContent();
 }
 
-// testFunc : n/a -> Error
-// Function for testing features and functions
+/**
+ * Function for testing features and functions
+ * 
+ * @return {Error}
+ */
 function testFunc() {
   validateWbsNum("1.1.1");
 }
 
-// getSheetInfo : String String -> Object[]
-// Fetches Range object of spreadsheet data given the script property name where the file ID is stored and the sheet name
+/**
+ * Fetches Range object of spreadsheet data given the script property name where the file ID is stored and the sheet name
+ * 
+ * @param {String} fileIDPropName 
+ * @param {String} sheetName 
+ * @param {String} dataReturnType 
+ * @return {(Sheet|Range|Object[][])} 
+ */
 function getSheetInfo(fileIDPropName, sheetName, dataReturnType) {
     var fileId = scriptProps.getProperty(fileIDPropName);
     var file = SpreadsheetApp.openById(fileId);
@@ -42,8 +58,14 @@ function getSheetInfo(fileIDPropName, sheetName, dataReturnType) {
     }
 }
 
-// findIdx : Array[] any -> Number
-// Return index of given item in the given array, throws error if not found
+
+/**
+ * Returns index of given item in the given array, throws error if not found
+ * 
+ * @param {Any} item 
+ * @param {Array[]} array 
+ * @return {number} 
+ */
 function findIdx(item, array) {
     var idx = array.indexOf(item);
     if (idx == -1) {
@@ -53,8 +75,11 @@ function findIdx(item, array) {
     }
 }
 
-// validateWbsNum : String -> n/a
-// Is the provided string a valid Work Breakdown Structure number? (If no, throw an error)
+/**
+ * Is the provided string a valid Work Breakdown Structure number? (If no, throw an error)
+ * 
+ * @param {String} wbsNum 
+ */
 function validateWbsNum(wbsNum) {
     var errorMsg = "WBS Invalid: ";
     if (wbsNum.match(/\./g) == null) {
@@ -66,20 +91,35 @@ function validateWbsNum(wbsNum) {
     }
 }
 
-// buildUnorderedListHTML : String String -> HTML
-// Processes text with specified delimiter to produce an HTML unordered list
+/**
+ * Processes text with specified delimiter to produce an HTML unordered list
+ * 
+ * @param {String} text 
+ * @param {String} delimiter 
+ * @return {String}
+ */
 function buildUnorderedListHTML(text, delimiter) {
     return `<ul>` + buildListHTML(text, delimiter) + `</ul>`;
 }
 
-// buildOrderedListHTML : String String -> HTML
-// Processes text with specified delimiter to produce an HTML ordered list (ordered subbullets not supported)
+/**
+ * Processes text with specified delimiter to produce an HTML ordered list (ordered subbullets not supported)
+ * 
+ * @param {String} text 
+ * @param {String} delimiter 
+ * @return {String}
+ */
 function buildOrderedListHTML(text, delimiter) {
     return `<ol>` + buildListHTML(text, delimiter) + `</ol>`;
 }
 
-// buildListHTML : String String -> HTML
-// Processes text with specified delimiter to produce HTML of list elements
+/**
+ * Processes text with specified delimiter to produce HTML of list elements
+ * 
+ * @param {String} text 
+ * @param {String} delimiter 
+ * @return {String}
+ */
 function buildListHTML(text, delimiter) {
     var textRemaining = text;
     var list = "";
@@ -103,7 +143,7 @@ function buildListHTML(text, delimiter) {
 }
 
 /**
- * Construct an HTML table given the content (with header row) and modifiers.
+ * Constructs an HTML table given the content (with header row) and modifiers.
  *
  * @param {Object[][]} content - The content to construct the HTML table with (includes headers).
  * @param {string} modifiers - The class modifiers to apply to the table.
@@ -125,8 +165,12 @@ function buildTableHTML(content, modifiers) {
   return html + `</tbody></table></div>`;
 }
 
-// getPlaceholderHTML : String -> HTML
-// Get HTML for placeholder content given placeholder text
+/**
+ * Gets HTML for placeholder content given placeholder text
+ * 
+ * @param {String} text 
+ * @return {String}
+ */
 function getPlaceholderHTML(text) {
     var html = `<div class="placeholder-content">
                     ` + text + `

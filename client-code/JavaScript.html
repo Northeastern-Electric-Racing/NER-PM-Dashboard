@@ -3,7 +3,7 @@
      * Handle errors and failures when executing async server calls.
      * Adds a dismissable Boostrap error alert to the top of the page with the error message, and scrolls the window to the top of the page.
      * 
-     * @param { Object } Error object returned by the server
+     * @param {Object} Error object returned by the server
      */
     function onFailure(error) {
       var html = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -21,8 +21,8 @@
      * Takes the HTML payload object returned by the server and places it within the specified HTML DOM object specified when executing the server call.
      * Also scrolls the window to the top of the page to ensure users see relevant content and / or success messages.
      * 
-     * @param { String } HTML string content payload returned from the server
-     * @param { Object } HTML DOM Object to provide the given HTML payload
+     * @param {String} HTML string content payload returned from the server
+     * @param {Object} HTML DOM Object to provide the given HTML payload
      */
     function onSuccessHTML(htmlPayload, htmlObject) {
         htmlObject.html(htmlPayload);
@@ -92,8 +92,12 @@
 
     /* Changes page functions */
 
-    // onSuccessHTMLStatusUpdateSubmit : HTML Object[HTML] -> n/a
-    // success handler for async server calls, inserts returned payload into provided element's HTML
+    /**
+     * Success handler for async server calls, inserts returned payload into provided element's HTML
+     * 
+     * @param {String} HTML string content payload returned from the server
+     * @param {Object} HTML DOM Object to provide the given HTML payload
+     */
     function onSuccessHTMLStatusUpdateSubmit(htmlPayload, htmlObject) {
         htmlObject.html(htmlPayload);
         $("#new-status-go-btn").on("click", function () {
@@ -106,8 +110,12 @@
         });
     }
 
-    // onSuccessHTMLStatusUpdate : HTML Object[HTML] -> n/a
-    // success handler for async server calls, inserts returned payload into provided element's HTML
+    /**
+     * Success handler for async server calls, inserts returned payload into provided element's HTML
+     * 
+     * @param {String} HTML string content payload returned from the server
+     * @param {Object} HTML DOM Object to provide the given HTML payload
+     */
     function onSuccessHTMLStatusUpdate(htmlPayload, htmlObject) {
         htmlObject.html(htmlPayload);
         $("#status-go-btn").on("click", function () {

@@ -1,16 +1,21 @@
 /*
 Document: JS code specific for Work Packages
-
 */
 
-// getWorkPackage : String -> HTML
-// Produce HTML display output for given WBS #'s work package
+/**
+ * Produces HTML display output for given WBS #'s work package
+ * @param {String} wbsNum 
+ * @return {String}
+ */
 function getWorkPackage(wbsNum) {
     return getWorkPackageHtml(getWorkPackageObj(wbsNum));
 }
 
-// getWorkPackageObj : String -> Object[Work Package]
-// Build work package object from spreadsheet data
+/**
+ * Builds work package object from spreadsheet data
+ * @param {String} wbsNum 
+ * @return {Object[Work Package]}
+ */
 function getWorkPackageObj(wbsNum) {
     validateWbsNum(wbsNum);
     var data = getSheetInfo('mainSheetID', 'Work Packages', 'data');
@@ -49,8 +54,11 @@ function getWorkPackageObj(wbsNum) {
     return workPackage;
 }
 
-// getWorkPackageHtml : Object[Work Package] -> HTML
-// Builds HTML description list from fields in given work package
+/**
+ * Builds HTML description list from fields in given work package
+ * @param {Object[Work Package]} workPackage 
+ * @return {String}
+ */
 function getWorkPackageHtml(workPackage) {
     var html = `<div class="data-frame">
                     <dl class="row">

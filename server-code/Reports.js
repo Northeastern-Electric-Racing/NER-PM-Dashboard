@@ -1,10 +1,12 @@
 /*
 Document: JS code specific for delivering the reports
-
 */
 
-// getReport : String -> HTML
-// return HTML content for the specified report type
+/**
+ * Returns HTML content for the specified report type
+ * @param {String} reportType 
+ * @return {String}
+ */
 function getReport(reportType) {
     if (reportType == "dashboard") {
         return getStatusDashboard();
@@ -19,8 +21,10 @@ function getReport(reportType) {
     }
 }
 
-// getAllChangeRequests : n/a -> HTML
-// return HTML formatted list of all change requests
+/**
+ * Returns HTML formatted list of all change requests
+ * @return {String}
+ */
 function getAllChangeRequests() {
     var data = getSheetInfo('mainSheetID', 'Change Requests', 'data');
     return buildTableHTML(data, "table-sm");
@@ -29,7 +33,7 @@ function getAllChangeRequests() {
 /**
  * Returns an HTML formatted table of all active work packages that are due this week and next week.
  *
- * @returns { String } An HTML table with work packages due this week and next week.
+ * @returns {String} An HTML table with work packages due this week and next week.
  */
 function getUpcomingDeadlines() {
     let data = getSheetInfo('mainSheetID', 'Work Packages', 'data');
@@ -39,8 +43,8 @@ function getUpcomingDeadlines() {
 /**
  * Builds the HTML table with active work packages due this week and next week.
  *
- * @param { Object[][] } data - The content from the 'work packages' tab in the PM 21 spreadsheet.
- * @returns { String } An HTML table with the work packages due this week and next week.
+ * @param {Object[][]} data The content from the 'work packages' tab in the PM 21 spreadsheet.
+ * @returns {String} An HTML table with the work packages due this week and next week.
  */
 function buildDeadlinesTable(data) {
     let thisWeek = [];
@@ -81,8 +85,8 @@ function buildDeadlinesTable(data) {
  * Gets the beginning of the week by returning the date of the Monday of the provided date.
  * For instance, if the date 12/3/20 is provided, then the function will return 11/30/20.
  *
- * @param { Date } date - The date in which to get the beginning of the week for.
- * @returns { Date } The beginning of the week (Monday) for the provided date.
+ * @param {Date} date - The date in which to get the beginning of the week for.
+ * @returns {Date} The beginning of the week (Monday) for the provided date.
  */
 function getMondayOfCurrWeek(date) {
     date = new Date(date);
@@ -95,7 +99,7 @@ function getMondayOfCurrWeek(date) {
  * Returns an HTML formatted table of active work packages that should already be done
  * and active work packages that are behind (difference >= 25%).
  *
- * @returns { String } An HTML table with work packages that are expected to be done
+ * @returns {String} An HTML table with work packages that are expected to be done
  *                     and work packages that are behind.
  */
 function getStatusDashboard() {
@@ -106,8 +110,8 @@ function getStatusDashboard() {
 /**
  * Builds the HTML table with work packages that are expected to be done and behind.
  *
- * @param { Object[][] } data - The content from the 'work packages' tab in the PM 21 spreadsheet.
- * @returns { String } An HTML table with work packages that are expected to be done
+ * @param {Object[][]} data - The content from the 'work packages' tab in the PM 21 spreadsheet.
+ * @returns {String} An HTML table with work packages that are expected to be done
  *                     and work packages that are behind.
  */
 function buildStatusDashboard(data) {

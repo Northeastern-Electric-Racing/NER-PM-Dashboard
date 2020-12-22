@@ -1,6 +1,5 @@
 /*
 Document: JS code connecting the Change Management Request form to the spreadsheet
-
 */
 
 /**
@@ -47,7 +46,7 @@ function getNextChangeRequestId(requestType) {
 }
 
 /**
-* Convert long-form string to single character short-form of change request type
+* Converts long-form string to single character short-form of change request type
 *
 * @param {String} - The long form change request type
 * @return {String} - Short form change request type
