@@ -41,8 +41,7 @@
         runnerHTML.withUserObject($("#gantt-content")).getPlaceholderHTML("* Coming Soon * <br> Enter WBS # Above");
         runnerHTML.withUserObject($("#change-content")).getPlaceholderHTML("Choose Change Type Above");
         runnerHTML.withUserObject($("#report-content")).getPlaceholderHTML("* Coming Soon * <br> Choose Report Type Above");
-        // for dashboard, name may have to be changed for easier understanding
-        runnerHTML.withUserObject($("#feature-content")).getPlaceholderHTML("* Coming Soon * <br> Choose Feature Type Above");
+        runnerHTML.withUserObject($("#dashboard-content")).getPlaceholderHTML("* Coming Soon * <br> Choose Dashboard Type Above");
     });
 
     // once page loaded
@@ -175,17 +174,17 @@
     /* Dashboard page functions */
 
     /*
-    * Gets the appropriate feature type according to the type selected in feature_type dropdown and places it inside the feature_content wrapper
+    * Gets the appropriate dashboard type according to the type selected in dashboard_type dropdown and places it inside the dashboard_content wrapper
     * 
     */
     function getDashboardForm() {
-        var feature_type = $("#feature-type-go-input").val();
-        var feature_content = $("#feature-content");
-        runnerHTML.withUserObject(feature_content).getFeature(feature_type);
+        var dashboard_type = $("#dashboard-type-go-input").val();
+        var dashboard_content = $("#dashboard-content");
+        runnerHTML.withUserObject(dashboard_content).getDashboard(dashboard_type);
     }
 
     // click Go button on Dashboard Page
-    $("#feature-type-go-btn").on("click", function () {
+    $("#dashboard-type-go-btn").on("click", function () {
         getDashboardForm();
     });
 

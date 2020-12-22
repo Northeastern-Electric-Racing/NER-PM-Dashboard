@@ -7,7 +7,7 @@ Document: JS code specific for status dashboard/upcoming deadlines
  * @param {String} featureType 
  * @return {String}
  */
-function getFeature(featureType) {
+function getDashboard(featureType) {
     if (featureType == "dashboard") {
         return getStatusDashboard();
     } else if (featureType == "deadlines") {
