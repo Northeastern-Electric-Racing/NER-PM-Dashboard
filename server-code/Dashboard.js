@@ -2,6 +2,11 @@
 Document: JS code specific for status dashboard/upcoming deadlines
 */
 
+/**
+ * Returns HTML content for the specified feature type
+ * @param {String} featureType 
+ * @return {String}
+ */
 function getFeature(featureType) {
     if (featureType == "dashboard") {
         return getStatusDashboard();
