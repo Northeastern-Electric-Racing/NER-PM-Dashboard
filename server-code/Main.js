@@ -8,7 +8,7 @@ var scriptProps = PropertiesService.getScriptProperties(); // Google apps script
 /**
  * Serves up the website HTML from Index.html
  * 
- * @return {HtmlOutput} request 
+ * @return {HtmlOutput} 
  */
 function doGet(request) {
     return HtmlService.createTemplateFromFile('page-content/Index').evaluate();
