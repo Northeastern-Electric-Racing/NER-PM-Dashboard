@@ -3,17 +3,17 @@ Document: JS code specific for status dashboard/upcoming deadlines
 */
 
 /**
- * Returns HTML content for the specified feature type
- * @param {String} featureType 
+ * Returns HTML content for the specified dashboard type
+ * @param {String} dashboardType 
  * @return {String}
  */
-function getDashboard(featureType) {
-    if (featureType == "dashboard") {
+function getDashboard(dashboardType) {
+    if (dashboardType == "dashboard") {
         return getStatusDashboard();
-    } else if (featureType == "deadlines") {
+    } else if (dashboardType == "deadlines") {
         return getUpcomingDeadlines();
     } else {
-        throw "Requested feature type not supported: " + featureType;
+        throw "Requested dashboard type not supported: " + dashboardType;
     }
 }
 
