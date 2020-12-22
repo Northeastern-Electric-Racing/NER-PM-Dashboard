@@ -170,4 +170,27 @@
         getReportForm();
     })
 
+    /* Dashboard page functions */
+
+    /*
+     * Gets the appropriate feature type according to the type selected in feature_type dropdown and places it inside the feature_content wrapper
+     * 
+    */
+    function getDashboardForm() {
+        var feature_type = $("#feature-type-go-input").val();
+        var feature_content = $("#feature-content");
+        runnerHTML.withUserObject(feature_content).getFeature(feature_type);
+    }
+
+    // click Go button on Dashboard Page
+    $("#feature-type-go-btn").on("click", function () {
+        getDashboardForm();
+    });
+
+    // hit Enter key while focused on the dropdown or the submit button on the form
+    $("#d-sub-on-ent").on("submit", function (e) {
+        e.preventDefault();
+        getDashboardForm();
+    })
+
 </script>
