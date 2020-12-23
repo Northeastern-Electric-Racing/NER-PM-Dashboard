@@ -4,8 +4,8 @@ Document: JS code specific for status dashboard/upcoming deadlines
 
 /**
  * Returns HTML content for the specified dashboard type
- * @param {String} dashboardType 
- * @return {String}
+ * @param {String} dashboardType - The type of dashboard to be displayed.
+ * @return {String} HTML formatted content for the selected dashboard type.
  */
 function getDashboard(dashboardType) {
     if (dashboardType == "dashboard") {
