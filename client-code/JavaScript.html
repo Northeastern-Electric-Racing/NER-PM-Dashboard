@@ -14,7 +14,6 @@
                             </button>
                         </div>
                     </div>`;
-
       $(".error-box").html(html);
     }
 
@@ -88,7 +87,7 @@
     });
     // add keydown trigger to the select element for browsers such as firefox and IE
     $('#change-type-go-input').keydown(function(e){  
-        if (e.keyCode == 13) {
+        if (e.keyCode == 13) { // keyCode 13 = the enter key
             $('#c-sub-on-ent').submit();
         }
     });
