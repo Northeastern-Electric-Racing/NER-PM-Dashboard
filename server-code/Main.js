@@ -6,26 +6,27 @@ var scriptProps = PropertiesService.getScriptProperties(); // Google apps script
 
 
 /**
- * Serves up the website HTML from Index.html
+ * Serves up the website HTML from Index.html. This function is run by Apps Script whenever a
+ * user visits the app or a program sends the app an HTTP GET request.
  * 
- * @return {HtmlOutput} 
+ * @return {HtmlOutput} – Sanitized website HTML content 
  */
 function doGet(request) {
     return HtmlService.createTemplateFromFile('page-content/Index').evaluate();
 }
 
 /**
- * Serves HTML content from the file specified by the string file name
+ * Serves HTML content from the file specified by the file name.
  * 
- * @param {String} filename 
- * @return {String} 
+ * @param {String} filename – The name of the file to get content from
+ * @return {String} – The HTML content present in the file
  */
 function include(filename) {
     return HtmlService.createHtmlOutputFromFile(filename).getContent();
 }
 
 /**
- * Function for testing features and functions
+ * Function for testing features and functions.
  * 
  * @return {Error}
  */
@@ -34,12 +35,12 @@ function testFunc() {
 }
 
 /**
- * Fetches Range object of spreadsheet data given the script property name where the file ID is stored and the sheet name
+ * Fetches spreadsheet data given the script property name where the file ID is stored and the sheet name.
  * 
- * @param {String} fileIDPropName 
- * @param {String} sheetName 
- * @param {String} dataReturnType 
- * @return {(Sheet|Range|Object[][])} 
+ * @param {String} fileIDPropName – The script property name where the file ID is stored
+ * @param {String} sheetName – The name of the Sheet
+ * @param {String} dataReturnType – The type of data that will be returned
+ * @return {(Sheet|Range|Object[][])} – The spreadsheet data retrieved
  */
 function getSheetInfo(fileIDPropName, sheetName, dataReturnType) {
     var fileId = scriptProps.getProperty(fileIDPropName);
@@ -62,9 +63,9 @@ function getSheetInfo(fileIDPropName, sheetName, dataReturnType) {
 /**
  * Returns index of given item in the given array, throws error if not found
  * 
- * @param {Any} item 
- * @param {Array[]} array 
- * @return {number} 
+ * @param {Any} item – Something to check membership for in the given array
+ * @param {Array[]} array – The array in which item may or may not belong to
+ * @return {number} – The index of item in the given array, if the item is a member, otherwise -1
  */
 function findIdx(item, array) {
     var idx = array.indexOf(item);
@@ -76,9 +77,9 @@ function findIdx(item, array) {
 }
 
 /**
- * Is the provided string a valid Work Breakdown Structure number? (If no, throw an error)
+ * Checks whether the provided string a valid Work Breakdown Structure number. (If not, throw an error).
  * 
- * @param {String} wbsNum 
+ * @param {String} wbsNum – The Work Breakdown Structure # to validate
  */
 function validateWbsNum(wbsNum) {
     var errorMsg = "WBS Invalid: ";
@@ -92,33 +93,33 @@ function validateWbsNum(wbsNum) {
 }
 
 /**
- * Processes text with specified delimiter to produce an HTML unordered list
+ * Processes text with specified delimiter to produce an HTML unordered list.
  * 
- * @param {String} text 
- * @param {String} delimiter 
- * @return {String}
+ * @param {String} text – The text to parse
+ * @param {String} delimiter – The delimiter to look out for in order to parse
+ * @return {String} – An unordered HTML list based off of the given text
  */
 function buildUnorderedListHTML(text, delimiter) {
     return `<ul>` + buildListHTML(text, delimiter) + `</ul>`;
 }
 
 /**
- * Processes text with specified delimiter to produce an HTML ordered list (ordered subbullets not supported)
+ * Processes text with specified delimiter to produce an HTML ordered list (ordered subbullets not supported).
  * 
- * @param {String} text 
- * @param {String} delimiter 
- * @return {String}
+ * @param {String} text – The text to parse
+ * @param {String} delimiter – The delimiter to look out for in order to parse
+ * @return {String} – An ordered HTML list based off of the given text
  */
 function buildOrderedListHTML(text, delimiter) {
     return `<ol>` + buildListHTML(text, delimiter) + `</ol>`;
 }
 
 /**
- * Processes text with specified delimiter to produce HTML of list elements
+ * Processes text with specified delimiter to produce HTML of list elements.
  * 
- * @param {String} text 
- * @param {String} delimiter 
- * @return {String}
+ * @param {String} text – The text to parse
+ * @param {String} delimiter – The delimiter to look out for in order to parse
+ * @return {String} – An HTML list based off of the given text
  */
 function buildListHTML(text, delimiter) {
     var textRemaining = text;
@@ -145,9 +146,9 @@ function buildListHTML(text, delimiter) {
 /**
  * Constructs an HTML table given the content (with header row) and modifiers.
  *
- * @param {Object[][]} content - The content to construct the HTML table with (includes headers).
- * @param {string} modifiers - The class modifiers to apply to the table.
- * @returns {string} A constructed HTML table with the given content.
+ * @param {Object[][]} content - The content to construct the HTML table with (includes headers)
+ * @param {string} modifiers - The class modifiers to apply to the table
+ * @returns {string} A constructed HTML table with the given content
  */
 function buildTableHTML(content, modifiers) {
     var html = `<div class="table-container"><table class="table ` + modifiers + `"><thead><tr>`;
@@ -166,10 +167,10 @@ function buildTableHTML(content, modifiers) {
 }
 
 /**
- * Gets HTML for placeholder content given placeholder text
+ * Gets HTML for placeholder content given placeholder text.
  * 
- * @param {String} text 
- * @return {String}
+ * @param {String} text – Placeholder text
+ * @return {String} – HTML for placeholder content, having incorporated placeholder text
  */
 function getPlaceholderHTML(text) {
     var html = `<div class="placeholder-content">
