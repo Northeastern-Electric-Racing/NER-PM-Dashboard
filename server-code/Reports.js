@@ -6,7 +6,7 @@ Document: JS code specific for delivering the reports
  * Returns HTML content for the specified report type.
  * 
  * @param {String} reportType – The type of report to get HTML content for
- * @return {String} – The corresponding HTML content for the repot type
+ * @return {String} – The corresponding HTML content for the report type
  */
 function getReport(reportType) {
     if (reportType == "changes") {
