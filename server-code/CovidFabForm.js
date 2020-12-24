@@ -29,7 +29,7 @@ function onCovidRequestSubmit() {
 /**
  * Increments and returns the next COVID manufacturing request ID.
  *
- * @returns {number} The next COVID manufacturing request ID.
+ * @returns {number} The next COVID manufacturing request ID
  */
 function getNextCovidRequestId() {
   const sheet = getSheetInfo('mainSheetID', 'Settings', 'sheet');
