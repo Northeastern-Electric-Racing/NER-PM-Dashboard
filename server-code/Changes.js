@@ -131,8 +131,8 @@ function getNewStatusInput() {
 /**
  * Sets status of WBS # in newStatus to number in newStatus
  * 
- * @param {Object} newStatus 
- * @return {String} HTML for success message
+ * @param {Object} newStatus - The new status for the WBS# to be set to. 
+ * @return {String} An HTML alert success message.
  */
 function setNewStatus(newStatus) {
     var wpData = getWorkPackageObj(newStatus.wbs);
