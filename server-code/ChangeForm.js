@@ -48,8 +48,8 @@ function getNextChangeRequestId(requestType) {
 /**
 * Converts long-form string to single character short-form of change request type
 *
-* @param {String} - The long form change request type
-* @return {String} - Short form change request type
+* @param {String} requestType - The long form change request type
+* @return {String}  Short form change request type
 */
 function convertToTypeLetter(requestType) {
     if (requestType == "New Function") {
