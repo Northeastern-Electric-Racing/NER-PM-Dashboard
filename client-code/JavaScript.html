@@ -22,8 +22,9 @@
      * Takes the HTML payload object returned by the server and places it within the specified HTML DOM object specified when executing the server call.
      * Also scrolls the window to the top of the page to ensure users see relevant content and / or success messages.
      * 
-     * @param {String} HTML string content payload returned from the server
-     * @param {Object} HTML DOM Object to provide the given HTML payload
+     * @param {String} htmlPayload - HTML string content payload returned from the server
+     * @param {Object} htmlObject - HTML DOM Object to provide the given HTML payload
+
      */
     function onSuccessHTML(htmlPayload, htmlObject) {
         htmlObject.html(htmlPayload);
