@@ -3,7 +3,8 @@
      * Handle errors and failures when executing async server calls.
      * Adds a dismissable Boostrap error alert to the top of the page with the error message, and scrolls the window to the top of the page.
      * 
-     * @param {Object} Error object returned by the server
+     * @param {Object} error - The error object returned by the server.
+
      */
     function onFailure(error) {
       var html = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
