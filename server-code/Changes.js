@@ -3,10 +3,10 @@ Document: JS code specific for Changes
 */
 
 /**
- * Produces HTML display output form for given desired change type.
+ * Produces HTML display output form for specified change type.
  * 
- * @param {String} changeType 
- * @return {String} 
+ * @param {String} changeType – the type of change to get HTML display output for 
+ * @return {String} – Raw HTML display output corresponding to the specified change type
  */
 function getChangeForm(changeType) {
     if (changeType == "status") {
@@ -23,7 +23,7 @@ function getChangeForm(changeType) {
 /**
  * Produces HTML display output for status update form.
  * 
- * @return {String} 
+ * @return {String} – Raw HTML display output for the status update form
  */
 function getStatusUpdateForm() {
     var html = `<div class="data-frame">
@@ -48,9 +48,9 @@ function getStatusUpdateForm() {
 }
 
 /**
- * Produces HTML display output for Change Request Google Form.
+ * Produces HTML content for embedded Change Request Google Form.
  * 
- * @return {String} 
+ * @return {String} – Raw HTML display output for the Change Request Google Form
  */
 function getChangeRequestForm() {
     var html = `<div class="change-form">
@@ -65,7 +65,7 @@ function getChangeRequestForm() {
 /**
  * Provides HTML content for embedded COVID Manufacturing Google Form.
  * 
- * @return {String} 
+ * @return {String} – Raw HTML display output for the COVID Manufacturing Google Form
  */
 function getCovidManufacturingForm() {
     var html = `<div class="change-form">
@@ -80,8 +80,8 @@ function getCovidManufacturingForm() {
 /**
  * Produces HTML display output for given WBS #'s work package.
  * 
- * @param {String} wbsNum 
- * @return {String} 
+ * @param {String} wbsNum – the Work Breakdown Structure # to get work package display output for
+ * @return {String} – Raw HTML display output for the work package corresponding to the given WBS #
  */
 function getStatusUpdateContent(wbsNum) {
     var workPackage = getWorkPackageObj(wbsNum);
@@ -109,7 +109,7 @@ function getStatusUpdateContent(wbsNum) {
 /**
  * Produces HTML display output for selecting new status.
  *
- * @return {String} 
+ * @return {String} – Raw HTML display output for selecting a new status
  */
 function getNewStatusInput() {
     var html = `<div class="input-group mb-3">
@@ -132,7 +132,7 @@ function getNewStatusInput() {
  * Sets status of WBS # in newStatus to number in newStatus.
  * 
  * @param {Object} newStatus - The new status for the WBS# to be set to
- * @return {String} An HTML alert success message
+ * @return {String} – An HTML alert success message
  */
 function setNewStatus(newStatus) {
     var wpData = getWorkPackageObj(newStatus.wbs);
