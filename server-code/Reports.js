@@ -3,9 +3,10 @@ Document: JS code specific for delivering the reports
 */
 
 /**
- * Returns HTML content for the specified report type
- * @param {String} reportType 
- * @return {String}
+ * Returns HTML content for the specified report type.
+ * 
+ * @param {String} reportType – The type of report to get HTML content for
+ * @return {String} – The corresponding HTML content for the repot type
  */
 function getReport(reportType) {
     if (reportType == "changes") {
@@ -18,8 +19,9 @@ function getReport(reportType) {
 }
 
 /**
- * Returns HTML formatted list of all change requests
- * @return {String}
+ * Returns HTML formatted list of all change requests.
+ * 
+ * @return {String} – A constructed HTML table listing all the change requests
  */
 function getAllChangeRequests() {
     var data = getSheetInfo('mainSheetID', 'Change Requests', 'data');
