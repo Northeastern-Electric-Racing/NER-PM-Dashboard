@@ -41,6 +41,8 @@
         runnerHTML.withUserObject($("#gantt-content")).getPlaceholderHTML("* Coming Soon * <br> Enter WBS # Above");
         runnerHTML.withUserObject($("#change-content")).getPlaceholderHTML("Choose Change Type Above");
         runnerHTML.withUserObject($("#report-content")).getPlaceholderHTML("* Coming Soon * <br> Choose Report Type Above");
+        runnerHTML.withUserObject($("#dashboard-content")).getPlaceholderHTML("Choose Dashboard Type Above");
+
     });
 
     // once page loaded
@@ -176,6 +178,31 @@
     $("#r-sub-on-ent").on("submit", function (e) {
         e.preventDefault();
         getReportForm();
+    })
+
+    /* Dashboard page functions */
+
+    /*
+    * Gets the appropriate dashboard type according to the type selected in dashboard_type dropdown and places it inside the dashboard_content wrapper
+    * 
+    * @return {void}
+
+    */
+    function getDashboardForm() {
+        var dashboard_type = $("#dashboard-type-go-input").val();
+        var dashboard_content = $("#dashboard-content");
+        runnerHTML.withUserObject(dashboard_content).getDashboard(dashboard_type);
+    }
+
+    // click Go button on Dashboard Page
+    $("#dashboard-type-go-btn").on("click", function () {
+        getDashboardForm();
+    });
+
+    // hit Enter key while focused on the dropdown or the submit button on the form
+    $("#d-sub-on-ent").on("submit", function (e) {
+        e.preventDefault();
+        getDashboardForm();
     })
 
 </script>
