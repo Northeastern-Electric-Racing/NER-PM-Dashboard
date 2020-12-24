@@ -3,7 +3,7 @@ Document: JS code specific for Changes
 */
 
 /**
- * Produces HTML display output form for given desired change type
+ * Produces HTML display output form for given desired change type.
  * 
  * @param {String} changeType 
  * @return {String} 
@@ -21,7 +21,7 @@ function getChangeForm(changeType) {
 }
 
 /**
- * Produces HTML display output for status update form
+ * Produces HTML display output for status update form.
  * 
  * @return {String} 
  */
@@ -48,7 +48,7 @@ function getStatusUpdateForm() {
 }
 
 /**
- * Produces HTML display output for change request google form
+ * Produces HTML display output for Change Request Google Form.
  * 
  * @return {String} 
  */
@@ -78,7 +78,7 @@ function getCovidManufacturingForm() {
 }
 
 /**
- * Produces HTML display output for given WBS #'s work package
+ * Produces HTML display output for given WBS #'s work package.
  * 
  * @param {String} wbsNum 
  * @return {String} 
@@ -107,7 +107,7 @@ function getStatusUpdateContent(wbsNum) {
 }
 
 /**
- * Produces HTML display output for selecting new status
+ * Produces HTML display output for selecting new status.
  *
  * @return {String} 
  */
@@ -129,10 +129,10 @@ function getNewStatusInput() {
 }
 
 /**
- * Sets status of WBS # in newStatus to number in newStatus
+ * Sets status of WBS # in newStatus to number in newStatus.
  * 
- * @param {Object} newStatus - The new status for the WBS# to be set to. 
- * @return {String} An HTML alert success message.
+ * @param {Object} newStatus - The new status for the WBS# to be set to
+ * @return {String} An HTML alert success message
  */
 function setNewStatus(newStatus) {
     var wpData = getWorkPackageObj(newStatus.wbs);
