@@ -1,30 +1,47 @@
 /*
 Document: Main JS code
-
 */
 
 var scriptProps = PropertiesService.getScriptProperties(); // Google apps script properties
 
-// doGet : HttpsRequest -> HTML
-// Serve up the website HTML from Index.html
+
+/**
+ * Serves up the website HTML from Index.html. This function is run by Apps Script whenever a
+ * user visits the app or a program sends the app an HTTP GET request.
+ * 
+ * @return {HtmlOutput} – Sanitized website HTML content 
+ */
 function doGet(request) {
     return HtmlService.createTemplateFromFile('page-content/Index').evaluate();
 }
 
-// include : String -> HTML
-// Serve HTML content from the file specified by the string file name
+/**
+ * Serves HTML content from the file specified by the file name.
+ * 
+ * @param {String} filename – The name of the file to get content from
+ * @return {String} – The HTML content present in the file
+ */
 function include(filename) {
     return HtmlService.createHtmlOutputFromFile(filename).getContent();
 }
 
-// testFunc : n/a -> Error
-// Function for testing features and functions
+/**
+ * Function for testing features and functions.
+ * 
+ * @return {Error}
+ */
 function testFunc() {
   validateWbsNum("1.1.1");
 }
 
-// getSheetInfo : String String -> Object[]
-// Fetches Range object of spreadsheet data given the script property name where the file ID is stored and the sheet name
+/**
+ * Fetches spreadsheet data given the script property name where the file ID is stored and the sheet name.
+ * 
+ * @param {String} fileIDPropName – The script property name where the file ID is stored
+ * @param {String} sheetName – The name of the Sheet
+ * @param {String} dataReturnType – The type of data that will be returned
+ * @return {(Sheet|Range|Object[][])} – The spreadsheet data retrieved
+ */
 function getSheetInfo(fileIDPropName, sheetName, dataReturnType) {
     var fileId = scriptProps.getProperty(fileIDPropName);
     var file = SpreadsheetApp.openById(fileId);
@@ -42,8 +59,14 @@ function getSheetInfo(fileIDPropName, sheetName, dataReturnType) {
     }
 }
 
-// findIdx : Array[] any -> Number
-// Return index of given item in the given array, throws error if not found
+
+/**
+ * Returns index of given item in the given array, throws error if not found
+ * 
+ * @param {Any} item – Something to check membership for in the given array
+ * @param {Array[]} array – The array in which item may or may not belong to
+ * @return {number} – The index of item in the given array, if the item is a member, otherwise -1
+ */
 function findIdx(item, array) {
     var idx = array.indexOf(item);
     if (idx == -1) {
@@ -53,8 +76,11 @@ function findIdx(item, array) {
     }
 }
 
-// validateWbsNum : String -> n/a
-// Is the provided string a valid Work Breakdown Structure number? (If no, throw an error)
+/**
+ * Checks whether the provided string a valid Work Breakdown Structure number. (If not, throw an error).
+ * 
+ * @param {String} wbsNum – The Work Breakdown Structure # to validate
+ */
 function validateWbsNum(wbsNum) {
     var errorMsg = "WBS Invalid: ";
     if (wbsNum.match(/\./g) == null) {
@@ -66,20 +92,35 @@ function validateWbsNum(wbsNum) {
     }
 }
 
-// buildUnorderedListHTML : String String -> HTML
-// Processes text with specified delimiter to produce an HTML unordered list
+/**
+ * Processes text with specified delimiter to produce an HTML unordered list.
+ * 
+ * @param {String} text – The text to parse
+ * @param {String} delimiter – The delimiter to look out for in order to parse
+ * @return {String} – An unordered HTML list based off of the given text
+ */
 function buildUnorderedListHTML(text, delimiter) {
     return `<ul>` + buildListHTML(text, delimiter) + `</ul>`;
 }
 
-// buildOrderedListHTML : String String -> HTML
-// Processes text with specified delimiter to produce an HTML ordered list (ordered subbullets not supported)
+/**
+ * Processes text with specified delimiter to produce an HTML ordered list (ordered subbullets not supported).
+ * 
+ * @param {String} text – The text to parse
+ * @param {String} delimiter – The delimiter to look out for in order to parse
+ * @return {String} – An ordered HTML list based off of the given text
+ */
 function buildOrderedListHTML(text, delimiter) {
     return `<ol>` + buildListHTML(text, delimiter) + `</ol>`;
 }
 
-// buildListHTML : String String -> HTML
-// Processes text with specified delimiter to produce HTML of list elements
+/**
+ * Processes text with specified delimiter to produce HTML of list elements.
+ * 
+ * @param {String} text – The text to parse
+ * @param {String} delimiter – The delimiter to look out for in order to parse
+ * @return {String} – An HTML list based off of the given text
+ */
 function buildListHTML(text, delimiter) {
     var textRemaining = text;
     var list = "";
@@ -103,11 +144,11 @@ function buildListHTML(text, delimiter) {
 }
 
 /**
- * Construct an HTML table given the content (with header row) and modifiers.
+ * Constructs an HTML table given the content (with header row) and modifiers.
  *
- * @param {Object[][]} content - The content to construct the HTML table with (includes headers).
- * @param {string} modifiers - The class modifiers to apply to the table.
- * @returns {string} A constructed HTML table with the given content.
+ * @param {Object[][]} content - The content to construct the HTML table with (includes headers)
+ * @param {string} modifiers - The class modifiers to apply to the table
+ * @returns {string} A constructed HTML table with the given content
  */
 function buildTableHTML(content, modifiers) {
     var html = `<div class="table-container"><table class="table ` + modifiers + `"><thead><tr>`;
@@ -125,8 +166,12 @@ function buildTableHTML(content, modifiers) {
   return html + `</tbody></table></div>`;
 }
 
-// getPlaceholderHTML : String -> HTML
-// Get HTML for placeholder content given placeholder text
+/**
+ * Gets HTML for placeholder content given placeholder text.
+ * 
+ * @param {String} text – Placeholder text
+ * @return {String} – HTML for placeholder content, having incorporated placeholder text
+ */
 function getPlaceholderHTML(text) {
     var html = `<div class="placeholder-content">
                     ` + text + `

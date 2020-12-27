@@ -1,6 +1,5 @@
 /*
 Document: JS code connecting the Change Management Request form to the spreadsheet
-
 */
 
 /**
@@ -19,7 +18,7 @@ function onRequestSubmit() {
 }
 
 /**
- * Returns the next request ID for the given request type based on previous requests
+ * Returns the next request ID for the given request type based on previous requests.
  *
  * @param {String} requestType - The given request type based on previous requests
  * @return {String} - The new request ID
@@ -47,10 +46,10 @@ function getNextChangeRequestId(requestType) {
 }
 
 /**
-* Convert long-form string to single character short-form of change request type
+* Converts long-form string to single character short-form of change request type.
 *
-* @param {String} - The long form change request type
-* @return {String} - Short form change request type
+* @param {String} requestType - The long-form change request type
+* @return {String} – The short-form change request type
 */
 function convertToTypeLetter(requestType) {
     if (requestType == "New Function") {

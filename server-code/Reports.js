@@ -1,10 +1,13 @@
 /*
 Document: JS code specific for delivering the reports
-
 */
 
-// getReport : String -> HTML
-// return HTML content for the specified report type
+/**
+ * Returns HTML content for the specified report type.
+ * 
+ * @param {String} reportType – The type of report to get HTML content for
+ * @return {String} – The corresponding HTML content for the report type
+ */
 function getReport(reportType) {
     if (reportType == "changes") {
         return getAllChangeRequests();
@@ -15,8 +18,11 @@ function getReport(reportType) {
     }
 }
 
-// getAllChangeRequests : n/a -> HTML
-// return HTML formatted list of all change requests
+/**
+ * Returns HTML formatted list of all change requests.
+ * 
+ * @return {String} – A constructed HTML table listing all the change requests
+ */
 function getAllChangeRequests() {
     var data = getSheetInfo('mainSheetID', 'Change Requests', 'data');
     return buildTableHTML(data, "table-sm");

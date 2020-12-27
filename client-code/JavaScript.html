@@ -3,7 +3,7 @@
      * Handle errors and failures when executing async server calls.
      * Adds a dismissable Boostrap error alert to the top of the page with the error message, and scrolls the window to the top of the page.
      * 
-     * @param { Object } Error object returned by the server
+     * @param {Object} error - The error object returned by the server
      */
     function onFailure(error) {
       var html = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -21,8 +21,8 @@
      * Takes the HTML payload object returned by the server and places it within the specified HTML DOM object specified when executing the server call.
      * Also scrolls the window to the top of the page to ensure users see relevant content and / or success messages.
      * 
-     * @param { String } HTML string content payload returned from the server
-     * @param { Object } HTML DOM Object to provide the given HTML payload
+     * @param {String} htmlPayload - HTML string content payload returned from the server
+     * @param {Object} htmlObject - HTML DOM Object to provide the given HTML payload
      */
     function onSuccessHTML(htmlPayload, htmlObject) {
         htmlObject.html(htmlPayload);
@@ -55,7 +55,7 @@
     /* Gantt page functions */
 
     /*
-    * Fetches the gantt chart and places it inside gantt_content wrapper
+    * Fetches the gantt chart and places it inside gantt_content wrapper.
     */
     function getGanttChart() {
         var gantt_input = $("#gantt-go-input").val();
@@ -75,7 +75,7 @@
     /* WP Lookup page functions */
 
     /*
-    * Gets the appropriate work package according to wp_input and places it inside the wp_content wrapper
+    * Gets the appropriate work package according to wp_input and places it inside the wp_content wrapper.
     */
     function getWPData() {
         var wp_input = $("#wp-go-input").val();
@@ -94,8 +94,12 @@
 
     /* Changes page functions */
 
-    // onSuccessHTMLStatusUpdateSubmit : HTML Object[HTML] -> n/a
-    // success handler for async server calls, inserts returned payload into provided element's HTML
+    /**
+     * Success handler for async server calls, inserts returned payload into provided element's HTML.
+     * 
+     * @param {String} htmlPayload - HTML string content payload returned from the server
+     * @param {Object} htmlObject - HTML DOM Object to provide the given HTML payload
+     */
     function onSuccessHTMLStatusUpdateSubmit(htmlPayload, htmlObject) {
         htmlObject.html(htmlPayload);
         $("#new-status-go-btn").on("click", function () {
@@ -108,8 +112,12 @@
         });
     }
 
-    // onSuccessHTMLStatusUpdate : HTML Object[HTML] -> n/a
-    // success handler for async server calls, inserts returned payload into provided element's HTML
+    /**
+     * Success handler for async server calls, inserts returned payload into provided element's HTML.
+     * 
+     * @param {String} htmlPayload - HTML string content payload returned from the server
+     * @param {Object} htmlObject - HTML DOM Object to provide the given HTML payload
+     */
     function onSuccessHTMLStatusUpdate(htmlPayload, htmlObject) {
         htmlObject.html(htmlPayload);
         $("#status-go-btn").on("click", function () {
@@ -121,7 +129,7 @@
     }
 
     /*
-    * Gets the appropriate work package according to the option selected in the dropdow wp_input and places it inside the wp_content wrapper
+    * Gets the appropriate change according to the option selected in the change_type dropdown and places it inside the change_content wrapper.
     * 
     * @return {void}
     */
@@ -151,7 +159,7 @@
     /* Reports page functions */
 
     /*
-    * Gets the appropriate report according to the type selected in report_type dropdown and places it inside the wp_content wrapper
+    * Gets the appropriate report according to the type selected in the report_type dropdown and places it inside the report_content wrapper.
     * 
     * @return {void}
     */
@@ -175,10 +183,9 @@
     /* Dashboard page functions */
 
     /*
-    * Gets the appropriate dashboard type according to the type selected in dashboard_type dropdown and places it inside the dashboard_content wrapper
+    * Gets the appropriate dashboard type according to the type selected in the dashboard_type dropdown and places it inside the dashboard_content wrapper.
     * 
     * @return {void}
-
     */
     function getDashboardForm() {
         var dashboard_type = $("#dashboard-type-go-input").val();

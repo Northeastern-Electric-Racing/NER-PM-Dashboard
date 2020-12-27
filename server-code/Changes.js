@@ -1,10 +1,13 @@
 /*
 Document: JS code specific for Changes
-
 */
 
-// getChangeForm : String -> HTML
-// Produce HTML display output form for given desired change type
+/**
+ * Produces HTML display output form for specified change type.
+ * 
+ * @param {String} changeType – the type of change to get HTML display output for 
+ * @return {String} – Raw HTML display output corresponding to the specified change type
+ */
 function getChangeForm(changeType) {
     if (changeType == "status") {
         return getStatusUpdateForm();
@@ -17,8 +20,11 @@ function getChangeForm(changeType) {
     }
 }
 
-// getStatusUpdateForm : n/a -> HTML
-// return HTML display output for status update form
+/**
+ * Produces HTML display output for status update form.
+ * 
+ * @return {String} – Raw HTML display output for the status update form
+ */
 function getStatusUpdateForm() {
     var html = `<div class="data-frame">
                     <h4>Status Update</h4>
@@ -41,8 +47,11 @@ function getStatusUpdateForm() {
     return html;
 }
 
-// getChangeRequestForm : n/a -> HTML
-// return HTML display output for change request google form
+/**
+ * Produces HTML content for embedded Change Request Google Form.
+ * 
+ * @return {String} – Raw HTML display output for the Change Request Google Form
+ */
 function getChangeRequestForm() {
     var html = `<div class="change-form">
                     <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdofsnmBQJFXOpPMG7-WPGrgDAASAlu4EMryaH8oEDw9mPMDA/viewform?embedded=true" 
@@ -53,11 +62,10 @@ function getChangeRequestForm() {
     return html;
 }
 
-
 /**
- * Provides HTML content for embedding COVID Manufacturing Google Form.
- *
- * @return {!string} HTML for embedded Google form
+ * Provides HTML content for embedded COVID Manufacturing Google Form.
+ * 
+ * @return {String} – Raw HTML display output for the COVID Manufacturing Google Form
  */
 function getCovidManufacturingForm() {
     var html = `<div class="change-form">
@@ -69,8 +77,12 @@ function getCovidManufacturingForm() {
     return html;
 }
 
-// getStatusUpdateContent : String -> HTML
-// Produce HTML display output for given WBS #'s work package
+/**
+ * Produces HTML display output for given WBS #'s work package.
+ * 
+ * @param {String} wbsNum – the Work Breakdown Structure # to get work package display output for
+ * @return {String} – Raw HTML display output for the work package corresponding to the given WBS #
+ */
 function getStatusUpdateContent(wbsNum) {
     var workPackage = getWorkPackageObj(wbsNum);
     var html = `<div class="data-frame">
@@ -94,8 +106,11 @@ function getStatusUpdateContent(wbsNum) {
     return html;
 }
 
-// getNewStatusInput : n/a -> HTML
-// Produce HTML display output for selecting new status
+/**
+ * Produces HTML display output for selecting new status.
+ *
+ * @return {String} – Raw HTML display output for selecting a new status
+ */
 function getNewStatusInput() {
     var html = `<div class="input-group mb-3">
                     <select class="custom-select" id="new-status-go-input" aria-label="Status select with go button">
@@ -113,8 +128,12 @@ function getNewStatusInput() {
     return html;
 }
 
-// setNewStatus : Object[New Status] -> HTML
-// Sets status of WBS # in newStatus to number in newStatus, return HTML for success message
+/**
+ * Sets status of WBS # in newStatus to number in newStatus.
+ * 
+ * @param {Object} newStatus - The new status for the WBS# to be set to
+ * @return {String} – An HTML alert success message
+ */
 function setNewStatus(newStatus) {
     var wpData = getWorkPackageObj(newStatus.wbs);
     var sheet = getSheetInfo('mainSheetID', 'Work Packages', 'sheet');

@@ -4,11 +4,11 @@
 
 /**
  * Provides HTML content for viewing the Gantt chart in a small viewer or a full-page view 
- * built using a modal and sized with the provided width and height for the page
+ * built using a modal and sized with the provided width and height for the page.
  * 
- * @param { number } width HTML page widht
- * @param { number } height HTML page height
- * @return { string } Formatted HTML string content containing iframes for the Gantt chart
+ * @param {Number} width - HTML page width
+ * @param {Number} height - HTML page height
+ * @return {String} – Formatted HTML string content containing iframes for the Gantt chart
  */
 function getEntireGanttSheet(width, height) {
     var modalWidth = width * 0.85;
