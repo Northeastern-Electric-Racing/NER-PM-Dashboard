@@ -6,14 +6,15 @@
      * @param {Object} error - The error object returned by the server
      */
     function onFailure(error) {
-      var html = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                      <strong>Error!</strong> ` + error.message + `
-                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                      </button>
-                  </div>`;
+        var html = `<div id="outer-message">
+                        <div id="inner-message" class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>Error!</strong> ` + error.message + `
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>`;
       $(".error-box").html(html);
-      window.scrollTo(0,0);
     }
 
     /**
