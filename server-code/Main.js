@@ -12,7 +12,9 @@ var scriptProps = PropertiesService.getScriptProperties(); // Google apps script
  * @return {HtmlOutput} – Sanitized website HTML content 
  */
 function doGet(request) {
-    return HtmlService.createTemplateFromFile('page-content/Index').evaluate();
+    return HtmlService.createTemplateFromFile('page-content/Index').evaluate().setFaviconUrl('https://i.imgur.com/kLaEj01.png').setTitle('NER Project Management')
+
+
 }
 
 /**
