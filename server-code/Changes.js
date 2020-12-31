@@ -13,7 +13,7 @@ function getChangeForm(changeType) {
         return getStatusUpdateForm();
     } else if (changeType == "change") {
         return getChangeRequestForm();
-    } else if (changeType === "covid") {
+    } else if (changeType == "covid") {
         return getCovidManufacturingForm();
     } else {
         throw "Change type not recognized";
@@ -28,18 +28,20 @@ function getChangeForm(changeType) {
 function getStatusUpdateForm() {
     var html = `<div class="data-frame">
                     <h4>Status Update</h4>
-                    <div class="secondary-input">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">WBS #</span>
-                            </div>
-                            <input type="text" class="form-control" placeholder="X.X.X" 
-                                    aria-label="Work Breakdown Structure Number"id="status-go-input">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="submit" id="status-go-btn">Go</button>
+                    <form action="" id="su-sub-on-ent">
+                        <div class="secondary-input">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">WBS #</span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="X.X.X" 
+                                        aria-label="Work Breakdown Structure Number"id="status-go-input">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="submit" id="status-go-btn">Go</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                     <div id="status-content">
                         ` + getPlaceholderHTML("Enter WBS # Above") + `
                     </div>
@@ -112,19 +114,21 @@ function getStatusUpdateContent(wbsNum) {
  * @return {String} – Raw HTML display output for selecting a new status
  */
 function getNewStatusInput() {
-    var html = `<div class="input-group mb-3">
-                    <select class="custom-select" id="new-status-go-input" aria-label="Status select with go button">
-                        <option selected disabled>Choose...</option>
-                        <option value="0.00">0%</option>
-                        <option value="0.25">25%</option>
-                        <option value="0.50">50%</option>
-                        <option value="0.75">75%</option>
-                        <option value="1.00">100%</option>
-                    </select>
-                    <div class="input-group-append">
-                        <button class="btn btn-primary" type="submit" id="new-status-go-btn">Submit</button>
+    var html = `<form action="" id="ns-sub-on-ent">
+                    <div class="input-group mb-3">
+                        <select class="custom-select" id="new-status-go-input" aria-label="Status select with go button">
+                            <option selected disabled>Choose...</option>
+                            <option value="0.00">0%</option>
+                            <option value="0.25">25%</option>
+                            <option value="0.50">50%</option>
+                            <option value="0.75">75%</option>
+                            <option value="1.00">100%</option>
+                        </select>
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="submit" id="new-status-go-btn">Submit</button>
+                        </div>
                     </div>
-                </div>`;
+                </form>`;
     return html;
 }
 

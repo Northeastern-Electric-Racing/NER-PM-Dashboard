@@ -104,14 +104,29 @@
     function onSuccessHTMLStatusUpdateSubmit(htmlPayload, htmlObject) {
         htmlObject.html(htmlPayload);
         $("#new-status-go-btn").on("click", function () {
-            var newStatusObj = {
-                wbs: $("#status-go-input").val(),
-                status: $("#new-status-go-input").val(),
-            };
-            var message_box = $(".error-box");
-            runnerHTML.withUserObject(message_box).setNewStatus(newStatusObj);
+            runSuccessHTMLStatusUpdateSubmit();
+        });
+        $("#ns-sub-on-ent").on("submit", function (e) {
+            e.preventDefault();
+            runSuccessHTMLStatusUpdateSubmit();
         });
     }
+
+
+    /**
+    * Abstraction to update work package status.
+    *
+    * @return {void}
+    */
+    function runSuccessHTMLStatusUpdateSubmit() {
+        var newStatusObj = {
+            wbs: $("#status-go-input").val(),
+            status: $("#new-status-go-input").val(),
+        };
+        var message_box = $(".error-box");
+        runnerHTML.withUserObject(message_box).setNewStatus(newStatusObj);
+    }
+
 
     /**
      * Success handler for async server calls, inserts returned payload into provided element's HTML.
@@ -122,11 +137,24 @@
     function onSuccessHTMLStatusUpdate(htmlPayload, htmlObject) {
         htmlObject.html(htmlPayload);
         $("#status-go-btn").on("click", function () {
-            var status_lookup_input = $("#status-go-input").val();
-            var status_content = $("#status-content");
-            var statusUpdateSubmitRunner = basicRunner.withSuccessHandler(onSuccessHTMLStatusUpdateSubmit);
-            statusUpdateSubmitRunner.withUserObject(status_content).getStatusUpdateContent(status_lookup_input);
+            runSuccessHTMLStatusUpdate();
         });
+        $("#su-sub-on-ent").on("submit", function (e) {
+            e.preventDefault();
+            runSuccessHTMLStatusUpdate();
+        });
+    }
+
+    /**
+    * Abstraction for looking for work package status.
+    *
+    * @return {void}
+    */
+    function runSuccessHTMLStatusUpdate() {
+        var status_lookup_input = $("#status-go-input").val();
+        var status_content = $("#status-content");
+        var statusUpdateSubmitRunner = basicRunner.withSuccessHandler(onSuccessHTMLStatusUpdateSubmit);
+        statusUpdateSubmitRunner.withUserObject(status_content).getStatusUpdateContent(status_lookup_input);
     }
 
     /*
