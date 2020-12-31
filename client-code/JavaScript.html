@@ -93,6 +93,18 @@
         getWPData();
     })
 
+    /* Projects page functions */
+
+    /*
+    * Fetches the table listing all project information and places it inside the projects_content wrapper.
+    */
+    function getProjectsGrid() {
+        var projects_content = $("#projects-content");
+        runnerHTML.withUserObject(projects_content).getAllProjects();
+    }
+
+    getProjectsGrid()
+
     /* Changes page functions */
 
     /**
