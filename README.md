@@ -39,9 +39,10 @@ Northeastern Electric Racing Project Management Dashboard
 
 - To run and check code in the Google runtime environment:
 	- Make sure you have clasp installed and working
-	- Make sure to go to https://script.google.com/ then into settings and turn google appscript API on
-	- Login to clasp using `clasp login` and using your @husky.neu.edu email address
-	- **IMPORTANT** ALWAYS inform the pm_dashboard before pushing to clasp. ALSO you are able to access PRODUCTION data so be careful what you upload
+	- Make sure to go to https://script.google.com/ then into settings and turn google appscript API on 
+	**WHILE LOGGED INTO @husky.neu.edu**
+	- Login to clasp using `clasp login` and **USING YOUR @husky.neu.edu EMAIL ADDRESS**
+	- **IMPORTANT** ALWAYS mention in the pm_site Slack channel that you are using clasp for testing BEFORE pushing to clasp. ALSO you are able to access PRODUCTION data so be careful what you upload
 	- Now in the terminal type `clasp push` to push your changes to the server
 	- Visit the dev URL to check your version of the application and ensure your updates are working properly
 	- When all is good, push your code to your branch
@@ -49,7 +50,7 @@ Northeastern Electric Racing Project Management Dashboard
 - Creating a pull request:
 	- Now that you have checked your code, you can create a pull request by going to pull requests on the repo and clicking new pull request
 	- Give it a title of the form `i[issue number] - [change made]` (e.g. `i14 - added collaboration details to readme.md`) and an optional description, and then click create pull request
-	- All pull requests need atleast 1 review so on the right coloumn select __jamescd18__ to request for a review
+	- All pull requests need at least 1 review so on the right column select __jamescd18__ to request for a review
 	- Also, link at least 1 issue that you are trying to solve with the pull request so that we can keep track of which issues are being worked on better
 	- If a change needs to be made in your branch after a pull request is opened, simply add a new commit and this will update the pull request as well
 
