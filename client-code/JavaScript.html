@@ -205,4 +205,13 @@
         getDashboardForm();
     })
 
+    /* Projects page functions */
+
+    function getProjectsGrid() {
+        var projects_content = $("#projects-content");
+        runnerHTML.withUserObject(projects_content).getAllProjects();
+    }
+
+    getProjectsGrid()
+
 </script>
