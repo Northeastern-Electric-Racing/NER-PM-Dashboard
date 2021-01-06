@@ -18,7 +18,7 @@ function getAllProjects() {
  * @param {String} wbsNum – The Work Breakdown Structure # to find data/build a project object for
  * @return {Object[Project]} – A project object corresponding to the given wbsNum
  */
-function getProjectObj(wbsNum) {
+function getProjectsObj(wbsNum) {
     validateWbsNum(wbsNum);
     var data = getSheetInfo('mainSheetID', 'Projects', 'data');
     var headers = data[0];
