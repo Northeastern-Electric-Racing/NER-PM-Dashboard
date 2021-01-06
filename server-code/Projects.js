@@ -40,7 +40,7 @@ function getProjectsObj(wbsNum) {
         wbsNum: rowData[wbsColIdx],
         name: rowData[findIdx("Name", headers)],
         lead: rowData[findIdx("Project Lead", headers)],
-        name: rowData[findIdx("Project Manager", headers)],
+        projectManager: rowData[findIdx("Project Manager", headers)],
     };
     return project;
 }
