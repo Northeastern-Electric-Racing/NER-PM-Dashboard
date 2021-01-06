@@ -44,7 +44,7 @@ function getWorkPackageObj(wbsNum) {
         name: rowData[findIdx("WP Name", headers)],
         duration: rowData[findIdx("Duration", headers)] + " weeks",
         budget: "$" + rowData[findIdx("Budget", headers)],
-        dependancies: rowData[findIdx("Dependencies", headers)],
+        dependencies: rowData[findIdx("Dependencies", headers)],
         deliverable: rowData[findIdx("Deliverables", headers)],
         description: rowData[findIdx("Description", headers)],
         changes: rowData[findIdx("Changes", headers)],
@@ -79,8 +79,8 @@ function getWorkPackageHtml(workPackage) {
                         <dd class="col-sm-9">` + workPackage.duration + `</dd>
                         <dt class="col-sm-3">Budget</dt>
                         <dd class="col-sm-9">` + workPackage.budget + `</dd>
-                        <dt class="col-sm-3">Dependancies</dt>
-                        <dd class="col-sm-9">` + workPackage.dependancies + `</dd>
+                        <dt class="col-sm-3">Dependencies</dt>
+                        <dd class="col-sm-9">` + workPackage.dependencies + `</dd>
                         <dt class="col-sm-3">Deliverable(s)</dt>
                         <dd class="col-sm-9">` + workPackage.deliverable + `</dd>
                         <dt class="col-sm-3">Description</dt>
