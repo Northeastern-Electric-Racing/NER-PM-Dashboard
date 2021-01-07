@@ -2,8 +2,9 @@
 Document: JS code specific for projects
 */
 
-const slideDeckStr = "Slide Deck";
-const bomStr = "BOM";
+// constants for 'Slide Deck' and 'BOM' text, to follow best practice of keeping things in one place
+const SLIDE_DECK_STR = "Slide Deck";
+const BOM_STR = "BOM";
 
 /**
  * Returns HTML formatted list of all projects.
@@ -36,13 +37,13 @@ function getHTMLLink(url, displayText) {
  */
 function transformToHyperLinks(data) {
     var headers = data[0];
-    var slideDeckColIdx = findIdx(slideDeckStr, headers);
-    var bomColIdx = findIdx(bomStr, headers);
+    var slideDeckColIdx = findIdx(SLIDE_DECK_STR, headers);
+    var bomColIdx = findIdx(BOM_STR, headers);
     for (var rowIdx = 1; rowIdx < data.length; rowIdx++) {
         slideDeckURL = data[rowIdx][slideDeckColIdx];
         bomURL = data[rowIdx][bomColIdx];
-        data[rowIdx][slideDeckColIdx] = getHTMLLink(slideDeckURL, slideDeckStr);
-        data[rowIdx][bomColIdx] = getHTMLLink(bomURL, bomStr);
+        data[rowIdx][slideDeckColIdx] = getHTMLLink(slideDeckURL, SLIDE_DECK_STR);
+        data[rowIdx][bomColIdx] = getHTMLLink(bomURL, BOM_STR);
         }
     }
 
