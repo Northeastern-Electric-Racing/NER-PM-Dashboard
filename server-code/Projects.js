@@ -2,6 +2,9 @@
 Document: JS code specific for projects
 */
 
+const slideDeckStr = "Slide Deck";
+const bomStr = "BOM";
+
 /**
  * Returns HTML formatted list of all projects.
  * 
@@ -9,6 +12,7 @@ Document: JS code specific for projects
  */
 function getAllProjects() {
     var data = getSheetInfo('mainSheetID', 'Projects', 'data');
+    transformToHyperLinks(data);
     return buildTableHTML(data, "table-sm");
 }
 
@@ -22,3 +26,25 @@ function getAllProjects() {
 function getHTMLLink(url, displayText) {
     return displayText.link(url);
 }
+
+/**
+ * Transforms the links in the Slide Deck and BOM columns into HTML links with the display text of 
+ * "Slide Deck" or "BOM". 
+ * 
+ * @param {Object[][]} data – Spreadsheet data from the Projects table in the database
+ * 
+ * @return {void}
+ */
+function transformToHyperLinks(data) {
+    var headers = data[0];
+    var slideDeckColIdx = findIdx(slideDeckStr, headers);
+    var bomColIdx = findIdx(bomStr, headers);
+    for (var rowIdx = 1; rowIdx < data.length; rowIdx++) {
+        slideDeckURL = data[rowIdx][slideDeckColIdx];
+        bomURL = data[rowIdx][bomColIdx];
+        data[rowIdx][slideDeckColIdx] = getHTMLLink(slideDeckURL, slideDeckStr);
+        data[rowIdx][bomColIdx] = getHTMLLink(bomURL, bomStr);
+        }
+    }
+
+
