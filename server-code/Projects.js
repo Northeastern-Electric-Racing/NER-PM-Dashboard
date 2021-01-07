@@ -43,11 +43,9 @@ function transformToHyperLinks(data) {
     for (var rowIdx = 1; rowIdx < data.length; rowIdx++) {
         slideDeckURL = data[rowIdx][slideDeckColIdx];
         bomURL = data[rowIdx][bomColIdx];
-        if (slideDeckURL && bomURL) {
-            data[rowIdx][slideDeckColIdx] = getHTMLLink(slideDeckURL, SLIDE_DECK_STR);
-            data[rowIdx][bomColIdx] = getHTMLLink(bomURL, BOM_STR);
-        } 
-    }
+        data[rowIdx][slideDeckColIdx] = slideDeckURL ? getHTMLLink(slideDeckURL, SLIDE_DECK_STR) : "" // converts url to HTML or leaves as empty string
+        data[rowIdx][bomColIdx] = bomURL ? getHTMLLink(bomURL, BOM_STR) : "" // converts url to HTML or leaves as empty string
+    } 
 }
 
 /** 
