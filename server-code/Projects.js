@@ -26,7 +26,7 @@ function getAllProjects() {
  */
 function getHTMLLink(url, displayText) {
     var html = `<a href="` + url + `">` + displayText + `</a` 
-    return displayText.link(url);
+    return html
 }
 
 /**
