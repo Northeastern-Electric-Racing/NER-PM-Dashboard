@@ -32,7 +32,6 @@ function getHTMLLink(url, displayText) {
  * "Slide Deck" or "BOM". 
  * 
  * @param {Object[][]} data – Spreadsheet data from the Projects table in the database
- * 
  * @return {void}
  */
 function transformToHyperLinks(data) {
