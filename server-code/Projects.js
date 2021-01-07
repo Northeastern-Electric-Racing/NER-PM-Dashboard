@@ -5,7 +5,6 @@ Document: JS code specific for projects
 // constants for 'Slide Deck' and 'BOM' text, to follow best practice of keeping things in one place
 const SLIDE_DECK_STR = "Slide Deck";
 const BOM_STR = "BOM";
-const PLACEHOLDER_STR = "Coming Soon";
 
 /**
  * Returns HTML formatted list of all projects.
