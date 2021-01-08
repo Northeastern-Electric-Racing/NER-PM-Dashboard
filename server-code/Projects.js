@@ -25,7 +25,7 @@ function getAllProjects() {
  * @return {String} – The corresponding HTML hyperlink
  */
 function getHTMLLink(url, displayText) {
-    var html = `<a href="` + url + `">` + displayText + `</a>` 
+    var html = `<a href="${url}" target="_blank" rel="noopener noreferrer">${displayText}</a>`;
     return html
 }
 
