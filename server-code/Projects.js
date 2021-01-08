@@ -25,6 +25,7 @@ function getAllProjects() {
  * @return {String} – The corresponding HTML hyperlink
  */
 function getHTMLLink(url, displayText) {
+    // adding a hyperlink which will display the page in a new tab (test comment to be deleted)
     var html = `<a href="` + url + `"` + `target="_blank" rel="noopener noreferrer"` + `>` + displayText + `</a>` 
     return html
 }
