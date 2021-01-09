@@ -38,7 +38,7 @@
     // load page elements via async
     $(function () {
         // load placeholder content
-        runnerHTML.withUserObject($("#lookup-content")).getPlaceholderHTML("Enter WBS # Above");
+        runnerHTML.withUserObject($("#lookups-content")).getPlaceholderHTML("Enter WBS # Above");
         runnerHTML.withUserObject($("#gantt-content")).getPlaceholderHTML("* Coming Soon * <br> Enter WBS # Above");
         runnerHTML.withUserObject($("#change-content")).getPlaceholderHTML("Choose Change Type Above");
         runnerHTML.withUserObject($("#report-content")).getPlaceholderHTML("Choose Report Type Above");
@@ -73,22 +73,22 @@
         getGanttChart();
     })
 
-    /* Lookup page functions */
+    /* Lookups page functions */
 
     /*
     * Gets the appropriate project or work package according to lookup_input and places it inside the lookup_content wrapper.
     */
     function getLookupData() {
-        var lookup_input = $("#lookup-go-input").val();
-        var lookup_content = $("#lookup-content");
+        var lookup_input = $("#lookups-go-input").val();
+        var lookup_content = $("#lookups-content");
         runnerHTML.withUserObject(lookup_content).getWorkPackage(lookup_input);
     }
-    // click Go button on Lookup page
-    $("#lookup-go-btn").on("click", function () {
+    // click Go button on Lookups page
+    $("#lookups-go-btn").on("click", function () {
         getLookupData();
     });
-    // hit Enter key while focused on the lookup field
-    $("#lookup-sub-on-ent").on("submit", function (e) {
+    // hit Enter key while focused on the lookups field
+    $("#lookups-sub-on-ent").on("submit", function (e) {
         e.preventDefault();
         getLookupData();
     })
