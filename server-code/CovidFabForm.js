@@ -22,7 +22,7 @@ function onCovidRequestSubmit() {
   // var requestId = getNextChangeRequestId(responseData.splice(2, 1)[0]); // convert request type to id num
   var requestId = getNextCovidRequestId();
   responseData.unshift(requestId, latestResponse.getTimestamp()); // add id num and timestamp to front of array
-  var sheet = getSheetInfo('mainSheetID', 'Fab & Weld', 'sheet');
+  var sheet = getSheetInfo(MAIN_SHEET_ID_STR, FAB_WELD_STR, SHEET_STR);
   sheet.appendRow(responseData);
 }
 
@@ -32,7 +32,7 @@ function onCovidRequestSubmit() {
  * @returns {number} – The next COVID manufacturing request ID
  */
 function getNextCovidRequestId() {
-  const sheet = getSheetInfo('mainSheetID', 'Settings', 'sheet');
+  const sheet = getSheetInfo(MAIN_SHEET_ID_STR, SETTINGS_STR, SHEET_STR);
   let cell = sheet.getRange(7, 2);
   let nextId = cell.getValue() + 1;
   cell.setValue(nextId);

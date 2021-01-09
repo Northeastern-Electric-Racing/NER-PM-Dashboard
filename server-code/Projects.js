@@ -2,17 +2,13 @@
 Document: JS code specific for projects
 */
 
-// constants for 'Slide Deck' and 'BOM' text, to follow best practice of keeping things in one place
-const SLIDE_DECK_STR = "Slide Deck";
-const BOM_STR = "BOM";
-
 /**
  * Returns HTML formatted list of all projects.
  * 
  * @return {String} – A constructed HTML table listing all the projects
  */
 function getAllProjects() {
-    var data = getSheetInfo('mainSheetID', 'Projects', 'data');
+    var data = getSheetInfo(MAIN_SHEET_ID_STR, PROJECTS_STR, DATA_STR);
     transformToHyperLinks(data);
     return buildTableHTML(data, "table-sm");
 }
@@ -56,7 +52,7 @@ function transformToHyperLinks(data) {
  */
 function getProjectsObj(wbsNum) {
     validateWbsNum(wbsNum);
-    var data = getSheetInfo('mainSheetID', 'Projects', 'data');
+    var data = getSheetInfo(MAIN_SHEET_ID_STR, PROJECTS_STR, DATA_STR);
     var headers = data[0];
     var wbsColIdx = findIdx("WBS #", headers);
     var rowData = [];
