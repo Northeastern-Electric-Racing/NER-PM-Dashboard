@@ -2,7 +2,7 @@
 Document: JS code specific for projects
 */
 
-// constants for 'Slide Deck' and 'BOM' text, to follow best practice of keeping things in one place
+// constants for reused strings, to follow best practice of keeping things in one place
 const SLIDE_DECK_STR = "Slide Deck";
 const BOM_STR = "BOM";
 
@@ -94,25 +94,31 @@ function getProjectObj(wbsNum) {
     return project;
 }
 
-function getProjectWorkPackages(project) {
+/** 
+ * Goes through spreadsheet data to get the WBS#s for the work packages associated with the given project and
+ * then returns a table containing that information.
+ * 
+ * @param {String} project – The Work Breakdown Structure # to find data/build a project object for
+ * @return {String[][]} – A 2-D Array representing the table of WBS#s
+ */
+function getProjectWorkPackagesTable(project) {
     var data = getSheetInfo('mainSheetID', 'Work Packages', 'data');
     var headers = data[0];
     var wbsColIdx = findIdx("WBS #", headers);
-    var projectWorkPackages = [["Project WPs"]];
+    var projWBSNum = project.wbsNum;
+    var projectWorkPackagesTable = [["Project WPs"]];
     for (var rowIdx = 1; rowIdx < data.length; rowIdx++) {
         var wpWBSNum = data[rowIdx][wbsColIdx];
-        var projWBSNum = project.wbsNum;
-        // finding work package wbs #s that match the X.X. in the project's wbs #
         if ((wpWBSNum.slice(0, -2) == projWBSNum.slice(0, -2))) {
-            projectWorkPackages.push([wpWBSNum]);
+            projectWorkPackagesTable.push([wpWBSNum]);
         }
         // in this case, you have already discovered the associated WPs, so no unnecessary iterations
         // compare to len 1 because you'll always have the header list
-        else if (projectWorkPackages.length > 1) {
+        else if (projectWorkPackagesTable.length > 1) {
             break;
         }
     }
-    return projectWorkPackages;
+    return projectWorkPackagesTable;
 }
 
 /**
@@ -122,7 +128,7 @@ function getProjectWorkPackages(project) {
  * @return {String} – Raw HTML description list built from the given project's fields 
  */
 function getProjectHtml(project) {
-    var projectWorkPackages = getProjectWorkPackages(project);
+    var projectWorkPackagesTable = getProjectWorkPackagesTable(project);
     var html = `<div class="data-frame">
                     <dl class="row">
                         <dt class="col-sm-3">Project Name</dt>
@@ -140,7 +146,7 @@ function getProjectHtml(project) {
                         <dt class="col-sm-3">BOM Link</dt>
                         <dd class="col-sm-9">` + getHTMLLink(project.bomLink, BOM_STR)  + `</dd>
                         <hr>
-                        <dd class="col-sm-5">` + buildTableHTML(projectWorkPackages)  + `</dd>
+                        <dd class="col-sm-5">` + buildTableHTML(projectWorkPackagesTable)  + `</dd>
                     </dl>
                 </div>`;
     return html;
