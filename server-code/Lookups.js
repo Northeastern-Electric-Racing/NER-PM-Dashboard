@@ -1,5 +1,5 @@
 /*
-Document: JS code specific for Lookup
+Document: JS code specific for Lookups
 */
 
 /**
