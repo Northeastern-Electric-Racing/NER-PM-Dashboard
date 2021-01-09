@@ -48,13 +48,24 @@ function transformToHyperLinks(data) {
     } 
 }
 
+/**
+ * Produces HTML display output for given WBS #'s project.
+ * 
+ * @param {String} wbsNum – The Work Breakdown Structure # to get project display output for
+ * @return {String} – Raw HTML display output (specifically a description list) corresponding to the project
+ *                    attached to the specified work breakdown structure #
+ */
+function getProject(wbsNum) {
+    return getProjectHtml(getProjectObj(wbsNum));
+}
+
 /** 
  * Builds project object from spreadsheet data.
  * 
  * @param {String} wbsNum – The Work Breakdown Structure # to find data/build a project object for
  * @return {Object[Project]} – A project object corresponding to the given wbsNum
  */
-function getProjectsObj(wbsNum) {
+function getProjectObj(wbsNum) {
     validateWbsNum(wbsNum);
     var data = getSheetInfo('mainSheetID', 'Projects', 'data');
     var headers = data[0];
