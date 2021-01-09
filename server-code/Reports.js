@@ -24,6 +24,6 @@ function getReport(reportType) {
  * @return {String} – A constructed HTML table listing all the change requests
  */
 function getAllChangeRequests() {
-    var data = getSheetInfo('mainSheetID', 'Change Requests', 'data');
+    var data = getSheetInfo(MAIN_SHEET_ID_STR, CHANGE_REQUESTS_STR, DATA_STR);
     return buildTableHTML(data, "table-sm");
 }
