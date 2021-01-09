@@ -98,23 +98,21 @@ function getProjectWorkPackages(project) {
     var data = getSheetInfo('mainSheetID', 'Work Packages', 'data');
     var headers = data[0];
     var wbsColIdx = findIdx("WBS #", headers);
-    var projectWorkPackages = [];
-    var projectWorkPackagesWithHeaders = [["Project WPs"]];
-
+    var projectWorkPackages = [["Project WPs"]];
     for (var rowIdx = 1; rowIdx < data.length; rowIdx++) {
-        var wbsNum = data[rowIdx][wbsColIdx];
+        var wpWBSNum = data[rowIdx][wbsColIdx];
         var projWBSNum = project.wbsNum;
-        if ((wbsNum.slice(0, -2) == projWBSNum.slice(0, -2))) {
-            projectWorkPackagesWithHeaders.push([wbsNum]);
+        // finding work package wbs #s that match the X.X. in the project's wbs #
+        if ((wpWBSNum.slice(0, -2) == projWBSNum.slice(0, -2))) {
+            projectWorkPackages.push([wpWBSNum]);
+        }
+        // in this case, you have already discovered the associated WPs, so no unnecessary iterations
+        // compare to len 1 because you'll always have the header list
+        else if (projectWorkPackages.length > 1) {
+            break;
         }
     }
-    return projectWorkPackagesWithHeaders;
-}
-
-function getProjectHtml(project) {
-    var projectWorkPackages = getProjectWorkPackages(project);
-    var html = getHtmlForProjectData(project, projectWorkPackages);
-    return html;
+    return projectWorkPackages;
 }
 
 /**
@@ -123,7 +121,8 @@ function getProjectHtml(project) {
  * @param {Object[Project]} project – The project whose fields to build a description list for
  * @return {String} – Raw HTML description list built from the given project's fields 
  */
-function getHtmlForProjectData(project, projectWorkPackages) {
+function getProjectHtml(project) {
+    var projectWorkPackages = getProjectWorkPackages(project);
     var html = `<div class="data-frame">
                     <dl class="row">
                         <dt class="col-sm-3">Project Name</dt>
@@ -141,9 +140,7 @@ function getHtmlForProjectData(project, projectWorkPackages) {
                         <dt class="col-sm-3">BOM Link</dt>
                         <dd class="col-sm-9">` + getHTMLLink(project.bomLink, BOM_STR)  + `</dd>
                         <hr>
-                        
                         <dd class="col-sm-5">` + buildTableHTML(projectWorkPackages)  + `</dd>
-
                     </dl>
                 </div>`;
     return html;
