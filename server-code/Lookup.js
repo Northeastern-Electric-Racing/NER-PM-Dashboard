@@ -13,10 +13,6 @@ Document: JS code specific for Lookup
 function getProjectOrWorkPackage(wbsNum) {
     validateWbsNum(wbsNum);
     var lastChar = wbsNum.charAt(wbsNum.length - 1);
-    if (lastChar == 0) {
-        return getProject(wbsNum);
-    }
-    else {
-        return getWorkPackage(wbsNum);
-    }
+    htmlOutput = lastChar == 0 ? getProject(wbsNum) : getWorkPackage(wbsNum);
+    return htmlOutput;
 }
