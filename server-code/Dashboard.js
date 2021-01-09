@@ -24,7 +24,7 @@ function getDashboard(dashboardType) {
  * @returns {String} – An HTML table with work packages due this week and next week
  */
 function getUpcomingDeadlines() {
-    let data = getSheetInfo('mainSheetID', 'Work Packages', 'data');
+    let data = getSheetInfo(MAIN_SHEET_ID_STR, WORK_PACKAGES_STR, DATA_STR);
     return buildDeadlinesTable(data);
 }
 
@@ -91,7 +91,7 @@ function getMondayOfCurrWeek(date) {
  *                     and work packages that are behind
  */
 function getStatusDashboard() {
-    let data = getSheetInfo('mainSheetID', 'Work Packages', 'data');
+    let data = getSheetInfo(MAIN_SHEET_ID_STR, WORK_PACKAGES_STR, DATA_STR);
     return buildStatusDashboard(data);
 }
 
