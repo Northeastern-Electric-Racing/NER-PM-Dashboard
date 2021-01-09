@@ -27,7 +27,6 @@
      */
     function onSuccessHTML(htmlPayload, htmlObject) {
         htmlObject.html(htmlPayload);
-        window.scrollTo(0,0);
     }
 
     var basicRunner = google.script.run.withFailureHandler(onFailure);
