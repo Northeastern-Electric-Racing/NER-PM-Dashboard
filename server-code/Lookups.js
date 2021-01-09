@@ -10,7 +10,7 @@ Document: JS code specific for Lookups
  *                    work package attached to the specified work breakdown structure #                   
  */
 
-function getProjectOrWorkPackage(wbsNum) {
+function getWBSElement(wbsNum) {
     validateWbsNum(wbsNum);
     var lastChar = wbsNum.charAt(wbsNum.length - 1);
     htmlOutput = lastChar == 0 ? getProject(wbsNum) : getWorkPackage(wbsNum);
