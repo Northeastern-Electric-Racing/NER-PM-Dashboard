@@ -109,7 +109,7 @@ function getProjectWorkPackagesTable(project) {
     var projectWorkPackagesTable = [["Project WPs"]];
     for (var rowIdx = 1; rowIdx < data.length; rowIdx++) {
         var wpWBSNum = data[rowIdx][wbsColIdx];
-        if ((wpWBSNum.slice(0, -2) == projWBSNum.slice(0, -2))) {
+        if (wpWBSNum.includes(projWBSNum.slice(0, -1))) {
             projectWorkPackagesTable.push([wpWBSNum]);
         }
         // in this case, you have already discovered the associated WPs, so no unnecessary iterations
