@@ -5,6 +5,7 @@ Constants file to follow best practice of keeping things in one place.
 const MAIN_SHEET_ID_STR = "mainSheetID";
 const DATA_STR = "data";
 const SHEET_STR = "sheet";
+const RANGE_STR = "range";
 
 const PROJECTS_STR = "Projects";
 const WORK_PACKAGES_STR = "Work Packages";

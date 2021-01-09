@@ -50,11 +50,11 @@ function getSheetInfo(fileIDPropName, sheetName, dataReturnType) {
     var sheet = file.getSheetByName(sheetName);
     var range = sheet.getDataRange();
     var data = range.getValues();
-    if (dataReturnType == "sheet") {
+    if (dataReturnType == SHEET_STR) {
         return sheet;
-    } else if (dataReturnType == "range") {
+    } else if (dataReturnType == RANGE_STR) {
         return range;
-    } else if (dataReturnType == "data") {
+    } else if (dataReturnType == DATA_STR) {
         return data;
     } else {
         throw "Invalid Spreadsheet return type";
