@@ -146,11 +146,13 @@ function setNewStatus(newStatus) {
     var statusCellFormat = statusCell.getNumberFormat(); // store number format to preserve formatting
     statusCell.setValue(newStatus.status);
     statusCell.setNumberFormat(statusCellFormat);
-    var html = `<div class="alert alert-success alert-dismissible fade show" role="alert">
+    var html = `<div id="outer-message">
+                    <div id="inner-message" class="alert alert-success alert-dismissible fade show" role="alert">
                         <strong>Success!</strong> Set ` + newStatus.wbs + ` to ` + newStatus.status + `
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
+                    </div>
                 </div>`;
     return html;
 }
