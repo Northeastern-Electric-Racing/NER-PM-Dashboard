@@ -13,7 +13,7 @@ function onRequestSubmit() {
     responseData = responseData.map(ele => ele.getResponse()); // convert items to item responses
     var requestId = getNextChangeRequestId(responseData.splice(2, 1)[0]); // convert request type to id num
     responseData.unshift(requestId, latestResponse.getTimestamp()); // add id num and timestamp to front of array
-    var sheet = getSheetInfo('mainSheetID', 'Change Requests', 'sheet');
+    var sheet = getSheetInfo(MAIN_SHEET_ID_STR, CHANGE_REQUESTS_STR, SHEET_STR);
     sheet.appendRow(responseData);
 }
 
@@ -25,7 +25,7 @@ function onRequestSubmit() {
  */
 function getNextChangeRequestId(requestType) {
     var typeLetter = convertToTypeLetter(requestType);
-    var data = getSheetInfo('mainSheetID', 'Change Requests', 'data');
+    var data = getSheetInfo(MAIN_SHEET_ID_STR, CHANGE_REQUESTS_STR, DATA_STR);
     var changeIdIdx = findIdx("ID", data[0]);
     var numRequests = data.length - 1;
     var latestId;
