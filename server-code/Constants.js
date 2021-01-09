@@ -9,6 +9,8 @@ const SHEET_STR = "sheet";
 const PROJECTS_STR = "Projects";
 const WORK_PACKAGES_STR = "Work Packages";
 const CHANGE_REQUESTS_STR = "Change Requests";
+const FAB_WELD_STR = "Fab & Weld";
+const SETTINGS_STR = "Settings";
 
 const SLIDE_DECK_STR = "Slide Deck";
 const BOM_STR = "BOM";
