@@ -140,7 +140,7 @@ function getNewStatusInput() {
  */
 function setNewStatus(newStatus) {
     var wpData = getWorkPackageObj(newStatus.wbs);
-    var sheet = getSheetInfo('mainSheetID', 'Work Packages', 'sheet');
+    var sheet = getSheetInfo(MAIN_SHEET_ID_STR, WORK_PACKAGES_STR, SHEET_STR);
     var headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
     var statusCell = sheet.getRange(wpData.wbsRowIdx + 1, findIdx("Status", headers) + 1);
     var statusCellFormat = statusCell.getNumberFormat(); // store number format to preserve formatting
