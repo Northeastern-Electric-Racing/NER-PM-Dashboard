@@ -81,7 +81,7 @@
     function getLookupData() {
         var lookup_input = $("#lookups-go-input").val();
         var lookup_content = $("#lookups-content");
-        runnerHTML.withUserObject(lookup_content).getWorkPackage(lookup_input);
+        runnerHTML.withUserObject(lookup_content).getProjectOrWorkPackage(lookup_input);
     }
     // click Go button on Lookups page
     $("#lookups-go-btn").on("click", function () {

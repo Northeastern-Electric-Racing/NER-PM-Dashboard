@@ -94,13 +94,36 @@ function getProjectObj(wbsNum) {
     return project;
 }
 
+function getProjectWorkPackages(project) {
+    var data = getSheetInfo('mainSheetID', 'Work Packages', 'data');
+    var headers = data[0];
+    var wbsColIdx = findIdx("WBS #", headers);
+    var projectWorkPackages = [];
+    var projectWorkPackagesWithHeaders = [["Project WPs"]];
+
+    for (var rowIdx = 1; rowIdx < data.length; rowIdx++) {
+        var wbsNum = data[rowIdx][wbsColIdx];
+        var projWBSNum = project.wbsNum;
+        if ((wbsNum.slice(0, -2) == projWBSNum.slice(0, -2))) {
+            projectWorkPackagesWithHeaders.push([wbsNum]);
+        }
+    }
+    return projectWorkPackagesWithHeaders;
+}
+
+function getProjectHtml(project) {
+    var projectWorkPackages = getProjectWorkPackages(project);
+    var html = getHtmlForProjectData(project, projectWorkPackages);
+    return html;
+}
+
 /**
  * Builds HTML description list from fields in given project.
  * 
  * @param {Object[Project]} project – The project whose fields to build a description list for
  * @return {String} – Raw HTML description list built from the given project's fields 
  */
-function getProjectHtml(project) {
+function getHtmlForProjectData(project, projectWorkPackages) {
     var html = `<div class="data-frame">
                     <dl class="row">
                         <dt class="col-sm-3">Project Name</dt>
@@ -117,7 +140,13 @@ function getProjectHtml(project) {
                         <dd class="col-sm-9">` + getHTMLLink(project.slideDeckLink, SLIDE_DECK_STR) + `</dd>
                         <dt class="col-sm-3">BOM Link</dt>
                         <dd class="col-sm-9">` + getHTMLLink(project.bomLink, BOM_STR)  + `</dd>
+                        <hr>
+                        
+                        <dd class="col-sm-5">` + buildTableHTML(projectWorkPackages)  + `</dd>
+
                     </dl>
                 </div>`;
     return html;
 }
+
+
