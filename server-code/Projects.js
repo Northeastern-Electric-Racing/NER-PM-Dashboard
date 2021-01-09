@@ -8,7 +8,7 @@ Document: JS code specific for projects
  * @return {String} – A constructed HTML table listing all the projects
  */
 function getAllProjects() {
-    var data = getSheetInfo(MAIN_SHEET_ID_STR, 'Projects', 'data');
+    var data = getSheetInfo(MAIN_SHEET_ID_STR, PROJECTS_STR, DATA_STR);
     transformToHyperLinks(data);
     return buildTableHTML(data, "table-sm");
 }
@@ -52,7 +52,7 @@ function transformToHyperLinks(data) {
  */
 function getProjectsObj(wbsNum) {
     validateWbsNum(wbsNum);
-    var data = getSheetInfo(MAIN_SHEET_ID_STR, 'Projects', 'data');
+    var data = getSheetInfo(MAIN_SHEET_ID_STR, PROJECTS_STR, DATA_STR);
     var headers = data[0];
     var wbsColIdx = findIdx("WBS #", headers);
     var rowData = [];
