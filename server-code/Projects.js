@@ -93,3 +93,31 @@ function getProjectObj(wbsNum) {
     };
     return project;
 }
+
+/**
+ * Builds HTML description list from fields in given project.
+ * 
+ * @param {Object[Project]} project – The project whose fields to build a description list for
+ * @return {String} – Raw HTML description list built from the given project's fields 
+ */
+function getProjectHtml(project) {
+    var html = `<div class="data-frame">
+                    <dl class="row">
+                        <dt class="col-sm-3">Project Name</dt>
+                        <dd class="col-sm-9">` + project.name + `</dd>
+                        <dt class="col-sm-3">WBS #</dt>
+                        <dd class="col-sm-9">` + project.wbsNum + `</dd>
+                        <hr>
+                        <dt class="col-sm-3">Project Lead</dt>
+                        <dd class="col-sm-9">` + project.projectLead + `</dd>
+                        <dt class="col-sm-3">Project Manager</dt>
+                        <dd class="col-sm-9">` + project.projectManager + `</dd>
+                        <hr>
+                        <dt class="col-sm-3">Slide Deck Link</dt>
+                        <dd class="col-sm-9">` + getHTMLLink(project.slideDeckLink, SLIDE_DECK_STR) + `</dd>
+                        <dt class="col-sm-3">BOM Link</dt>
+                        <dd class="col-sm-9">` + getHTMLLink(project.bomLink, BOM_STR)  + `</dd>
+                    </dl>
+                </div>`;
+    return html;
+}
