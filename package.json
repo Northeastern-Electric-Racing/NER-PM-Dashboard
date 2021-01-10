@@ -1,0 +1,19 @@
+{
+  "name": "ner-pm-dashboard",
+  "version": "1.0.0",
+  "description": "Project management dashboard for Northeastern Electric Racing",
+  "main": "Main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Northeastern-Electric-Racing/NER-PM-Dashboard.git"
+  },
+  "author": "",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/Northeastern-Electric-Racing/NER-PM-Dashboard/issues"
+  },
+  "homepage": "https://github.com/Northeastern-Electric-Racing/NER-PM-Dashboard#readme"
+}
