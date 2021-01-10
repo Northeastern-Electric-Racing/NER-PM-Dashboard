@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Northeastern-Electric-Racing/NER-PM-Dashboard/issues"
   },
-  "homepage": "https://github.com/Northeastern-Electric-Racing/NER-PM-Dashboard#readme"
+  "homepage": "https://github.com/Northeastern-Electric-Racing/NER-PM-Dashboard#readme",
+  "devDependencies": {
+    "@google/clasp": "^2.3.0"
+  }
 }
