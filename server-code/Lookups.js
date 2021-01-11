@@ -13,6 +13,6 @@ Document: JS code specific for Lookups
 function getWBSElement(wbsNum) {
     validateWbsNum(wbsNum);
     var lastTwoChars = wbsNum.slice(-2);
-    htmlOutput = lastTwoChars == ".0" ? getProject(wbsNum) : getWorkPackage(wbsNum);
+    htmlOutput = lastTwoChars === ".0" ? getProject(wbsNum) : getWorkPackage(wbsNum);
     return htmlOutput;
 }

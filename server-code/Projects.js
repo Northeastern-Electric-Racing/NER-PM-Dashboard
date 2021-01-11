@@ -59,7 +59,7 @@ function getProject(wbsNum) {
  * Builds project object from spreadsheet data.
  * 
  * @param {String} wbsNum – The Work Breakdown Structure # to find data/build a project object for
- * @return {Object[Project]} – A project object corresponding to the given wbsNum
+ * @return {Object} – A JavaScript object representing the project corresponding to the given wbsNum
  */
 function getProjectObj(wbsNum) {
     validateWbsNum(wbsNum);
@@ -69,13 +69,13 @@ function getProjectObj(wbsNum) {
     var rowData = [];
     var wbsRow = 0;
     for (var rowIdx = 1; rowIdx < data.length; rowIdx++) {
-        if (data[rowIdx][wbsColIdx] == wbsNum) {
+        if (data[rowIdx][wbsColIdx] === wbsNum) {
             rowData = data[rowIdx];
             wbsRow = rowIdx;
             break;
         }
     }
-    if (rowData.length == 0) {
+    if (rowData.length === 0) {
         throw "No Project data found."
     }
     var project = {
@@ -92,7 +92,7 @@ function getProjectObj(wbsNum) {
 
 /** 
  * Goes through spreadsheet data to get the WBS#s for the work packages associated with the given project and
- * then returns a table containing that information.
+ * then returns a 2D array containing that information.
  * 
  * @param {String} project – The Work Breakdown Structure # to find data/build a project object for
  * @return {String[][]} – A 2-D Array representing the table of WBS#s
@@ -106,7 +106,7 @@ function getProjectWorkPackagesTable(project) {
     var projectWorkPackagesTable = [["Project WPs"]];
     for (var rowIdx = 1; rowIdx < data.length; rowIdx++) {
         var wpWBSNum = data[rowIdx][wbsColIdx];
-        if (wpWBSNum.slice(0, projWithoutLastChar.length) == projWithoutLastChar) {
+        if (wpWBSNum.slice(0, projWithoutLastChar.length) === projWithoutLastChar) {
             projectWorkPackagesTable.push([wpWBSNum]);
         }
         // in this case, you have already discovered the associated WPs, so no unnecessary iterations
@@ -121,7 +121,7 @@ function getProjectWorkPackagesTable(project) {
 /**
  * Builds HTML description list from fields in given project.
  * 
- * @param {Object[Project]} project – The project whose fields to build a description list for
+ * @param {Object} project – The project whose fields to build a description list for
  * @return {String} – Raw HTML description list built from the given project's fields 
  */
 function getProjectHtml(project) {
@@ -143,6 +143,7 @@ function getProjectHtml(project) {
                         <dt class="col-sm-3">BOM Link</dt>
                         <dd class="col-sm-9">` + getHTMLLink(project.bomLink, BOM_STR)  + `</dd>
                         <hr>
+                        <dt class="col-sm-3">Project WPs</dt>
                         <dd class="col-sm-5">` + buildTableHTML(projectWorkPackagesTable)  + `</dd>
                     </dl>
                 </div>`;
