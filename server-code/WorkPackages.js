@@ -21,7 +21,7 @@ function getWorkPackage(wbsNum) {
  */
 function getWorkPackageObj(wbsNum) {
     validateWbsNum(wbsNum);
-    var data = getSheetInfo('mainSheetID', 'Work Packages', 'data');
+    var data = getSheetInfo(MAIN_SHEET_ID_STR, WORK_PACKAGES_STR, DATA_STR);
     var headers = data[0];
     var wbsColIdx = findIdx("WBS #", headers);
     var rowData = [];
