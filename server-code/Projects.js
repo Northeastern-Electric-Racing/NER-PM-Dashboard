@@ -98,7 +98,7 @@ function getProjectObj(wbsNum) {
  * @return {String[][]} – A 2-D Array representing the table of WBS#s
  */
 function getProjectWorkPackagesTable(project) {
-    var data = getSheetInfo('mainSheetID', 'Work Packages', 'data');
+    var data = getSheetInfo(MAIN_SHEET_ID_STR, WORK_PACKAGES_STR, DATA_STR);
     var headers = data[0];
     var wbsColIdx = findIdx("WBS #", headers);
     var projWBSNum = project.wbsNum;
