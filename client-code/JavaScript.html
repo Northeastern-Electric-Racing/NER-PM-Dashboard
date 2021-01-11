@@ -37,7 +37,7 @@
     // load page elements via async
     $(function () {
         // load placeholder content
-        runnerHTML.withUserObject($("#wp-content")).getPlaceholderHTML("Enter WBS # Above");
+        runnerHTML.withUserObject($("#lookups-content")).getPlaceholderHTML("Enter WBS # Above");
         runnerHTML.withUserObject($("#gantt-content")).getPlaceholderHTML("* Coming Soon * <br> Enter WBS # Above");
         runnerHTML.withUserObject($("#change-content")).getPlaceholderHTML("Choose Change Type Above");
         runnerHTML.withUserObject($("#report-content")).getPlaceholderHTML("Choose Report Type Above");
@@ -72,24 +72,24 @@
         getGanttChart();
     })
 
-    /* WP Lookup page functions */
+    /* Lookups page functions */
 
     /*
-    * Gets the appropriate work package according to wp_input and places it inside the wp_content wrapper.
+    * Gets the appropriate project or work package according to lookup_input and places it inside the lookup_content wrapper.
     */
-    function getWPData() {
-        var wp_input = $("#wp-go-input").val();
-        var wp_content = $("#wp-content");
-        runnerHTML.withUserObject(wp_content).getWorkPackage(wp_input);
+    function getLookupData() {
+        var lookup_input = $("#lookups-go-input").val();
+        var lookup_content = $("#lookups-content");
+        runnerHTML.withUserObject(lookup_content).getWBSElement(lookup_input);
     }
-    // click Go button on WP Lookup page
-    $("#wp-go-btn").on("click", function () {
-        getWPData();
+    // click Go button on Lookups page
+    $("#lookups-go-btn").on("click", function () {
+        getLookupData();
     });
-    // hit Enter key while focused on the WP lookup field
-    $("#wp-sub-on-ent").on("submit", function (e) {
+    // hit Enter key while focused on the lookups field
+    $("#lookups-sub-on-ent").on("submit", function (e) {
         e.preventDefault();
-        getWPData();
+        getLookupData();
     })
 
     /* Projects page functions */
