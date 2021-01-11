@@ -102,10 +102,11 @@ function getProjectWorkPackagesTable(project) {
     var headers = data[0];
     var wbsColIdx = findIdx("WBS #", headers);
     var projWBSNum = project.wbsNum;
+    var projWithoutLastChar = projWBSNum.slice(0, -1);
     var projectWorkPackagesTable = [["Project WPs"]];
     for (var rowIdx = 1; rowIdx < data.length; rowIdx++) {
         var wpWBSNum = data[rowIdx][wbsColIdx];
-        if (wpWBSNum.includes(projWBSNum.slice(0, -1))) {
+        if (wpWBSNum.slice(0, projWithoutLastChar.length) == projWithoutLastChar) {
             projectWorkPackagesTable.push([wpWBSNum]);
         }
         // in this case, you have already discovered the associated WPs, so no unnecessary iterations
