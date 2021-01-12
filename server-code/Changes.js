@@ -148,7 +148,7 @@ function setNewStatus(newStatus) {
     statusCell.setNumberFormat(statusCellFormat);
     var html = `<div id="outer-message">
                     <div id="inner-message" class="alert alert-success alert-dismissible fade show" role="alert">
-                        <strong>Success!</strong> Set ` + newStatus.wbs + ` to ` + newStatus.status + `
+                        <strong>Set status of WP ` + newStatus.wbs + ` to ` + (newStatus.status * 100) + `%</strong>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>

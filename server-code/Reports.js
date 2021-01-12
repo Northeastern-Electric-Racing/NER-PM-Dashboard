@@ -14,7 +14,7 @@ function getReport(reportType) {
     } else if (reportType == "fab") {
         return getAllFabLogs();
     } else {
-        throw "Requested report type not supported: " + reportType;
+        throw "Requested report type " + reportType + " not supported";
     }
 }
 
