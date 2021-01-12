@@ -43,10 +43,9 @@
         runnerHTML.withUserObject($("#change-content")).getPlaceholderHTML("Choose Change Type Above");
         runnerHTML.withUserObject($("#report-content")).getPlaceholderHTML("Choose Report Type Above");
         runnerHTML.withUserObject($("#dashboard-content")).getPlaceholderHTML("Choose Dashboard Type Above");
-
     });
 
-    // once page loaded
+    // once page loaded, it shows the loading spinner for 400 ms then closes it
     $(window).on("load", function () {
         setTimeout(function () {
             $(".loader-wrapper").fadeOut("slow");
