@@ -53,12 +53,16 @@
     });
 
 
+    /**
+    * Adds the HTML for the loading spinner to the given html object.
+    * 
+    * @param htmlObject – The HTML Object to add loading spinner HTML to
+    */
     function addLoaderToObject(htmlObject) {
         var spinnerHTML = `<div class="loader-wrapper loader-page-content">
                             <span class="loader"><span class="loader-inner"></span></span>
                             </div>`;
         htmlObject.html(spinnerHTML);  
-
     }
 
     /* Gantt page functions */
