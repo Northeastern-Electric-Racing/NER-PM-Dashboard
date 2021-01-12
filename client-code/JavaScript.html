@@ -14,6 +14,7 @@
                             </button>
                         </div>
                     </div>`;
+      $(".loader-page-content").remove();
       $(".error-box").html(html);
     }
 
@@ -51,7 +52,6 @@
             $(".loader-wrapper").fadeOut("slow");
         }, 400);
     });
-
 
     /**
     * Adds the HTML for the loading spinner to the given html object.
