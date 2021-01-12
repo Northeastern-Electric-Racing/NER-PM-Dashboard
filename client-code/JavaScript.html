@@ -73,6 +73,7 @@
     function getGanttChart() {
         var gantt_input = $("#gantt-go-input").val();
         var gantt_content = $("#gantt-content");
+        addLoaderToObject(gantt_content);
         runnerHTML.withUserObject(gantt_content).getEntireGanttSheet(window.innerWidth, window.innerHeight);
     }
     // click Go button on Gantt page
@@ -83,7 +84,7 @@
     $("#g-sub-on-ent").on("submit", function (e) {
         e.preventDefault();
         getGanttChart();
-    })
+    });
 
     /* Lookups page functions */
 
@@ -105,7 +106,7 @@
     $("#lookups-sub-on-ent").on("submit", function (e) {
         e.preventDefault();
         getLookupData();
-    })
+    });
 
     /* Projects page functions */
 
@@ -114,10 +115,11 @@
     */
     function getProjectsGrid() {
         var projects_content = $("#projects-content");
+        addLoaderToObject(projects_content);
         runnerHTML.withUserObject(projects_content).getAllProjects();
     }
 
-    getProjectsGrid()
+    getProjectsGrid();
 
     /* Changes page functions */
 
@@ -138,7 +140,6 @@
         });
     }
 
-
     /**
     * Abstraction to update work package status.
     *
@@ -150,9 +151,9 @@
             status: $("#new-status-go-input").val(),
         };
         var message_box = $(".error-box");
+        addLoaderToObject(message_box);
         runnerHTML.withUserObject(message_box).setNewStatus(newStatusObj);
     }
-
 
     /**
      * Success handler for async server calls, inserts returned payload into provided element's HTML.
@@ -179,6 +180,7 @@
     function runSuccessHTMLStatusUpdate() {
         var status_lookup_input = $("#status-go-input").val();
         var status_content = $("#status-content");
+        addLoaderToObject(status_content);
         var statusUpdateSubmitRunner = basicRunner.withSuccessHandler(onSuccessHTMLStatusUpdateSubmit);
         statusUpdateSubmitRunner.withUserObject(status_content).getStatusUpdateContent(status_lookup_input);
     }
@@ -191,6 +193,7 @@
     function changesBtnClick() {
         var change_type = $("#change-type-go-input").val();
         var change_content = $("#change-content");
+        addLoaderToObject(change_content);
         // use different success handler functions to add proper click handlers to buttons
         if (change_type == "status") {
             var statusUpdateRunner = basicRunner.withSuccessHandler(onSuccessHTMLStatusUpdate);
@@ -209,7 +212,7 @@
     $("#c-sub-on-ent").on("submit", function (e) {
         e.preventDefault();
         changesBtnClick();
-    })
+    });
 
     /* Reports page functions */
 
@@ -221,6 +224,7 @@
     function getReportForm() {
         var report_type = $("#report-type-go-input").val();
         var report_content = $("#report-content");
+        addLoaderToObject(report_content);
         runnerHTML.withUserObject(report_content).getReport(report_type);
     }
 
@@ -233,7 +237,7 @@
     $("#r-sub-on-ent").on("submit", function (e) {
         e.preventDefault();
         getReportForm();
-    })
+    });
 
     /* Dashboard page functions */
 
@@ -245,6 +249,7 @@
     function getDashboardForm() {
         var dashboard_type = $("#dashboard-type-go-input").val();
         var dashboard_content = $("#dashboard-content");
+        addLoaderToObject(dashboard_content);
         runnerHTML.withUserObject(dashboard_content).getDashboard(dashboard_type);
     }
 
@@ -257,6 +262,5 @@
     $("#d-sub-on-ent").on("submit", function (e) {
         e.preventDefault();
         getDashboardForm();
-    })
-
+    });
 </script>
