@@ -52,6 +52,7 @@
         }, 400);
     });
 
+
     /* Gantt page functions */
 
     /*
@@ -80,12 +81,17 @@
     function getLookupData() {
         var lookup_input = $("#lookups-go-input").val();
         var lookup_content = $("#lookups-content");
+        var spinnerHTML = `<div class="loader-wrapper loader-full-page">
+                            <span class="loader"><span class="loader-inner"></span></span>
+                            </div>`;
+        lookup_content.html(spinnerHTML);                    
         runnerHTML.withUserObject(lookup_content).getWBSElement(lookup_input);
     }
     // click Go button on Lookups page
     $("#lookups-go-btn").on("click", function () {
-        getLookupData();
+        getLookupData();  
     });
+
     // hit Enter key while focused on the lookups field
     $("#lookups-sub-on-ent").on("submit", function (e) {
         e.preventDefault();
