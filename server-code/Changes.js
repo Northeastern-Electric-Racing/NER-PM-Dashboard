@@ -109,6 +109,17 @@ function getStatusUpdateContent(wbsNum) {
 }
 
 /**
+* Gets the current status of the Work Package
+*
+* @return {Integer} - Status of the work package
+*/
+
+function getCurrentStatus(wbsNum) {
+    var workPackage = getWorkPackageObj(wbsNum);
+    return workPackage.status * 100;
+}
+
+/**
  * Produces HTML display output for selecting new status.
  *
  * @return {String} – Raw HTML display output for selecting a new status

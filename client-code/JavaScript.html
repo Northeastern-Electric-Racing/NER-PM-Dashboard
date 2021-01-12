@@ -134,10 +134,24 @@
             wbs: $("#status-go-input").val(),
             status: $("#new-status-go-input").val(),
         };
+
         var message_box = $(".error-box");
         runnerHTML.withUserObject(message_box).setNewStatus(newStatusObj);
+
+        setTimeout(refreshContent, 1000, $("#status-go-input").val()); //this delay is needed to allow the google sheet in the background to update
     }
 
+    /**
+    * Refreshes the content on the page to show the new status
+    *
+    * @return {Object} - HTML containing the new work package status
+    */
+
+    function refreshContent(statusVal) {
+        var status_content = $("#status-content");
+        var statusUpdateRunner = basicRunner.withSuccessHandler(onSuccessHTMLStatusUpdateSubmit);
+        statusUpdateRunner.withUserObject(status_content).getStatusUpdateContent(statusVal);
+    }
 
     /**
      * Success handler for async server calls, inserts returned payload into provided element's HTML.
