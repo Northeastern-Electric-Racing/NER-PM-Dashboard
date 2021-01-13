@@ -11,6 +11,8 @@ Document: JS code specific for delivering the reports
 function getReport(reportType) {
     if (reportType == "changes") {
         return getAllChangeRequests();
+    } else if (reportType == "open-changes") {
+        return getOpenChangeRequests();
     } else if (reportType == "fab") {
         return getAllFabLogs();
     } else {
