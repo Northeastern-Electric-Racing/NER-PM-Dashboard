@@ -149,4 +149,3 @@ function getProjectHtml(project) {
     return html;
 }
 
-
