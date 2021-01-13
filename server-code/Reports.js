@@ -54,6 +54,6 @@ function getOpenChangeRequests() {
 * @return {String} - Constructed HTML table listing all the fab and weld reports
 */
 function getAllFabLogs() {
-	var data = getSheetInfo('mainSheetID', 'Fab & Weld', 'data');
+	var data = getSheetInfo(MAIN_SHEET_ID_STR, FAB_WELD_STR, DATA_STR);
     return buildTableHTML(data, "table-sm");
 }
