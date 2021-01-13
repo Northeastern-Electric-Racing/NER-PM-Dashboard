@@ -31,6 +31,25 @@ function getAllChangeRequests() {
 }
 
 /**
+ * Returns HTML formatted list of all reviewed change requests.
+ * 
+ * @return {String} – A constructed HTML table listing all the reviewed change requests
+ */
+function getReviewedChangeRequests() {
+    var data = getSheetInfo(MAIN_SHEET_ID_STR, CHANGE_REQUESTS_STR, DATA_STR);
+    var headers = data[0];
+    var reviewedChangeRequestsData = [headers];
+    var reviewedColIdx = findIdx("Reviewed", headers);
+    var reviewedColIdx = findIdx("Done", headers);
+    for (var rowIdx = 1; rowIdx < data.length; rowIdx++) {
+        if (data[rowIdx][reviewedColIdx] && !(data[rowIdx][doneColIdx])) {
+            openChangeRequestsData.push(data[rowIdx]);
+        }
+    }
+    return buildTableHTML(openChangeRequestsData, "table-sm");
+}
+
+/**
 * Returns HTML formatted list of all fab and weld reports
 *
 * @return {String} - Constructed HTML table listing all the fab and weld reports
