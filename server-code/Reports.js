@@ -40,13 +40,13 @@ function getReviewedChangeRequests() {
     var headers = data[0];
     var reviewedChangeRequestsData = [headers];
     var reviewedColIdx = findIdx("Reviewed", headers);
-    var reviewedColIdx = findIdx("Done", headers);
+    var doneColIdx = findIdx("Done", headers);
     for (var rowIdx = 1; rowIdx < data.length; rowIdx++) {
         if (data[rowIdx][reviewedColIdx] && !(data[rowIdx][doneColIdx])) {
-            openChangeRequestsData.push(data[rowIdx]);
+            reviewedChangeRequestsData.push(data[rowIdx]);
         }
     }
-    return buildTableHTML(openChangeRequestsData, "table-sm");
+    return buildTableHTML(reviewedChangeRequestsData, "table-sm");
 }
 
 /**
