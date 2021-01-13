@@ -45,7 +45,7 @@ function getOpenChangeRequests() {
             openChangeRequestsData.push(data[rowIdx]);
         }
     }
-    return buildTableHTML(data, "table-sm");
+    return buildTableHTML(openChangeRequestsData, "table-sm");
 }
 
 /**
