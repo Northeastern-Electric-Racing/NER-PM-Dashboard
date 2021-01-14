@@ -14,7 +14,7 @@ function getDashboard(dashboardType) {
     } else if (dashboardType == "deadlines") {
         return getUpcomingDeadlines();
     } else {
-        throw "Requested dashboard type not supported: " + dashboardType;
+        throw "Requested dashboard type " + dashboardType + " not supported";
     }
 }
 

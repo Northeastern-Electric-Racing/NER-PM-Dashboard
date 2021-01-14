@@ -14,6 +14,7 @@
                             </button>
                         </div>
                     </div>`;
+      $(".loader-page-content").remove();
       $(".error-box").html(html);
     }
 
@@ -42,15 +43,26 @@
         runnerHTML.withUserObject($("#change-content")).getPlaceholderHTML("Choose Change Type Above");
         runnerHTML.withUserObject($("#report-content")).getPlaceholderHTML("Choose Report Type Above");
         runnerHTML.withUserObject($("#dashboard-content")).getPlaceholderHTML("Choose Dashboard Type Above");
-
     });
 
-    // once page loaded
+    // once page loaded, it shows the loading spinner for 400 ms then closes it
     $(window).on("load", function () {
         setTimeout(function () {
             $(".loader-wrapper").fadeOut("slow");
         }, 400);
     });
+
+    /**
+    * Adds the HTML for the loading spinner to the given html object.
+    * 
+    * @param htmlObject – The HTML Object to add loading spinner HTML to
+    */
+    function addLoaderToObject(htmlObject) {
+        var spinnerHTML = `<div class="loader-wrapper loader-page-content">
+                            <span class="loader"><span class="loader-inner"></span></span>
+                            </div>`;
+        htmlObject.html(spinnerHTML);  
+    }
 
     /* Gantt page functions */
 
@@ -60,6 +72,7 @@
     function getGanttChart() {
         var gantt_input = $("#gantt-go-input").val();
         var gantt_content = $("#gantt-content");
+        addLoaderToObject(gantt_content);
         runnerHTML.withUserObject(gantt_content).getEntireGanttSheet(window.innerWidth, window.innerHeight);
     }
     // click Go button on Gantt page
@@ -70,7 +83,7 @@
     $("#g-sub-on-ent").on("submit", function (e) {
         e.preventDefault();
         getGanttChart();
-    })
+    });
 
     /* Lookups page functions */
 
@@ -80,17 +93,19 @@
     function getLookupData() {
         var lookup_input = $("#lookups-go-input").val();
         var lookup_content = $("#lookups-content");
+        addLoaderToObject(lookup_content);
         runnerHTML.withUserObject(lookup_content).getWBSElement(lookup_input);
     }
     // click Go button on Lookups page
     $("#lookups-go-btn").on("click", function () {
-        getLookupData();
+        getLookupData();  
     });
+
     // hit Enter key while focused on the lookups field
     $("#lookups-sub-on-ent").on("submit", function (e) {
         e.preventDefault();
         getLookupData();
-    })
+    });
 
     /* Projects page functions */
 
@@ -99,10 +114,11 @@
     */
     function getProjectsGrid() {
         var projects_content = $("#projects-content");
+        addLoaderToObject(projects_content);
         runnerHTML.withUserObject(projects_content).getAllProjects();
     }
 
-    getProjectsGrid()
+    getProjectsGrid();
 
     /* Changes page functions */
 
@@ -123,7 +139,6 @@
         });
     }
 
-
     /**
     * Abstraction to update work package status.
     *
@@ -136,6 +151,7 @@
         };
 
         var message_box = $(".error-box");
+        addLoaderToObject(message_box);
         runnerHTML.withUserObject(message_box).setNewStatus(newStatusObj);
 
         setTimeout(refreshContent, 1000, $("#status-go-input").val()); //this delay is needed to allow the google sheet in the background to update
@@ -152,6 +168,7 @@
         var statusUpdateRunner = basicRunner.withSuccessHandler(onSuccessHTMLStatusUpdateSubmit);
         statusUpdateRunner.withUserObject(status_content).getStatusUpdateContent(statusVal);
     }
+
 
     /**
      * Success handler for async server calls, inserts returned payload into provided element's HTML.
@@ -178,6 +195,7 @@
     function runSuccessHTMLStatusUpdate() {
         var status_lookup_input = $("#status-go-input").val();
         var status_content = $("#status-content");
+        addLoaderToObject(status_content);
         var statusUpdateSubmitRunner = basicRunner.withSuccessHandler(onSuccessHTMLStatusUpdateSubmit);
         statusUpdateSubmitRunner.withUserObject(status_content).getStatusUpdateContent(status_lookup_input);
     }
@@ -190,6 +208,7 @@
     function changesBtnClick() {
         var change_type = $("#change-type-go-input").val();
         var change_content = $("#change-content");
+        addLoaderToObject(change_content);
         // use different success handler functions to add proper click handlers to buttons
         if (change_type == "status") {
             var statusUpdateRunner = basicRunner.withSuccessHandler(onSuccessHTMLStatusUpdate);
@@ -208,7 +227,7 @@
     $("#c-sub-on-ent").on("submit", function (e) {
         e.preventDefault();
         changesBtnClick();
-    })
+    });
 
     /* Reports page functions */
 
@@ -220,6 +239,7 @@
     function getReportForm() {
         var report_type = $("#report-type-go-input").val();
         var report_content = $("#report-content");
+        addLoaderToObject(report_content);
         runnerHTML.withUserObject(report_content).getReport(report_type);
     }
 
@@ -232,7 +252,7 @@
     $("#r-sub-on-ent").on("submit", function (e) {
         e.preventDefault();
         getReportForm();
-    })
+    });
 
     /* Dashboard page functions */
 
@@ -244,6 +264,7 @@
     function getDashboardForm() {
         var dashboard_type = $("#dashboard-type-go-input").val();
         var dashboard_content = $("#dashboard-content");
+        addLoaderToObject(dashboard_content);
         runnerHTML.withUserObject(dashboard_content).getDashboard(dashboard_type);
     }
 
@@ -256,6 +277,5 @@
     $("#d-sub-on-ent").on("submit", function (e) {
         e.preventDefault();
         getDashboardForm();
-    })
-
+    });
 </script>

@@ -143,11 +143,9 @@ function getProjectHtml(project) {
                         <dt class="col-sm-3">BOM Link</dt>
                         <dd class="col-sm-9">` + getHTMLLink(project.bomLink, BOM_STR)  + `</dd>
                         <hr>
-                        <dt class="col-sm-3">Project WPs</dt>
                         <dd class="col-sm-5">` + buildTableHTML(projectWorkPackagesTable)  + `</dd>
                     </dl>
                 </div>`;
     return html;
 }
-
 
