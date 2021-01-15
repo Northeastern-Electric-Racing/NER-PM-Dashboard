@@ -118,6 +118,11 @@
         runnerHTML.withUserObject(projects_content).getAllProjects();
     }
 
+    // click Reload Data button on Projects page
+    $("#projects-reload-data-btn").on("click", function () {
+        getProjectsGrid();
+    });
+
     getProjectsGrid();
 
     /* Changes page functions */
