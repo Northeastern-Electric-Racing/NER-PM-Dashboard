@@ -70,18 +70,12 @@
     * Fetches the gantt chart and places it inside gantt_content wrapper.
     */
     function getGanttChart() {
-        var gantt_input = $("#gantt-go-input").val();
         var gantt_content = $("#gantt-content");
         addLoaderToObject(gantt_content);
         runnerHTML.withUserObject(gantt_content).getEntireGanttSheet(window.innerWidth, window.innerHeight);
     }
-    // click Go button on Gantt page
-    $("#gantt-go-btn").on("click", function () {
-        getGanttChart();
-    });
-    // hit Enter key while focused on the gantt form
-    $("#g-sub-on-ent").on("submit", function (e) {
-        e.preventDefault();
+    // click View Full Gantt button on Gantt page
+    $("#gantt-view-full-btn").on("click", function () {
         getGanttChart();
     });
 
