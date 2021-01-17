@@ -59,8 +59,9 @@ function getReviewedChangeRequests() {
 function getOpenChangeRequests() {
     var data = getSheetInfo(MAIN_SHEET_ID_STR, CHANGE_REQUESTS_STR, DATA_STR);
     var headers = data[0];
-    var openChangeRequestsData = [headers];
     var reviewedColIdx = findIdx("Reviewed", headers);
+    headers = headers.slice(0, -5);
+    var openChangeRequestsData = [headers];
     for (var rowIdx = 1; rowIdx < data.length; rowIdx++) {
         if (!(data[rowIdx][reviewedColIdx])) {
             openChangeRequestsData.push(data[rowIdx].slice(0, -5));
