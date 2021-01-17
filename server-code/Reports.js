@@ -63,7 +63,7 @@ function getOpenChangeRequests() {
     var reviewedColIdx = findIdx("Reviewed", headers);
     for (var rowIdx = 1; rowIdx < data.length; rowIdx++) {
         if (!(data[rowIdx][reviewedColIdx])) {
-            openChangeRequestsData.push(data[rowIdx]);
+            openChangeRequestsData.push(data[rowIdx].slice(0, -5));
         }
     }
     return buildTableHTML(openChangeRequestsData, "table-sm");
