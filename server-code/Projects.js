@@ -84,6 +84,7 @@ function getProjectObj(wbsNum) {
         name: rowData[findIdx("Name", headers)],
         projectLead: rowData[findIdx("Project Lead", headers)],
         projectManager: rowData[findIdx("Project Manager", headers)],
+        projectStatus: rowData[findIdx("Project Status", headers)],
         slideDeckLink: rowData[findIdx("Slide Deck", headers)],
         bomLink: rowData[findIdx("BOM", headers)],
     };
