@@ -45,7 +45,7 @@ function getReviewedChangeRequests() {
     var doneColIdx = findIdx("Done", headers);
     for (var rowIdx = 1; rowIdx < data.length; rowIdx++) {
         if (data[rowIdx][reviewedColIdx] && !(data[rowIdx][doneColIdx])) {
-            reviewedChangeRequestsData.push(data[rowIdx]);
+            reviewedChangeRequestsData.push(data[rowIdx].slice(0, -2));
         }
     }
     return buildTableHTML(reviewedChangeRequestsData, "table-sm");
