@@ -84,6 +84,7 @@ function getProjectObj(wbsNum) {
         name: rowData[findIdx("Name", headers)],
         projectLead: rowData[findIdx("Project Lead", headers)],
         projectManager: rowData[findIdx("Project Manager", headers)],
+        projectStatus: rowData[findIdx("Project Status", headers)],
         slideDeckLink: rowData[findIdx("Slide Deck", headers)],
         bomLink: rowData[findIdx("BOM", headers)],
     };
@@ -132,6 +133,8 @@ function getProjectHtml(project) {
                         <dd class="col-sm-9">` + project.name + `</dd>
                         <dt class="col-sm-3">WBS #</dt>
                         <dd class="col-sm-9">` + project.wbsNum + `</dd>
+                        <dt class="col-sm-3">Project Status</dt>
+                        <dd class="col-sm-9">` + project.projectStatus + `</dd>
                         <hr>
                         <dt class="col-sm-3">Project Lead</dt>
                         <dd class="col-sm-9">` + project.projectLead + `</dd>
