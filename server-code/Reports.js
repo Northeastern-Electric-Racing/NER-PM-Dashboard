@@ -40,12 +40,13 @@ function getAllChangeRequests() {
 function getReviewedChangeRequests() {
     var data = getSheetInfo(MAIN_SHEET_ID_STR, CHANGE_REQUESTS_STR, DATA_STR);
     var headers = data[0];
-    var reviewedChangeRequestsData = [headers];
     var reviewedColIdx = findIdx("Reviewed", headers);
     var doneColIdx = findIdx("Done", headers);
+    headers = headers.slice(0, -2);
+    var reviewedChangeRequestsData = [headers];
     for (var rowIdx = 1; rowIdx < data.length; rowIdx++) {
         if (data[rowIdx][reviewedColIdx] && !(data[rowIdx][doneColIdx])) {
-            reviewedChangeRequestsData.push(data[rowIdx]);
+            reviewedChangeRequestsData.push(data[rowIdx].slice(0, -2));
         }
     }
     return buildTableHTML(reviewedChangeRequestsData, "table-sm");
