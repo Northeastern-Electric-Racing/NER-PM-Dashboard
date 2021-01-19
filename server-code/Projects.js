@@ -3,6 +3,20 @@ Document: JS code specific for projects
 */
 
 /**
+ * Returns HTML content for the specified project type.
+ * 
+ * @param {String} projectType – The type of project to get HTML content for
+ * @return {String} – The corresponding HTML content for the project type
+ */
+function getProject(projectType) {
+    if (projectType == "all-projects") {
+        return getAllProjects();
+    } else {
+        throw "Requested project type " + projectType + " not supported";
+    }
+}
+
+/**
  * Returns HTML formatted list of all projects.
  * 
  * @return {String} – A constructed HTML table listing all the projects
