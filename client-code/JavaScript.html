@@ -126,9 +126,7 @@
 
     // // click Reload Data button on Projects page
     $("#projects-reload-data-btn").on("click", function () {
-        var projects_content = $("#projects-content");
-        addLoaderToObject(projects_content);
-        runnerHTML.withUserObject(projects_content).getAllProjects();
+        getProjectsGrid();
     });
 
 
