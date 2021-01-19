@@ -104,7 +104,7 @@ function getProjectWorkPackagesTable(project) {
     var wbsColIdx = findIdx("WBS #", headers);
     var projWBSNum = project.wbsNum;
     var projWithoutLastChar = projWBSNum.slice(0, -1);
-    var projectWorkPackagesTable = [["Project WPs"]];
+    var projectWorkPackagesTable = [];
     for (var rowIdx = 1; rowIdx < data.length; rowIdx++) {
         var wpWBSNum = data[rowIdx][wbsColIdx];
         if (wpWBSNum.slice(0, projWithoutLastChar.length) === projWithoutLastChar) {
