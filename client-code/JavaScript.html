@@ -110,7 +110,7 @@
         var projects_input = $("#projects-type-go-input").val();
         var projects_content = $("#projects-content");
         addLoaderToObject(projects_content);
-        runnerHTML.withUserObject(projects_content).getProject();
+        runnerHTML.withUserObject(projects_content).getProjectInfo(projects_input);
     }
 
     // click Go button on Projects page
@@ -124,9 +124,11 @@
         getProjectsGrid();
     });
 
-    // click Reload Data button on Projects page
+    // // click Reload Data button on Projects page
     $("#projects-reload-data-btn").on("click", function () {
-        getProjectsGrid();
+        var projects_content = $("#projects-content");
+        addLoaderToObject(projects_content);
+        runnerHTML.withUserObject(projects_content).getAllProjects();
     });
 
 

@@ -8,7 +8,7 @@ Document: JS code specific for projects
  * @param {String} projectType – The type of project to get HTML content for
  * @return {String} – The corresponding HTML content for the project type
  */
-function getProject(projectType) {
+function getProjectInfo(projectType) {
     if (projectType == "all-projects") {
         return getAllProjects();
     } else {
