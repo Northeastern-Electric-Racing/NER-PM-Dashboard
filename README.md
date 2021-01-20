@@ -48,7 +48,7 @@ Northeastern Electric Racing Project Management Dashboard
 - ### Create commits:
 	- Commits are essentially the Cmd+S of github. As such, its useful to save your work often
 	- Type `git commit -a -m [message]` to commit
-	- Style your message in the format: `i[issue number] - [description of changes made]` (e.g. `i18 - fixed typo in variable name`)
+	- Style your message in the format: `#[issue number] - [description of changes made]` (e.g. `#18 - fixed typo in variable name`)
 
 - ### Run / check code in the Google runtime environment:
 	- Make sure you have clasp installed and working
