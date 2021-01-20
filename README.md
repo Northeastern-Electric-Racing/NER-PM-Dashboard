@@ -13,7 +13,7 @@ Northeastern Electric Racing Project Management Dashboard
 - [Create commits](#Create-commits)
 - [Run / check code in the Google runtime environment](#Run-/-check-code-in-the-Google-runtime-environment)
 - [Create a pull request](#Create-a-pull-request)
-- [Deploy-to-production-server](#Deploy-to-production-server)
+- [Deploy to production server](#Deploy-to-production-server)
 
 ---
 
