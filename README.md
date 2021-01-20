@@ -8,11 +8,11 @@ Northeastern Electric Racing Project Management Dashboard
 ## Table of Contents:
 - [First Time Project Installation](#First-Time-Project-Installation)
 - [Create an issue (or suggest a feature)](#Create-an-issue-(or-suggest-a-feature))
-- [Creating a branch](#Creating-a-branch)
+- [Create a branch](#Create-a-branch)
 - [Good coding practices](#Good-coding-practices)
-- [Creating commits](#Creating-commits)
-- [Run / Check Code in the Google runtime environment](#Run-/-Check-Code-in-the-Google-runtime-environment)
-- [Creating a pull request](#Creating-a-pull-request)
+- [Create commits](#Create-commits)
+- [Run / check code in the Google runtime environment](#Run-/-check-code-in-the-Google-runtime-environment)
+- [Create a pull request](#Create-a-pull-request)
 - [Deploy-to-production-server](#Deploy-to-production-server)
 
 ---
@@ -32,7 +32,7 @@ Northeastern Electric Racing Project Management Dashboard
 	- On the right hand column add labels to your issue to categorise it meaningfully
 	- Add it to board_1 **To Do** initially.
 
-- ### Creating a branch:
+- ### Create a branch:
 	- In the NER-PM folder on your computer open a terminal window
 	- Type `git branch [name of branch]`
 	- Branches should follow this format: `i[issue #]-[contributor name]`. (e.g. `i18-james`)
@@ -45,12 +45,12 @@ Northeastern Electric Racing Project Management Dashboard
 	- If you see that the rest of the code follows a pattern, say a pattern of how functions are laid out, then try to stick to this pattern to improve code uniformity
 	- Generally it is good practice to follow the mantra: One Function, One Job. Utilizing helper functions / methods can assist with this.
 
-- ### Creating commits:
+- ### Create commits:
 	- Commits are essentially the Cmd+S of github. As such, its useful to save your work often
 	- Type `git commit -a -m [message]` to commit
 	- Style your message in the format: `i[issue number] - [description of changes made]` (e.g. `i18 - fixed typo in variable name`)
 
-- ### Run / Check Code in the Google runtime environment:
+- ### Run / check code in the Google runtime environment:
 	- Make sure you have clasp installed and working
 	- Make sure to go to https://script.google.com/ then into settings and turn google appscript API on 
 	**WHILE LOGGED INTO @husky.neu.edu**
@@ -60,7 +60,7 @@ Northeastern Electric Racing Project Management Dashboard
 	- Visit the dev URL to check your version of the application and ensure your updates are working properly
 	- When all is good, push your code to your branch
 
-- ### Creating a pull request:
+- ### Create a pull request:
 	- Now that you have checked your code, you can create a pull request by going to pull requests on the repo and clicking new pull request
 	- Give it a title of the form `i[issue number] - [change made]` (e.g. `i14 - added collaboration details to readme.md`) and an optional description, and then click create pull request
 	- All pull requests need at least 1 review so on the right column select __jamescd18__ to request for a review
