@@ -7,11 +7,11 @@ Northeastern Electric Racing Project Management Dashboard
 
 ## Table of Contents:
 - [First Time Project Installation](#First-Time-Project-Installation)
-- [Create an issue (or suggest a feature)](#Create-an-issue-(or-suggest-a-feature))
+- [Create an issue or suggest a feature](#Create-an-issue-or-suggest-a-feature)
 - [Create a branch](#Create-a-branch)
 - [Good coding practices](#Good-coding-practices)
 - [Create commits](#Create-commits)
-- [Run / check code in the Google runtime environment](#Run-/-check-code-in-the-Google-runtime-environment)
+- [Run and check code in the Google runtime environment](#Run-and-check-code-in-the-Google-runtime-environment)
 - [Create a pull request](#Create-a-pull-request)
 - [Deploy to production server](#Deploy-to-production-server)
 
@@ -24,7 +24,7 @@ Northeastern Electric Racing Project Management Dashboard
 	- Use the `git clone [repo link]` command as such: `git clone https://github.com/Northeastern-Electric-Racing/NER-PM-Dashboard.git`
 	- Now navigate to the directory by typing `cd NER-PM-Dashboard`
 
-- ### Create an issue (or suggest a feature):
+- ### Create an issue or suggest a feature:
 	- Open the github URL online
 	- Go to the issues tab and click add new issue
 	- Give it a name that gives the reader an idea of whats going on. Names should follow this format: `[Page or "General"] - [Description]`. Save all detailed info for the description
@@ -50,7 +50,7 @@ Northeastern Electric Racing Project Management Dashboard
 	- Type `git commit -a -m [message]` to commit
 	- Style your message in the format: `#[issue number] - [description of changes made]` (e.g. `#18 - fixed typo in variable name`)
 
-- ### Run / check code in the Google runtime environment:
+- ### Run and check code in the Google runtime environment:
 	- Make sure you have clasp installed and working
 	- Make sure to go to https://script.google.com/ then into settings and turn google appscript API on 
 	**WHILE LOGGED INTO @husky.neu.edu**
