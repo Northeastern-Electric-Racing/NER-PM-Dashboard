@@ -63,7 +63,7 @@ Northeastern Electric Racing Project Management Dashboard
 - ### Create a pull request:
 	- Now that you have checked your code, you can create a pull request by going to pull requests on the repo and clicking new pull request
 	- Give it a title of the form `i[issue number] - [change made]` (e.g. `i14 - added collaboration details to readme.md`) and an optional description, and then click create pull request
-	- All pull requests need at least 1 review so on the right column select __jamescd18__ to request for a review
+	- All pull requests need at least 1 review so on the right column select __kevinyu328__ to request for a review
 	- Also, link at least 1 issue that you are trying to solve with the pull request so that we can keep track of which issues are being worked on better
 	- If a change needs to be made in your branch after a pull request is opened, simply add a new commit and this will update the pull request as well
 
