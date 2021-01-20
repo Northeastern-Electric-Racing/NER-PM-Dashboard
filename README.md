@@ -7,7 +7,7 @@ Northeastern Electric Racing Project Management Dashboard
 
 ## Table of Contents:
 - [First Time Project Installation](#First-Time-Project-Installation)
-- [To create an issue (or suggest a feature)](#To-create-an-issue-(or-suggest-a-feature))
+- [Create an issue (or suggest a feature)](#Create-an-issue-(or-suggest-a-feature))
 - [Creating a branch](#Creating-a-branch)
 - [Good coding practices](#Good-coding-practices)
 - [Creating commits](#Creating-commits)
@@ -24,12 +24,12 @@ Northeastern Electric Racing Project Management Dashboard
 	- Use the `git clone [repo link]` command as such: `git clone https://github.com/Northeastern-Electric-Racing/NER-PM-Dashboard.git`
 	- Now navigate to the directory by typing `cd NER-PM-Dashboard`
 
-- ### To create an issue (or suggest a feature):
+- ### Create an issue (or suggest a feature):
 	- Open the github URL online
 	- Go to the issues tab and click add new issue
 	- Give it a name that gives the reader an idea of whats going on. Names should follow this format: `[Page or "General"] - [Description]`. Save all detailed info for the description
 	- The naming convention is as follows: `[page on site changed] - [name of change]`. (e.g. `Gantt - Restyle & Move the "View Full Gantt" Button` or `General - Resize Page Content Boxes`)
-	- On the right hand coloumn add labels to your issue to categorise it meaningfully
+	- On the right hand column add labels to your issue to categorise it meaningfully
 	- Add it to board_1 **To Do** initially.
 
 - ### Creating a branch:
