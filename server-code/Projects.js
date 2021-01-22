@@ -11,6 +11,8 @@ Document: JS code specific for projects
 function getProjectInfo(projectType) {
     if (projectType == "all-projects") {
         return getAllProjects();
+    } else if (projectType == "completed-projects") {
+        return getCompletedProjects();
     } else {
         throw "Requested project type " + projectType + " not supported";
     }
@@ -26,6 +28,8 @@ function getAllProjects() {
     transformToHyperLinks(data);
     return buildTableHTML(data, "table-sm");
 }
+
+
 
 /**
  * Creates an HTML hyperlink, given the display text, that requests the given url.
