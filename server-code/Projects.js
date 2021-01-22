@@ -29,6 +29,30 @@ function getAllProjects() {
     return buildTableHTML(data, "table-sm");
 }
 
+
+/**
+ * Returns HTML formatted list of all inactive projects.
+ * 
+ * @return {String} – A constructed HTML table listing all inactive projects
+ */
+function getInactiveProjects() {
+    var data = getSheetInfo(MAIN_SHEET_ID_STR, PROJECTS_STR, DATA_STR);
+    var headers = data[0];
+    var projectStatusColIdx = findIdx("Project Status", headers);
+    headers = headers.slice(0, -1);
+    var inactiveProjects = [headers];
+    for (var rowIdx = 1; rowIdx < data.length; rowIdx++) {
+        projectStatus = data[rowIdx][projectStatusColIdx];
+        if (projectStatus == "I") {
+            inactiveProjects.push(data[rowIdx].slice(0, -1))
+        }
+    }
+    transformToHyperLinks(inactiveProjects);
+    return buildTableHTML(inactiveProjects, "table-sm");
+}
+
+
+
 /**
  * Creates an HTML hyperlink, given the display text, that requests the given url.
  * 
