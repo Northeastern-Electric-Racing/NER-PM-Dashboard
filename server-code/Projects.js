@@ -32,10 +32,10 @@ function getAllProjects() {
 /**
  * Returns HTML formatted list of all active projects.
  * 
- * @param {String} activeProjectStatus – The string that represents an active project
+ * @param {String} desiredProjectStatus – The string that represents the project status to watch for
  * @return {String} – A constructed HTML table listing all active projects
  */
-function getProjectTable(activeProjectStatus) {
+function getProjectTable(desiredProjectStatus) {
     var data = getSheetInfo(MAIN_SHEET_ID_STR, PROJECTS_STR, DATA_STR);
     var headers = data[0];
     var projectStatusColIdx = findIdx("Project Status", headers);
@@ -43,7 +43,7 @@ function getProjectTable(activeProjectStatus) {
     var activeProjects = [headers];
     for (var rowIdx = 1; rowIdx < data.length; rowIdx++) {
         projectStatus = data[rowIdx][projectStatusColIdx];
-        if (projectStatus == activeProjectStatus) {
+        if (projectStatus == desiredProjectStatus) {
             activeProjects.push(data[rowIdx].slice(0, -1))
         }
     }
