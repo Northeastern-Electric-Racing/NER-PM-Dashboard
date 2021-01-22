@@ -12,7 +12,7 @@ function getProjectInfo(projectType) {
     if (projectType == "all-projects") {
         return getAllProjects();
     } else if (projectType == "active-projects") {
-        return getActiveProjects();
+        return getProjectTable("A");
     } else {
         throw "Requested project type " + projectType + " not supported";
     }
@@ -32,9 +32,10 @@ function getAllProjects() {
 /**
  * Returns HTML formatted list of all active projects.
  * 
+ * @param {String} activeProjectStatus – The string that represents an active project
  * @return {String} – A constructed HTML table listing all active projects
  */
-function getActiveProjects() {
+function getProjectTable(activeProjectStatus) {
     var data = getSheetInfo(MAIN_SHEET_ID_STR, PROJECTS_STR, DATA_STR);
     var headers = data[0];
     var projectStatusColIdx = findIdx("Project Status", headers);
@@ -42,7 +43,7 @@ function getActiveProjects() {
     var activeProjects = [headers];
     for (var rowIdx = 1; rowIdx < data.length; rowIdx++) {
         projectStatus = data[rowIdx][projectStatusColIdx];
-        if (projectStatus == "A") {
+        if (projectStatus == activeProjectStatus) {
             activeProjects.push(data[rowIdx].slice(0, -1))
         }
     }
