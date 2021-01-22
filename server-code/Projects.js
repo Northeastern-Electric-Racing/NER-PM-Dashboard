@@ -42,7 +42,7 @@ function getCompletedProjects() {
     var completedProjects = [headers];
     for (var rowIdx = 1; rowIdx < data.length; rowIdx++) {
         projectStatus = data[rowIdx][projectStatusColIdx];
-        if (projectStatus == "I") {
+        if (projectStatus == "C") {
             completedProjects.push(data[rowIdx].slice(0, -1))
         }
     }
