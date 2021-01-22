@@ -12,7 +12,7 @@ function getProjectInfo(projectType) {
     if (projectType == "all-projects") {
         return getAllProjects();
     } else if (projectType == "completed-projects") {
-        return getCompletedProjects();
+        return getProjectTable("C");
     } else {
         throw "Requested project type " + projectType + " not supported";
     }
@@ -30,24 +30,25 @@ function getAllProjects() {
 }
 
 /**
- * Returns HTML formatted list of all completed projects.
+ * Returns HTML formatted list of all active projects.
  * 
- * @return {String} – A constructed HTML table listing all completed projects
+ * @param {String} desiredProjectStatus – The string that represents the project status to watch for
+ * @return {String} – A constructed HTML table listing all active projects
  */
-function getCompletedProjects() {
+function getProjectTable(desiredProjectStatus) {
     var data = getSheetInfo(MAIN_SHEET_ID_STR, PROJECTS_STR, DATA_STR);
     var headers = data[0];
     var projectStatusColIdx = findIdx("Project Status", headers);
     headers = headers.slice(0, -1);
-    var completedProjects = [headers];
+    var activeProjects = [headers];
     for (var rowIdx = 1; rowIdx < data.length; rowIdx++) {
         projectStatus = data[rowIdx][projectStatusColIdx];
-        if (projectStatus == "C") {
-            completedProjects.push(data[rowIdx].slice(0, -1))
+        if (projectStatus == desiredProjectStatus) {
+            activeProjects.push(data[rowIdx].slice(0, -1))
         }
     }
-    transformToHyperLinks(completedProjects);
-    return buildTableHTML(completedProjects, "table-sm");
+    transformToHyperLinks(activeProjects);
+    return buildTableHTML(activeProjects, "table-sm");
 }
 
 /**
