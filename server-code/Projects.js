@@ -29,7 +29,26 @@ function getAllProjects() {
     return buildTableHTML(data, "table-sm");
 }
 
-
+/**
+ * Returns HTML formatted list of all completed projects.
+ * 
+ * @return {String} – A constructed HTML table listing all completed projects
+ */
+function getCompletedProjects() {
+    var data = getSheetInfo(MAIN_SHEET_ID_STR, PROJECTS_STR, DATA_STR);
+    var headers = data[0];
+    var projectStatusColIdx = findIdx("Project Status", headers);
+    headers = headers.slice(0, -1);
+    var completedProjects = [headers];
+    for (var rowIdx = 1; rowIdx < data.length; rowIdx++) {
+        projectStatus = data[rowIdx][projectStatusColIdx];
+        if (projectStatus == "I") {
+            completedProjects.push(data[rowIdx].slice(0, -1))
+        }
+    }
+    transformToHyperLinks(completedProjects);
+    return buildTableHTML(completedProjects, "table-sm");
+}
 
 /**
  * Creates an HTML hyperlink, given the display text, that requests the given url.
