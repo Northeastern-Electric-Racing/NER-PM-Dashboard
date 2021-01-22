@@ -12,7 +12,7 @@ function getProjectInfo(projectType) {
     if (projectType == "all-projects") {
         return getAllProjects();
     } else if (projectType == "inactive-projects") {
-        return getInactiveProjects();
+        return getProjectTable("I");
     } else {
         throw "Requested project type " + projectType + " not supported";
     }
@@ -29,29 +29,27 @@ function getAllProjects() {
     return buildTableHTML(data, "table-sm");
 }
 
-
 /**
- * Returns HTML formatted list of all inactive projects.
+ * Returns HTML formatted list of all active projects.
  * 
- * @return {String} – A constructed HTML table listing all inactive projects
+ * @param {String} desiredProjectStatus – The string that represents the project status to watch for
+ * @return {String} – A constructed HTML table listing all active projects
  */
-function getInactiveProjects() {
+function getProjectTable(desiredProjectStatus) {
     var data = getSheetInfo(MAIN_SHEET_ID_STR, PROJECTS_STR, DATA_STR);
     var headers = data[0];
     var projectStatusColIdx = findIdx("Project Status", headers);
     headers = headers.slice(0, -1);
-    var inactiveProjects = [headers];
+    var activeProjects = [headers];
     for (var rowIdx = 1; rowIdx < data.length; rowIdx++) {
         projectStatus = data[rowIdx][projectStatusColIdx];
-        if (projectStatus == "I") {
-            inactiveProjects.push(data[rowIdx].slice(0, -1))
+        if (projectStatus == desiredProjectStatus) {
+            activeProjects.push(data[rowIdx].slice(0, -1))
         }
     }
-    transformToHyperLinks(inactiveProjects);
-    return buildTableHTML(inactiveProjects, "table-sm");
+    transformToHyperLinks(activeProjects);
+    return buildTableHTML(activeProjects, "table-sm");
 }
-
-
 
 /**
  * Creates an HTML hyperlink, given the display text, that requests the given url.
