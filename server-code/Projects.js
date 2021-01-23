@@ -11,7 +11,7 @@ Document: JS code specific for projects
 function getProjectInfo(projectType) {
     if (projectType == "all-projects") {
         return getAllProjects();
-    } else if (projectType == "active-projects") {
+    } else if (projectType === "active-projects") {
         return getProjectTable(ACTIVE_PROJECT_STATUS);
     } else {
         throw "Requested project type " + projectType + " not supported";
