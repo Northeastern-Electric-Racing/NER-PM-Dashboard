@@ -4,7 +4,8 @@
   "description": "Project management dashboard for Northeastern Electric Racing",
   "main": "Main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "coverage": "jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,12 @@
   "homepage": "https://github.com/Northeastern-Electric-Racing/NER-PM-Dashboard#readme",
   "devDependencies": {
     "@google/clasp": "^2.3.0",
-    "jest": "^26.6.3"
+    "@types/jest": "^26.0.20",
+    "jest": "^26.6.3",
+    "ts-jest": "^26.4.4"
+  },
+  "dependencies": {
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.3"
   }
 }
