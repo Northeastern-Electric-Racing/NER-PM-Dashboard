@@ -43,7 +43,7 @@ function getProjectTable(desiredProjectStatus) {
     var activeProjects = [headers];
     for (var rowIdx = 1; rowIdx < data.length; rowIdx++) {
         projectStatus = data[rowIdx][projectStatusColIdx];
-        if (projectStatus == desiredProjectStatus) {
+        if (projectStatus === desiredProjectStatus) {
             activeProjects.push(data[rowIdx].slice(0, -1))
         }
     }
@@ -190,4 +190,3 @@ function getProjectHtml(project) {
                 </div>`;
     return html;
 }
-
