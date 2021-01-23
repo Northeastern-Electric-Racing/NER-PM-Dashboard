@@ -11,7 +11,7 @@ Document: JS code specific for projects
 function getProjectInfo(projectType) {
     if (projectType == "all-projects") {
         return getAllProjects();
-    } else if (projectType == "inactive-projects") {
+    } else if (projectType === "inactive-projects") {
         return getProjectTable(INACTIVE_PROJECT_STATUS);
     } else {
         throw "Requested project type " + projectType + " not supported";
