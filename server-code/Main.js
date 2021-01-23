@@ -102,7 +102,11 @@ function validateWbsNum(wbsNum) {
  * @return {String} – An unordered HTML list based off of the given text
  */
 function buildUnorderedListHTML(text, delimiter) {
-    return `<ul>` + buildListHTML(text, delimiter) + `</ul>`;
+    if (!text) {
+        return "—";
+    } else {
+        return `<ul>` + buildListHTML(text, delimiter) + `</ul>`;
+    }
 }
 
 /**
@@ -113,7 +117,11 @@ function buildUnorderedListHTML(text, delimiter) {
  * @return {String} – An ordered HTML list based off of the given text
  */
 function buildOrderedListHTML(text, delimiter) {
-    return `<ol>` + buildListHTML(text, delimiter) + `</ol>`;
+    if (!text) {
+        return "—";
+    } else {
+        return `<ol>` + buildListHTML(text, delimiter) + `</ol>`;
+    }
 }
 
 /**

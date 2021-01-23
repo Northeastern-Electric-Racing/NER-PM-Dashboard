@@ -54,6 +54,14 @@ function getWorkPackageObj(wbsNum) {
         end: rowData[findIdx("End", headers)],
         spend: rowData[findIdx("Spend", headers)],
     };
+
+    //now validate fields in the work package
+    //add more as required 
+    if (!workPackage.lead) {workPackage.lead = "—";}
+    if (!workPackage.dependencies) {workPackage.dependencies = "—";}
+    if (!workPackage.deliverable) {workPackage.deliverable = "—";}
+    if (!workPackage.changes) {workPackage.changes = "—";}
+
     return workPackage;
 }
 
