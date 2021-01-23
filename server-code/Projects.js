@@ -40,15 +40,15 @@ function getProjectTable(desiredProjectStatus) {
     var headers = data[0];
     var projectStatusColIdx = findIdx("Project Status", headers);
     headers = headers.slice(0, -1);
-    var activeProjects = [headers];
+    var projectList = [headers];
     for (var rowIdx = 1; rowIdx < data.length; rowIdx++) {
         projectStatus = data[rowIdx][projectStatusColIdx];
-        if (projectStatus == desiredProjectStatus) {
-            activeProjects.push(data[rowIdx].slice(0, -1))
+        if (projectStatus === desiredProjectStatus) {
+            projectList.push(data[rowIdx].slice(0, -1))
         }
     }
-    transformToHyperLinks(activeProjects);
-    return buildTableHTML(activeProjects, "table-sm");
+    transformToHyperLinks(projectList);
+    return buildTableHTML(projectList, "table-sm");
 }
 
 /**
