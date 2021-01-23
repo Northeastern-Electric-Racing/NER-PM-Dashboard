@@ -44,7 +44,7 @@ function getProjectTable(desiredProjectStatus) {
     for (var rowIdx = 1; rowIdx < data.length; rowIdx++) {
         projectStatus = data[rowIdx][projectStatusColIdx];
         if (projectStatus === desiredProjectStatus) {
-            activeProjects.push(data[rowIdx].slice(0, -1))
+            projectList.push(data[rowIdx].slice(0, -1))
         }
     }
     transformToHyperLinks(activeProjects);
