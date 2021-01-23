@@ -2,6 +2,8 @@
 
 # Custom items
 
+/node_modules
+
 .DS_Store
 
 # Covers VSCode
