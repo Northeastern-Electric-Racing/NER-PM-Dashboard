@@ -47,8 +47,8 @@ function getProjectTable(desiredProjectStatus) {
             projectList.push(data[rowIdx].slice(0, -1))
         }
     }
-    transformToHyperLinks(activeProjects);
-    return buildTableHTML(activeProjects, "table-sm");
+    transformToHyperLinks(projectList);
+    return buildTableHTML(projectList, "table-sm");
 }
 
 /**
