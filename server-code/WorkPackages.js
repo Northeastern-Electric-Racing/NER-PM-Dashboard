@@ -67,14 +67,14 @@ function getWorkPackageHtml(workPackage) {
     var html = `<div class="data-frame">
                     <dl class="row">
                         <dt class="col-sm-3">Project</dt>
-                        <dd class="col-sm-3">` + workPackage.project + `</dd>
+                        <dd class="col-sm-9">` + workPackage.project + `</dd>
                         <dt class="col-sm-3">Project Lead</dt>
-                        <dd class="col-sm-3">` + workPackage.lead + `</dd>
+                        <dd class="col-sm-9">` + workPackage.lead + `</dd>
                         <hr>
                         <dt class="col-sm-3">WBS #</dt>
-                        <dd class="col-sm-3">` + workPackage.wbsNum + `</dd>
+                        <dd class="col-sm-9">` + workPackage.wbsNum + `</dd>
                         <dt class="col-sm-3">WP Name</dt>
-                        <dd class="col-sm-3">` + workPackage.name + `</dd>
+                        <dd class="col-sm-9">` + workPackage.name + `</dd>
                         <dt class="col-sm-3">Duration</dt>
                         <dd class="col-sm-3">` + workPackage.duration + `</dd>
                         <dt class="col-sm-3">Budget</dt>
