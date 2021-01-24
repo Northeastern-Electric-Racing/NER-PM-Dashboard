@@ -57,15 +57,9 @@ function getWorkPackageObj(wbsNum) {
 
     //now validate fields in the work package
     //add more as required 
-<<<<<<< HEAD
-    if (!workPackage.lead) {workPackage.lead = "—";}
-    if (!workPackage.dependencies) {workPackage.dependencies = "—";}
-    if (!workPackage.deliverable) {workPackage.deliverable = "—";}
-=======
     if (workPackage.lead === "") {workPackage.lead = "—";}
     if (workPackage.dependencies === "") {workPackage.dependencies = "—";}
     if (workPackage.deliverable === "") {workPackage.deliverable = "—";}
->>>>>>> #135 - fixed bug to check if field is empty
 
     return workPackage;
 }
