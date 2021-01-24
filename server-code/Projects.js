@@ -13,6 +13,8 @@ function getProjectInfo(projectType) {
         return getAllProjects();
     } else if (projectType === "active-projects") {
         return getProjectTable(ACTIVE_PROJECT_STATUS);
+    } else if (projectType === "inactive-projects") {
+        return getProjectTable(INACTIVE_PROJECT_STATUS);
     } else {
         throw "Requested project type " + projectType + " not supported";
     }
@@ -190,4 +192,3 @@ function getProjectHtml(project) {
                 </div>`;
     return html;
 }
-
