@@ -11,6 +11,8 @@ Document: JS code specific for projects
 function getProjectInfo(projectType) {
     if (projectType == "all-projects") {
         return getAllProjects();
+    } else if (projectType === "active-projects") {
+        return getProjectTable(ACTIVE_PROJECT_STATUS);
     } else if (projectType === "inactive-projects") {
         return getProjectTable(INACTIVE_PROJECT_STATUS);
     } else {
