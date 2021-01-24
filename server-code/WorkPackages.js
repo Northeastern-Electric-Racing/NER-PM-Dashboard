@@ -60,7 +60,6 @@ function getWorkPackageObj(wbsNum) {
     if (!workPackage.lead) {workPackage.lead = "—";}
     if (!workPackage.dependencies) {workPackage.dependencies = "—";}
     if (!workPackage.deliverable) {workPackage.deliverable = "—";}
-    if (!workPackage.changes) {workPackage.changes = "—";}
 
     return workPackage;
 }
