@@ -38,11 +38,12 @@
     // load page elements via async
     $(function () {
         // load placeholder content
+        runnerHTML.withUserObject($("#dashboard-content")).getPlaceholderHTML("Choose Dashboard Type Above");
         runnerHTML.withUserObject($("#lookups-content")).getPlaceholderHTML("Enter WBS # Above");
         runnerHTML.withUserObject($("#gantt-content")).getPlaceholderHTML("Click Button above to view full Gantt chart");
+        runnerHTML.withUserObject($("#projects-content")).getPlaceholderHTML("Choose Project Type Above");
         runnerHTML.withUserObject($("#change-content")).getPlaceholderHTML("Choose Change Type Above");
         runnerHTML.withUserObject($("#report-content")).getPlaceholderHTML("Choose Report Type Above");
-        runnerHTML.withUserObject($("#dashboard-content")).getPlaceholderHTML("Choose Dashboard Type Above");
     });
 
     // once page loaded, it shows the loading spinner for 400 ms then closes it
@@ -63,6 +64,31 @@
                             </div>`;
         htmlObject.html(spinnerHTML);  
     }
+
+    /* Dashboard page functions */
+
+    /*
+    * Gets the appropriate dashboard type according to the type selected in the dashboard_type dropdown and places it inside the dashboard_content wrapper.
+    * 
+    * @return {void}
+    */
+    function getDashboardForm() {
+        var dashboard_type = $("#dashboard-type-go-input").val();
+        var dashboard_content = $("#dashboard-content");
+        addLoaderToObject(dashboard_content);
+        runnerHTML.withUserObject(dashboard_content).getDashboard(dashboard_type);
+    }
+
+    // click Go button on Dashboard Page
+    $("#dashboard-type-go-btn").on("click", function () {
+        getDashboardForm();
+    });
+
+    // hit Enter key while focused on the dropdown or the submit button on the form
+    $("#d-sub-on-ent").on("submit", function (e) {
+        e.preventDefault();
+        getDashboardForm();
+    });
 
     /* Gantt page functions */
 
@@ -263,30 +289,5 @@
     $("#r-sub-on-ent").on("submit", function (e) {
         e.preventDefault();
         getReportForm();
-    });
-
-    /* Dashboard page functions */
-
-    /*
-    * Gets the appropriate dashboard type according to the type selected in the dashboard_type dropdown and places it inside the dashboard_content wrapper.
-    * 
-    * @return {void}
-    */
-    function getDashboardForm() {
-        var dashboard_type = $("#dashboard-type-go-input").val();
-        var dashboard_content = $("#dashboard-content");
-        addLoaderToObject(dashboard_content);
-        runnerHTML.withUserObject(dashboard_content).getDashboard(dashboard_type);
-    }
-
-    // click Go button on Dashboard Page
-    $("#dashboard-type-go-btn").on("click", function () {
-        getDashboardForm();
-    });
-
-    // hit Enter key while focused on the dropdown or the submit button on the form
-    $("#d-sub-on-ent").on("submit", function (e) {
-        e.preventDefault();
-        getDashboardForm();
     });
 </script>
