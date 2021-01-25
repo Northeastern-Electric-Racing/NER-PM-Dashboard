@@ -83,9 +83,9 @@ function getWorkPackageHtml(workPackage) {
                         <dt class="col-sm-3">WP Name</dt>
                         <dd class="col-sm-9">` + workPackage.name + `</dd>
                         <dt class="col-sm-3">Duration</dt>
-                        <dd class="col-sm-9">` + workPackage.duration + `</dd>
+                        <dd class="col-sm-3">` + workPackage.duration + `</dd>
                         <dt class="col-sm-3">Budget</dt>
-                        <dd class="col-sm-9">` + workPackage.budget + `</dd>
+                        <dd class="col-sm-3">` + workPackage.budget + `</dd>
                         <dt class="col-sm-3">Dependencies</dt>
                         <dd class="col-sm-9">` + workPackage.dependencies + `</dd>
                         <dt class="col-sm-3">Deliverable(s)</dt>
