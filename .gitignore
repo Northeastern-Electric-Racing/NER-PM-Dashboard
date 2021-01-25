@@ -2,6 +2,9 @@
 
 # Custom items
 
+/node_modules
+/coverage
+
 .DS_Store
 
 # Covers VSCode

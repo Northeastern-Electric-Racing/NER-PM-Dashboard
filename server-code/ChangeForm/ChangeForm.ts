@@ -6,6 +6,7 @@ Document: JS code connecting the Change Management Request form to the spreadshe
 * Pulls the new change request submitted to the form, formats the Change Request data, and adds it to the database spreadsheet of all Change Requests. 
 */
 function onRequestSubmit() {
+    // @ts-ignore
     var form = FormApp.openById(scriptProps.getProperty('changeForm'));
     var responses = form.getResponses();
     var latestResponse = responses[responses.length - 1];
@@ -13,6 +14,7 @@ function onRequestSubmit() {
     responseData = responseData.map(ele => ele.getResponse()); // convert items to item responses
     var requestId = getNextChangeRequestId(responseData.splice(2, 1)[0]); // convert request type to id num
     responseData.unshift(requestId, latestResponse.getTimestamp()); // add id num and timestamp to front of array
+    // @ts-ignore
     var sheet = getSheetInfo(MAIN_SHEET_ID_STR, CHANGE_REQUESTS_STR, SHEET_STR);
     sheet.appendRow(responseData);
 }
@@ -25,7 +27,9 @@ function onRequestSubmit() {
  */
 function getNextChangeRequestId(requestType) {
     var typeLetter = convertToTypeLetter(requestType);
+    // @ts-ignore
     var data = getSheetInfo(MAIN_SHEET_ID_STR, CHANGE_REQUESTS_STR, DATA_STR);
+    // @ts-ignore
     var changeIdIdx = findIdx("ID", data[0]);
     var numRequests = data.length - 1;
     var latestId;
@@ -68,3 +72,6 @@ function convertToTypeLetter(requestType) {
         throw "Request type " + requestType + " not supported";
     }
 }
+
+
+export { convertToTypeLetter };
