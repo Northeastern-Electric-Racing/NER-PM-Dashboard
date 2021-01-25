@@ -1,7 +1,6 @@
 {
   "timeZone": "America/New_York",
-  "dependencies": {
-  },
+  "dependencies": {},
   "webapp": {
     "access": "DOMAIN",
     "executeAs": "USER_ACCESSING"
