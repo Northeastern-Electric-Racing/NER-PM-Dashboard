@@ -1,5 +1,5 @@
 /*
-Document: JS code specific for Lookups
+Document: TS code specific for Lookups
 */
 
 /**
@@ -9,7 +9,6 @@ Document: JS code specific for Lookups
  * @return {String} – Raw HTML display output (specifically a description list) corresponding to the project or 
  *                    work package attached to the specified work breakdown structure #                   
  */
-
 function getWBSElement(wbsNum) {
     validateWbsNum(wbsNum);
     var lastTwoChars = wbsNum.slice(-2);
