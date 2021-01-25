@@ -20,3 +20,8 @@ const SETTINGS_STR = "Settings";
 // referenced columns in the projects table
 const SLIDE_DECK_STR = "Slide Deck";
 const BOM_STR = "BOM";
+
+// project status
+const INACTIVE_PROJECT_STATUS = "I";
+const ACTIVE_PROJECT_STATUS = "A";
+const COMPLETED_PROJECT_STATUS = "C";

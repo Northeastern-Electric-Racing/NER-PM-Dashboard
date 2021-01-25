@@ -69,7 +69,7 @@ function convertToTypeLetter(requestType) {
     } else if (requestType == "Other") {
         return "O";
     } else {
-        throw "Request type not supported, found " + requestType;
+        throw "Request type " + requestType + " not supported";
     }
 }
 

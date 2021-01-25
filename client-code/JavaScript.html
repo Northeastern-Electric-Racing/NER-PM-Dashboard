@@ -14,6 +14,7 @@
                             </button>
                         </div>
                     </div>`;
+      $(".loader-page-content").remove();
       $(".error-box").html(html);
     }
 
@@ -37,19 +38,56 @@
     // load page elements via async
     $(function () {
         // load placeholder content
-        runnerHTML.withUserObject($("#wp-content")).getPlaceholderHTML("Enter WBS # Above");
-        runnerHTML.withUserObject($("#gantt-content")).getPlaceholderHTML("* Coming Soon * <br> Enter WBS # Above");
+        runnerHTML.withUserObject($("#dashboard-content")).getPlaceholderHTML("Choose Dashboard Type Above");
+        runnerHTML.withUserObject($("#lookups-content")).getPlaceholderHTML("Enter WBS # Above");
+        runnerHTML.withUserObject($("#gantt-content")).getPlaceholderHTML("Click Button above to view full Gantt chart");
+        runnerHTML.withUserObject($("#projects-content")).getPlaceholderHTML("Choose Project Type Above");
         runnerHTML.withUserObject($("#change-content")).getPlaceholderHTML("Choose Change Type Above");
         runnerHTML.withUserObject($("#report-content")).getPlaceholderHTML("Choose Report Type Above");
-        runnerHTML.withUserObject($("#dashboard-content")).getPlaceholderHTML("Choose Dashboard Type Above");
-
     });
 
-    // once page loaded
+    // once page loaded, it shows the loading spinner for 400 ms then closes it
     $(window).on("load", function () {
         setTimeout(function () {
             $(".loader-wrapper").fadeOut("slow");
         }, 400);
+    });
+
+    /**
+    * Adds the HTML for the loading spinner to the given html object.
+    * 
+    * @param htmlObject – The HTML Object to add loading spinner HTML to
+    */
+    function addLoaderToObject(htmlObject) {
+        var spinnerHTML = `<div class="loader-wrapper loader-page-content">
+                            <span class="loader"><span class="loader-inner"></span></span>
+                            </div>`;
+        htmlObject.html(spinnerHTML);  
+    }
+
+    /* Dashboard page functions */
+
+    /*
+    * Gets the appropriate dashboard type according to the type selected in the dashboard_type dropdown and places it inside the dashboard_content wrapper.
+    * 
+    * @return {void}
+    */
+    function getDashboardForm() {
+        var dashboard_type = $("#dashboard-type-go-input").val();
+        var dashboard_content = $("#dashboard-content");
+        addLoaderToObject(dashboard_content);
+        runnerHTML.withUserObject(dashboard_content).getDashboard(dashboard_type);
+    }
+
+    // click Go button on Dashboard Page
+    $("#dashboard-type-go-btn").on("click", function () {
+        getDashboardForm();
+    });
+
+    // hit Enter key while focused on the dropdown or the submit button on the form
+    $("#d-sub-on-ent").on("submit", function (e) {
+        e.preventDefault();
+        getDashboardForm();
     });
 
     /* Gantt page functions */
@@ -58,51 +96,66 @@
     * Fetches the gantt chart and places it inside gantt_content wrapper.
     */
     function getGanttChart() {
-        var gantt_input = $("#gantt-go-input").val();
         var gantt_content = $("#gantt-content");
+        addLoaderToObject(gantt_content);
         runnerHTML.withUserObject(gantt_content).getEntireGanttSheet(window.innerWidth, window.innerHeight);
     }
-    // click Go button on Gantt page
-    $("#gantt-go-btn").on("click", function () {
+    // click View Full Gantt button on Gantt page
+    $("#gantt-view-full-btn").on("click", function () {
         getGanttChart();
     });
-    // hit Enter key while focused on the gantt form
-    $("#g-sub-on-ent").on("submit", function (e) {
-        e.preventDefault();
-        getGanttChart();
-    })
 
-    /* WP Lookup page functions */
+    /* Lookups page functions */
 
     /*
-    * Gets the appropriate work package according to wp_input and places it inside the wp_content wrapper.
+    * Gets the appropriate project or work package according to lookup_input and places it inside the lookup_content wrapper.
     */
-    function getWPData() {
-        var wp_input = $("#wp-go-input").val();
-        var wp_content = $("#wp-content");
-        runnerHTML.withUserObject(wp_content).getWorkPackage(wp_input);
+    function getLookupData() {
+        var lookup_input = $("#lookups-go-input").val();
+        var lookup_content = $("#lookups-content");
+        addLoaderToObject(lookup_content);
+        runnerHTML.withUserObject(lookup_content).getWBSElement(lookup_input);
     }
-    // click Go button on WP Lookup page
-    $("#wp-go-btn").on("click", function () {
-        getWPData();
+    // click Go button on Lookups page
+    $("#lookups-go-btn").on("click", function () {
+        getLookupData();  
     });
-    // hit Enter key while focused on the WP lookup field
-    $("#wp-sub-on-ent").on("submit", function (e) {
+
+    // hit Enter key while focused on the lookups field
+    $("#lookups-sub-on-ent").on("submit", function (e) {
         e.preventDefault();
-        getWPData();
-    })
+        getLookupData();
+    });
 
     /* Projects page functions */
 
     /*
-    * Fetches the table listing all project information and places it inside the projects_content wrapper.
+    * Gets the appropriate project information according to projects_input and places it inside the projects_content wrapper.
     */
     function getProjectsGrid() {
+        var projects_input = $("#projects-type-go-input").val();
         var projects_content = $("#projects-content");
-        runnerHTML.withUserObject(projects_content).getAllProjects();
+        addLoaderToObject(projects_content);
+        runnerHTML.withUserObject(projects_content).getProjectInfo(projects_input);
     }
 
-    getProjectsGrid()
+    // click Go button on Projects page
+    $("#projects-type-go-btn").on("click", function () {
+        getProjectsGrid();  
+    });
+
+    // hit Enter key while focused on the projects field
+    $("#projects-sub-on-ent").on("submit", function (e) {
+        e.preventDefault();
+        getProjectsGrid();
+    });
+
+    // // click Reload Data button on Projects page
+    $("#projects-reload-data-btn").on("click", function () {
+        getProjectsGrid();
+    });
+
+
 
     /* Changes page functions */
 
@@ -123,7 +176,6 @@
         });
     }
 
-
     /**
     * Abstraction to update work package status.
     *
@@ -134,8 +186,24 @@
             wbs: $("#status-go-input").val(),
             status: $("#new-status-go-input").val(),
         };
+
         var message_box = $(".error-box");
+        addLoaderToObject(message_box);
         runnerHTML.withUserObject(message_box).setNewStatus(newStatusObj);
+
+        setTimeout(refreshContent, 1000, $("#status-go-input").val()); //this delay is needed to allow the google sheet in the background to update
+    }
+
+    /**
+    * Refreshes the content on the page to show the new status
+    *
+    * @return {Object} - HTML containing the new work package status
+    */
+
+    function refreshContent(statusVal) {
+        var status_content = $("#status-content");
+        var statusUpdateRunner = basicRunner.withSuccessHandler(onSuccessHTMLStatusUpdateSubmit);
+        statusUpdateRunner.withUserObject(status_content).getStatusUpdateContent(statusVal);
     }
 
 
@@ -164,6 +232,7 @@
     function runSuccessHTMLStatusUpdate() {
         var status_lookup_input = $("#status-go-input").val();
         var status_content = $("#status-content");
+        addLoaderToObject(status_content);
         var statusUpdateSubmitRunner = basicRunner.withSuccessHandler(onSuccessHTMLStatusUpdateSubmit);
         statusUpdateSubmitRunner.withUserObject(status_content).getStatusUpdateContent(status_lookup_input);
     }
@@ -176,6 +245,7 @@
     function changesBtnClick() {
         var change_type = $("#change-type-go-input").val();
         var change_content = $("#change-content");
+        addLoaderToObject(change_content);
         // use different success handler functions to add proper click handlers to buttons
         if (change_type == "status") {
             var statusUpdateRunner = basicRunner.withSuccessHandler(onSuccessHTMLStatusUpdate);
@@ -194,7 +264,7 @@
     $("#c-sub-on-ent").on("submit", function (e) {
         e.preventDefault();
         changesBtnClick();
-    })
+    });
 
     /* Reports page functions */
 
@@ -206,6 +276,7 @@
     function getReportForm() {
         var report_type = $("#report-type-go-input").val();
         var report_content = $("#report-content");
+        addLoaderToObject(report_content);
         runnerHTML.withUserObject(report_content).getReport(report_type);
     }
 
@@ -218,30 +289,5 @@
     $("#r-sub-on-ent").on("submit", function (e) {
         e.preventDefault();
         getReportForm();
-    })
-
-    /* Dashboard page functions */
-
-    /*
-    * Gets the appropriate dashboard type according to the type selected in the dashboard_type dropdown and places it inside the dashboard_content wrapper.
-    * 
-    * @return {void}
-    */
-    function getDashboardForm() {
-        var dashboard_type = $("#dashboard-type-go-input").val();
-        var dashboard_content = $("#dashboard-content");
-        runnerHTML.withUserObject(dashboard_content).getDashboard(dashboard_type);
-    }
-
-    // click Go button on Dashboard Page
-    $("#dashboard-type-go-btn").on("click", function () {
-        getDashboardForm();
     });
-
-    // hit Enter key while focused on the dropdown or the submit button on the form
-    $("#d-sub-on-ent").on("submit", function (e) {
-        e.preventDefault();
-        getDashboardForm();
-    })
-
 </script>
