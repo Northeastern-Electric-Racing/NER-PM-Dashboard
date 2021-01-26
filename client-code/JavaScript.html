@@ -79,12 +79,7 @@
         runnerHTML.withUserObject(dashboard_content).getDashboard(dashboard_type);
     }
 
-    // click Go button on Dashboard Page
-    $("#dashboard-type-go-btn").on("click", function () {
-        getDashboardForm();
-    });
-
-    // hit Enter key while focused on the dropdown or the submit button on the form
+    // when the form is submitted (either by enter key or clicking the submit button)
     $("#d-sub-on-ent").on("submit", function (e) {
         e.preventDefault();
         getDashboardForm();
@@ -116,12 +111,8 @@
         addLoaderToObject(lookup_content);
         runnerHTML.withUserObject(lookup_content).getWBSElement(lookup_input);
     }
-    // click Go button on Lookups page
-    $("#lookups-go-btn").on("click", function () {
-        getLookupData();  
-    });
 
-    // hit Enter key while focused on the lookups field
+    // when the lookup form is submitted (either by enter key or clicking the submit button)
     $("#lookups-sub-on-ent").on("submit", function (e) {
         e.preventDefault();
         getLookupData();
@@ -139,12 +130,7 @@
         runnerHTML.withUserObject(projects_content).getProjectInfo(projects_input);
     }
 
-    // click Go button on Projects page
-    $("#projects-type-go-btn").on("click", function () {
-        getProjectsGrid();  
-    });
-
-    // hit Enter key while focused on the projects field
+    // when the projects form is submitted (either by enter key or clicking the submit button)
     $("#projects-sub-on-ent").on("submit", function (e) {
         e.preventDefault();
         getProjectsGrid();
@@ -167,9 +153,6 @@
      */
     function onSuccessHTMLStatusUpdateSubmit(htmlPayload, htmlObject) {
         htmlObject.html(htmlPayload);
-        $("#new-status-go-btn").on("click", function () {
-            runSuccessHTMLStatusUpdateSubmit();
-        });
         $("#ns-sub-on-ent").on("submit", function (e) {
             e.preventDefault();
             runSuccessHTMLStatusUpdateSubmit();
@@ -215,9 +198,6 @@
      */
     function onSuccessHTMLStatusUpdate(htmlPayload, htmlObject) {
         htmlObject.html(htmlPayload);
-        $("#status-go-btn").on("click", function () {
-            runSuccessHTMLStatusUpdate();
-        });
         $("#su-sub-on-ent").on("submit", function (e) {
             e.preventDefault();
             runSuccessHTMLStatusUpdate();
@@ -255,12 +235,7 @@
         }
     }
 
-    // click Go button on Changes page for change type
-    $("#change-type-go-btn").on("click", function () {
-        changesBtnClick();
-    });
-
-    // hit Enter key while focused on the dropdown box or submit button on the changes form
+    // when the form is submitted (either by enter key or clicking the submit button)
     $("#c-sub-on-ent").on("submit", function (e) {
         e.preventDefault();
         changesBtnClick();
@@ -280,12 +255,7 @@
         runnerHTML.withUserObject(report_content).getReport(report_type);
     }
 
-    // click Go button on Reports page
-    $("#report-type-go-btn").on("click", function () {
-        getReportForm();
-    });
-
-    // hit Enter key while focused on the dropdown or the submit button on the form
+    // when the form is submitted (either by enter key or clicking the submit button)
     $("#r-sub-on-ent").on("submit", function (e) {
         e.preventDefault();
         getReportForm();
