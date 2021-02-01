@@ -63,7 +63,9 @@ Northeastern Electric Racing Project Management Dashboard
 	
 - ### Running tests with Jest:
     - Use the command `npm run test` to run all tests via Jest
-    - Use the command `npm run coverage` to run a test coverage via Jest. A coverage folder will be generated in the project directory. You can view more detailed coverage results by opening the generated index.html file in a browser.
+    - Use the command `npm run coverage` to run a test coverage via Jest.
+      A coverage folder will be generated in the project directory.
+      You can view more detailed coverage results by opening the generated index.html file in a browser.
 
 - ### Create a pull request:
 	- Now that you have checked your code, you can create a pull request by going to pull requests on the repo and clicking new pull request
