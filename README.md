@@ -12,7 +12,7 @@ Northeastern Electric Racing Project Management Dashboard
 - [Good coding practices](#Good-coding-practices)
 - [Create commits](#Create-commits)
 - [Run and check code in the Google runtime environment](#Run-and-check-code-in-the-Google-runtime-environment)
-- [Running tests with Jest]
+- [Running tests with Jest](#Running-tests-with-Jest)
 - [Create a pull request](#Create-a-pull-request)
 - [Deploy to production server](#Deploy-to-production-server)
 
