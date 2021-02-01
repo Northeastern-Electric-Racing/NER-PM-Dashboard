@@ -23,6 +23,8 @@ Northeastern Electric Racing Project Management Dashboard
 	- Open your Command Line Interface tool of choice in the folder (e.g. Terminal for Mac, Command Prompt for Windows)
 	- Use the `git clone [repo link]` command as such: `git clone https://github.com/Northeastern-Electric-Racing/NER-PM-Dashboard.git`
 	- Now navigate to the directory by typing `cd NER-PM-Dashboard`
+	- If you do not have node.js/npm installed, please go [here](https://nodejs.org/en/) to install it. Completing the installation will install both node.js and npm on your machine. You can confirm that you have them installed by running `node -v` and `npm -v`.
+    - In the root directory of the project, run `npm install` to install the dependencies for the project
 
 - ### Create an issue or suggest a feature:
 	- Open the github URL online
