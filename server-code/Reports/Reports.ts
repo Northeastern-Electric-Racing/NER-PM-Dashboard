@@ -2,6 +2,12 @@
 Document: JS code specific for delivering the reports
 */
 
+/**
+* Returns the configuration object required to build card sets
+*
+* @return {Object} - The configuration object
+*/
+
 function getReportTableConfig() {
     var buildTableConfig = {
         "cols": 3,

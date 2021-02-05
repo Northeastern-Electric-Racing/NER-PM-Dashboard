@@ -2,6 +2,12 @@
 Document: JS code specific for projects
 */
 
+/**
+* Returns the configuration object required to build card sets
+*
+* @return {Object} - The configuration object
+*/
+
 function getProjectTableConfig() {
     var buildTableConfig = {
         "cols": 4,

@@ -159,17 +159,21 @@ function buildListHTML(text, delimiter) {
  * @returns {string} The resultant card stack
  */
 function buildTableHTML(content, modifiers) {
+
+    if (content.length == 1) { return '<p>N/A</p>'; }
+
     var html = '<div class="table-container"><div class="row">';
 
     for (var i = 1; i < content.length; i++) { //for each row after the headers
+        var randomSeed = Math.floor(Math.random() * 1000000);
         html += '<div class="col-md-'+ (12 / modifiers.cols) +'">';
 
-        if (content.length - i > 4) {html += '<div class="card mb-4">';} else {html += '<div class="card">';}
+        if (content.length - i > 4) { html += '<div class="card mb-4">'; } else { html += '<div class="card">'; }
 
-        html += '<div class="card-header" data-toggle="collapse" data-target="#collapseCard' + i + '" aria-expanded="false" aria-controls="collapseCard' + i + '">';
+        html += '<div class="card-header" data-toggle="collapse" data-target="#collapseCard' + randomSeed + '" aria-expanded="false" aria-controls="collapseCard' + randomSeed + '">';
         html += '<div class="card-title mb-0"><b>' + content[i][findIdx(modifiers.header1, content[0])] + '</b><span class="float-right">' + content[i][findIdx(modifiers.header2, content[0])] + '</span></div></div>'; //end card-body here
 
-        html += '<div id="collapseCard' + i + '" class="collapse hide" aria-labelledby="cardHeading">';
+        html += '<div id="collapseCard' + randomSeed + '" class="collapse hide" aria-labelledby="cardHeading">';
         html += '<ul class="list-group list-group-flush">';
         for (var j = 1; j < content[i].length; j++) { //for each coloumn
             if (content[0][j] != modifiers.header1 && content[0][j] != modifiers.header2){
@@ -181,6 +185,7 @@ function buildTableHTML(content, modifiers) {
 
     html += '</div></div>'; // end row and table container
     return html;
+
 }
 
 /**

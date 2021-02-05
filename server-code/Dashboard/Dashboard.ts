@@ -3,6 +3,21 @@ Document: JS code specific for status dashboard/upcoming deadlines
 */
 
 /**
+* Returns the configuration object required to build card sets
+*
+* @return {Object} - The configuration object
+*/
+
+function getDashboardTableConfig() {
+    var config = {
+        "cols": 4,
+        "header1": "WBS #",
+        "header2": "Project"
+    }
+    return config;
+}
+
+/**
  * Returns HTML content for the specified dashboard type.
  * 
  * @param {String} dashboardType - The type of dashboard to be displayed
@@ -57,14 +72,14 @@ function buildDeadlinesTable(data) {
             }
         }
     }
-    let thisWeekTable = buildTableHTML(thisWeek, "table-md");
-    let nextWeekTable = buildTableHTML(nextWeek, "table-md"); // constructing the tables separately
+    let thisWeekTable = buildTableHTML(thisWeek, getDashboardTableConfig());
+    let nextWeekTable = buildTableHTML(nextWeek, getDashboardTableConfig()); // constructing the tables separately
 
     // return combined table
     return `<div class="upcoming-deadline-flex-container">
                  <h3>This Week</h3>
                      ` + thisWeekTable + `
-                 <h3>Next Week</h3> 
+                 <h3 class="mt-3">Next Week</h3> 
                      ` + nextWeekTable + `
             </div>`;
 }
@@ -125,14 +140,14 @@ function buildStatusDashboard(data) {
         }
     }
 
-    let expectedDoneTable = buildTableHTML(expectedDone, "table-md");
-    let behindTable = buildTableHTML(behind, "table-md"); // constructing the tables separately
+    let expectedDoneTable = buildTableHTML(expectedDone, getDashboardTableConfig());
+    let behindTable = buildTableHTML(behind, getDashboardTableConfig()); // constructing the tables separately
 
     // return combined table
     return `<div class="upcoming-deadline-flex-container">
                  <h3>Expected Done</h3>
                      ` + expectedDoneTable + `
-                 <h3>Behind</h3> 
+                 <h3 class="mt-3">Behind</h3> 
                      ` + behindTable + `
             </div>`;
 }
