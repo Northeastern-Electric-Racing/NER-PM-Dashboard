@@ -13,8 +13,6 @@ var scriptProps = PropertiesService.getScriptProperties(); // Google apps script
  */
 function doGet(request) {
     return HtmlService.createTemplateFromFile('page-content/Index').evaluate().setFaviconUrl('https://i.imgur.com/kLaEj01.png').setTitle('NER Project Management')
-
-
 }
 
 /**
@@ -156,24 +154,33 @@ function buildListHTML(text, delimiter) {
 /**
  * Constructs an HTML table given the content (with header row) and modifiers.
  *
- * @param {Object[][]} content - The content to construct the HTML table with (includes headers)
- * @param {string} modifiers - The class modifiers to apply to the table
- * @returns {string} A constructed HTML table with the given content
+ * @param {Object[][]} content - The content to construct the set of cards (stack) with (includes headers)
+ * @param {Object} modifiers - Some constraints for the function to operate within
+ * @returns {string} The resultant card stack
  */
 function buildTableHTML(content, modifiers) {
-    var html = `<div class="table-container"><table class="table ` + modifiers + `"><thead><tr>`;
-    for (var hCol = 0; hCol < content[0].length; hCol++) {
-        html += `<th scope="col">` + content[0][hCol] + `</th>`;
-    }
-    html += `</tr></thead><tbody>`;
-    for (var rowIdx = 1; rowIdx < content.length; rowIdx++) {
-        html += `<tr><th scope="row">` + content[rowIdx][0] + `</th>`;
-        for (var colIdx = 1; colIdx < content[rowIdx].length; colIdx++) {
-            html += `<td>` + content[rowIdx][colIdx] + `</td>`;
+    var html = '<div class="table-container"><div class="row">';
+
+    for (var i = 1; i < content.length; i++) { //for each row after the headers
+        html += '<div class="col-md-'+ (12 / modifiers.cols) +'">';
+
+        if (content.length - i > 4) {html += '<div class="card mb-4">';} else {html += '<div class="card">';}
+
+        html += '<div class="card-header" data-toggle="collapse" data-target="#collapseCard' + i + '" aria-expanded="false" aria-controls="collapseCard' + i + '">';
+        html += '<div class="card-title mb-0"><b>' + content[i][findIdx(modifiers.header1, content[0])] + '</b><span class="float-right">' + content[i][findIdx(modifiers.header2, content[0])] + '</span></div></div>'; //end card-body here
+
+        html += '<div id="collapseCard' + i + '" class="collapse hide" aria-labelledby="cardHeading">';
+        html += '<ul class="list-group list-group-flush">';
+        for (var j = 1; j < content[i].length; j++) { //for each coloumn
+            if (content[0][j] != modifiers.header1 && content[0][j] != modifiers.header2){
+                html += '<li class="list-group-item"><b> ' + content[0][j] + '</b> : <span class="float-right">' + content[i][j] + '</span></li>';
+            }      
         }
-        html += `</tr>`;
+        html += '</ul></div></div></div>'; // end card here
     }
-  return html + `</tbody></table></div>`;
+
+    html += '</div></div>'; // end row and table container
+    return html;
 }
 
 /**
