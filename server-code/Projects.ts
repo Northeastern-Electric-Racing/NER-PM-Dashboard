@@ -29,7 +29,7 @@ function getProjectInfo(projectType) {
  */
 function getAllProjects() {
     var data = getSheetInfo(MAIN_SHEET_ID_STR, PROJECTS_STR, DATA_STR);
-    transformToHyperLinks(data);
+    transformToHyperLinks(data, SLIDE_DECK_STR, BOM_STR);
     return buildTableHTML(data, "table-sm");
 }
 
@@ -51,7 +51,7 @@ function getProjectTable(desiredProjectStatus) {
             projectList.push(data[rowIdx].slice(0, -1))
         }
     }
-    transformToHyperLinks(projectList);
+    transformToHyperLinks(projectList, SLIDE_DECK_STR, BOM_STR);
     return buildTableHTML(projectList, "table-sm");
 }
 
@@ -67,22 +67,26 @@ function getHTMLLink(url, displayText) {
     return html
 }
 
+// ----------------------------------------------- goal; abstraction
+// intrinsic restriction; only one input paramater -> number of columns you convert is an intrinsic restriction
 /**
- * Transforms the links in the Slide Deck and BOM columns into HTML links with the display text of 
- * "Slide Deck" or "BOM". 
+ * Transforms the links in the given columns into HTML links with their corresponding display text. 
  * 
  * @param {Object[][]} data – Spreadsheet data from the Projects table in the database
+ * @param column1 - Name of the first column to add hyperlinks to, as named in the header
+ * @param column2 - Name of the second column to add hyperlinks to, as named in the header
  * @return {void}
  */
-function transformToHyperLinks(data) {
+function transformToHyperLinks(data, column1: String, column2: String) {
     var headers = data[0];
-    var slideDeckColIdx = findIdx(SLIDE_DECK_STR, headers);
-    var bomColIdx = findIdx(BOM_STR, headers);
+    var column1Idx = findIdx(column1, headers);
+    var column2Idx = findIdx(column2, headers);
     for (var rowIdx = 1; rowIdx < data.length; rowIdx++) {
-        slideDeckURL = data[rowIdx][slideDeckColIdx];
-        bomURL = data[rowIdx][bomColIdx];
-        data[rowIdx][slideDeckColIdx] = slideDeckURL ? getHTMLLink(slideDeckURL, SLIDE_DECK_STR) : "" // converts url to HTML or leaves as empty string
-        data[rowIdx][bomColIdx] = bomURL ? getHTMLLink(bomURL, BOM_STR) : "" // converts url to HTML or leaves as empty string
+        var column1URL = data[rowIdx][column1Idx]; 
+        var column2URL = data[rowIdx][column2Idx];
+        data[rowIdx][column1Idx] = column1URL ? getHTMLLink(column1URL, column1) : "" // converts url to HTML or leaves as empty string
+        // replace the old data with new data - in line if -> [conditional] ? [true case] : [false case] ---
+        data[rowIdx][column2Idx] = column2URL ? getHTMLLink(column2URL, column2) : "" // converts url to HTML or leaves as empty string
     } 
 }
 
