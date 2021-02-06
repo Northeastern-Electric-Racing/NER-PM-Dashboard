@@ -71,12 +71,15 @@ function getOpenChangeRequests() {
     return buildTableHTML(openChangeRequestsData, "table-sm");
 }
 
+// ------------------------------------------------- update here
 /**
 * Returns HTML formatted list of all fab and weld reports
 *
 * @return {String} - Constructed HTML table listing all the fab and weld reports
 */
 function getAllFabLogs() {
-	var data = getSheetInfo(MAIN_SHEET_ID_STR, FAB_WELD_STR, DATA_STR);
+    var data = getSheetInfo(MAIN_SHEET_ID_STR, FAB_WELD_STR, DATA_STR);
+    // update data with transofrmToHyperlinks
+    transformToHyperLinks(projectList, ["Links"]);
     return buildTableHTML(data, "table-sm");
 }

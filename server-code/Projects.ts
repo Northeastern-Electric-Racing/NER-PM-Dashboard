@@ -67,11 +67,7 @@ function getHTMLLink(url, displayText) {
     return html
 }
 
-// ----------------------------------------------- goal; abstraction
-// intrinsic restriction; only one input paramater -> number of columns you convert is an intrinsic restriction
-// easy way to do it; array of strings;
-// for-loop across array of strings; within each loop, set an index and a string, and do the adjustment
-
+// ----------------------------------------------- to do; use it in the new case
 /**
  * Transforms the links in the given columns into HTML links with their corresponding display text. 
  * 
