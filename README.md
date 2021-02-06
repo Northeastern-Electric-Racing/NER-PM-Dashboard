@@ -12,6 +12,7 @@ Northeastern Electric Racing Project Management Dashboard
 - [Good coding practices](#Good-coding-practices)
 - [Create commits](#Create-commits)
 - [Run and check code in the Google runtime environment](#Run-and-check-code-in-the-Google-runtime-environment)
+- [Running tests with Jest](#Running-tests-with-Jest)
 - [Create a pull request](#Create-a-pull-request)
 - [Deploy to production server](#Deploy-to-production-server)
 
@@ -23,6 +24,10 @@ Northeastern Electric Racing Project Management Dashboard
 	- Open your Command Line Interface tool of choice in the folder (e.g. Terminal for Mac, Command Prompt for Windows)
 	- Use the `git clone [repo link]` command as such: `git clone https://github.com/Northeastern-Electric-Racing/NER-PM-Dashboard.git`
 	- Now navigate to the directory by typing `cd NER-PM-Dashboard`
+	- If you do not have node.js/npm installed, please go [here](https://nodejs.org/en/) to install it.
+	  Completing the installation will install both node.js and npm on your machine.
+	  You can confirm that you have them installed by running `node -v` and `npm -v`.
+    - In the root directory of the project, run `npm install` to install the dependencies for the project
 
 - ### Create an issue or suggest a feature:
 	- Open the github URL online
@@ -59,6 +64,12 @@ Northeastern Electric Racing Project Management Dashboard
 	- Now in the terminal type `clasp push` to push your changes to the server
 	- Visit the dev URL to check your version of the application and ensure your updates are working properly
 	- When all is good, push your code to your branch
+	
+- ### Running tests with Jest:
+    - Use the command `npm run test` to run all tests via Jest
+    - Use the command `npm run coverage` to run a test coverage via Jest.
+      A coverage folder will be generated in the project directory.
+      You can view more detailed coverage results by opening the generated index.html file in a browser.
 
 - ### Create a pull request:
 	- Now that you have checked your code, you can create a pull request by going to pull requests on the repo and clicking new pull request
