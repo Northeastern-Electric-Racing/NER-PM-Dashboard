@@ -160,23 +160,23 @@ function buildListHTML(text, delimiter) {
  */
 function buildTableHTML(content, modifiers) {
 
-    if (content.length == 1) { return '<p>N/A</p>'; }
+    if (content.length == 1) { return '<p class="p-3">N/A</p>'; } //if there is no content to display, simply return this.
 
-    var html = '<div class="table-container"><div class="row">';
+    var html = '<div class="table-container"><div class="row">'; //begin the container
 
     for (var i = 1; i < content.length; i++) { //for each row after the headers
-        var randomSeed = Math.floor(Math.random() * 1000000);
+        var randomSeed = Math.floor(Math.random() * 1000000); //random seed is required here to generate unique IDs for each card
         html += '<div class="col-md-'+ (12 / modifiers.cols) +'">';
 
-        if (content.length - i > 4) { html += '<div class="card mb-4">'; } else { html += '<div class="card">'; }
+        if (content.length - i > 4) { html += '<div class="card mb-4">'; } else { html += '<div class="card">'; } //a visual update to make sure the last row does not have margin-bottom
 
         html += '<div class="card-header" data-toggle="collapse" data-target="#collapseCard' + randomSeed + '" aria-expanded="false" aria-controls="collapseCard' + randomSeed + '">';
         html += '<div class="card-title mb-0"><b>' + content[i][findIdx(modifiers.header1, content[0])] + '</b><span class="float-right">' + content[i][findIdx(modifiers.header2, content[0])] + '</span></div></div>'; //end card-body here
 
-        html += '<div id="collapseCard' + randomSeed + '" class="collapse hide" aria-labelledby="cardHeading">';
+        html += '<div id="collapseCard' + randomSeed + '" class="collapse hide" aria-labelledby="cardHeading">'; //the collapsible part of the card
         html += '<ul class="list-group list-group-flush">';
-        for (var j = 1; j < content[i].length; j++) { //for each coloumn
-            if (content[0][j] != modifiers.header1 && content[0][j] != modifiers.header2){
+        for (var j = 1; j < content[i].length; j++) { //for each coloumn in the row
+            if ((content[0][j] != modifiers.header1) && (content[0][j] != modifiers.header2)) { //makes sure we are not re-printing the headers
                 html += '<li class="list-group-item"><b> ' + content[0][j] + '</b> : <span class="float-right">' + content[i][j] + '</span></li>';
             }      
         }
