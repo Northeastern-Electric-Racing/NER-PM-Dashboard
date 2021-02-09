@@ -189,6 +189,29 @@ function buildTableHTML(content, modifiers) {
 }
 
 /**
+ * Constructs an HTML table for the wbs table for project lookup.
+ *
+ * @param {Object[][]} content - The content to construct the HTML table with (includes headers)
+ * @param {string} modifiers - The class modifiers to apply to the table
+ * @returns {string} A constructed HTML table with the given content
+ */
+function buildTableHTMLWBSTable(content, modifiers) {
+    var html = `<div class="table-container"><table class="table ` + modifiers + `"><thead><tr>`;
+    for (var hCol = 0; hCol < content[0].length; hCol++) {
+        html += `<th scope="col">` + content[0][hCol] + `</th>`;
+    }
+    html += `</tr></thead><tbody>`;
+    for (var rowIdx = 1; rowIdx < content.length; rowIdx++) {
+        html += `<tr><th scope="row">` + content[rowIdx][0] + `</th>`;
+        for (var colIdx = 1; colIdx < content[rowIdx].length; colIdx++) {
+            html += `<td>` + content[rowIdx][colIdx] + `</td>`;
+        }
+        html += `</tr>`;
+    }
+    return html + `</tbody></table></div>`;
+}
+
+/**
  * Gets HTML for placeholder content given placeholder text.
  * 
  * @param {String} text – Placeholder text
