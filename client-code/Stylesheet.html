@@ -1,4 +1,8 @@
 <style>
+  .card-header {
+    cursor: pointer;
+  }
+
   #gantt-view-full-btn {
     margin-bottom: 0.5em;
   }
@@ -10,7 +14,7 @@
 
 
   .table-container {
-    overflow: scroll;
+    overflow: hidden;
   }
 
   .site-title {
@@ -53,14 +57,14 @@
 }
 
   .main-content {
-    border-color: rgb(200, 200, 200);
+    border-color: #f8f9fa;
     border-style: solid;
     border-width: thin;
     border-radius: 1em;
-    background-color: rgb(200, 200, 200);
+    background-color: #f8f9fa;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 5em;
+    margin-bottom: 1em;
   }
 
   .placeholder-content {
@@ -99,6 +103,11 @@
     display: block;
     width: 96%;
     height: 1px;
+  }
+
+  ul, ol {
+    padding: 0 0 0 15px;
+    margin: 0px;
   }
 
   /********* Alerts and messages ********/
