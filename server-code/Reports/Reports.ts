@@ -92,6 +92,7 @@ function getOpenChangeRequests() {
 * @return {String} - Constructed HTML table listing all the fab and weld reports
 */
 function getAllFabLogs() {
-	var data = getSheetInfo(MAIN_SHEET_ID_STR, FAB_WELD_STR, DATA_STR);
+    var data = getSheetInfo(MAIN_SHEET_ID_STR, FAB_WELD_STR, DATA_STR);
+    transformToHyperLinks(projectList, ["Links"]);
     return buildTableHTML(data, getReportTableConfig());
 }

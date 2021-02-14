@@ -44,7 +44,7 @@ function getProjectInfo(projectType) {
  */
 function getAllProjects() {
     var data = getSheetInfo(MAIN_SHEET_ID_STR, PROJECTS_STR, DATA_STR);
-    transformToHyperLinks(data);
+    transformToHyperLinks(data, [SLIDE_DECK_STR, BOM_STR]);
     return buildTableHTML(data, getProjectTableConfig());
 }
 
@@ -66,7 +66,7 @@ function getProjectTable(desiredProjectStatus) {
             projectList.push(data[rowIdx].slice(0, -1))
         }
     }
-    transformToHyperLinks(projectList);
+    transformToHyperLinks(projectList, [SLIDE_DECK_STR, BOM_STR]);
     return buildTableHTML(projectList, getProjectTableConfig());
 }
 
@@ -83,22 +83,22 @@ function getHTMLLink(url, displayText) {
 }
 
 /**
- * Transforms the links in the Slide Deck and BOM columns into HTML links with the display text of 
- * "Slide Deck" or "BOM". 
+ * Transforms the links in the given columns into HTML links with their corresponding display text. 
  * 
  * @param {Object[][]} data – Spreadsheet data from the Projects table in the database
+ * @param {String[]} columnsArray - The column names to add hyperlinks to, as named in the header
  * @return {void}
  */
-function transformToHyperLinks(data) {
+function transformToHyperLinks(data, columnsArray) {
     var headers = data[0];
-    var slideDeckColIdx = findIdx(SLIDE_DECK_STR, headers);
-    var bomColIdx = findIdx(BOM_STR, headers);
-    for (var rowIdx = 1; rowIdx < data.length; rowIdx++) {
-        slideDeckURL = data[rowIdx][slideDeckColIdx];
-        bomURL = data[rowIdx][bomColIdx];
-        data[rowIdx][slideDeckColIdx] = slideDeckURL ? getHTMLLink(slideDeckURL, SLIDE_DECK_STR) : "" // converts url to HTML or leaves as empty string
-        data[rowIdx][bomColIdx] = bomURL ? getHTMLLink(bomURL, BOM_STR) : "" // converts url to HTML or leaves as empty string
-    } 
+    for (var stringIdx = 0; stringIdx < columnsArray.length; stringIdx += 1) {
+        var columnIdx = findIdx(columnsArray[stringIdx], headers);
+        for (var rowIdx = 1; rowIdx < data.length; rowIdx++) {
+            var columnURL = data[rowIdx][columnIdx]; 
+            data[rowIdx][columnIdx] = columnURL ? getHTMLLink(columnURL, columnsArray[stringIdx]) : "" // converts url to HTML or leaves as empty string
+            // replace the old data with new data - in line if -> [conditional] ? [true case] : [false case]
+        } 
+    }
 }
 
 /**
