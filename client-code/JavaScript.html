@@ -87,13 +87,26 @@
 
     /* Gantt page functions */
 
+    /**
+     * Success handler for async server calls, inserts returned payload into provided element's HTML.
+     * 
+     * @param {String} htmlPayload - HTML string content payload returned from the server
+     * @param {Object} htmlObject - HTML DOM Object to provide the given HTML payload
+     */
+     function onSuccessHTMLModal(htmlPayload, htmlObject) {
+        htmlObject.html(htmlPayload);
+        var gantt = $("#centeredFullGantt");
+        gantt.modal();
+    }
+
     /*
     * Fetches the gantt chart and places it inside gantt_content wrapper.
     */
     function getGanttChart() {
         var gantt_content = $("#gantt-content");
+        var ganttHTML = basicRunner.withSuccessHandler(onSuccessHTMLModal);
         addLoaderToObject(gantt_content);
-        runnerHTML.withUserObject(gantt_content).getEntireGanttSheet(window.innerWidth, window.innerHeight);
+        ganttHTML.withUserObject(gantt_content).getEntireGanttSheet(window.innerWidth, window.innerHeight);
     }
     // click View Full Gantt button on Gantt page
     $("#gantt-view-full-btn").on("click", function () {

@@ -3,6 +3,21 @@ Document: JS code specific for projects
 */
 
 /**
+* Returns the configuration object required to build card sets
+*
+* @return {Object} - The configuration object
+*/
+
+function getProjectTableConfig() {
+    var buildTableConfig = {
+        "cols": 4,
+        "header1": "WBS #",
+        "header2": "Name"
+    }
+    return buildTableConfig;
+}
+
+/**
  * Returns HTML content for the specified project type.
  * 
  * @param {String} projectType – The type of project to get HTML content for
@@ -30,7 +45,7 @@ function getProjectInfo(projectType) {
 function getAllProjects() {
     var data = getSheetInfo(MAIN_SHEET_ID_STR, PROJECTS_STR, DATA_STR);
     transformToHyperLinks(data, [SLIDE_DECK_STR, BOM_STR]);
-    return buildTableHTML(data, "table-sm");
+    return buildTableHTML(data, getProjectTableConfig());
 }
 
 /**
@@ -52,7 +67,7 @@ function getProjectTable(desiredProjectStatus) {
         }
     }
     transformToHyperLinks(projectList, [SLIDE_DECK_STR, BOM_STR]);
-    return buildTableHTML(projectList, "table-sm");
+    return buildTableHTML(projectList, getProjectTableConfig());
 }
 
 /**
@@ -190,7 +205,7 @@ function getProjectHtml(project) {
                         <dd class="col-sm-9">` + getHTMLLink(project.bomLink, BOM_STR)  + `</dd>
                         <hr>
                         <dt class="col-sm-3">Project WPs</dt>
-                        <dd class="col-sm-5">` + buildTableHTML(projectWorkPackagesTable)  + `</dd>
+                        <dd class="col-sm-5">` + buildTableHTMLWBSTable(projectWorkPackagesTable, getProjectTableConfig())  + `</dd>
                     </dl>
                 </div>`;
     return html;

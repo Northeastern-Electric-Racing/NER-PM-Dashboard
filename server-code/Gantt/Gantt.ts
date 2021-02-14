@@ -17,6 +17,9 @@ function getEntireGanttSheet(width, height) {
     var iFrameHeight = modalHeight - 94;
     var html = `<div>
                     <div class="p-3">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#centeredFullGantt">
+                            Full Screen
+                        </button>
                         <div class="modal fade" id="centeredFullGantt" tabindex="-1" role="dialog" aria-labelledby="centeredFullGantt" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content" style="width: ` + modalWidth + `px; height: ` + modalHeight + `px; left: 50%; transform: translate(-50%, 0%);">

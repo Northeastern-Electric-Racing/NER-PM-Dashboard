@@ -3,6 +3,21 @@ Document: JS code specific for delivering the reports
 */
 
 /**
+* Returns the configuration object required to build card sets
+*
+* @return {Object} - The configuration object
+*/
+
+function getReportTableConfig() {
+    var buildTableConfig = {
+        "cols": 3,
+        "header1": "ID",
+        "header2": "WBS #"
+    }
+    return buildTableConfig;
+}
+
+/**
  * Returns HTML content for the specified report type.
  * 
  * @param {String} reportType – The type of report to get HTML content for
@@ -29,7 +44,7 @@ function getReport(reportType) {
  */
 function getAllChangeRequests() {
     var data = getSheetInfo(MAIN_SHEET_ID_STR, CHANGE_REQUESTS_STR, DATA_STR);
-    return buildTableHTML(data, "table-sm");
+    return buildTableHTML(data, getReportTableConfig());
 }
 
 /**
@@ -49,7 +64,7 @@ function getReviewedChangeRequests() {
             reviewedChangeRequestsData.push(data[rowIdx].slice(0, -2));
         }
     }
-    return buildTableHTML(reviewedChangeRequestsData, "table-sm");
+    return buildTableHTML(reviewedChangeRequestsData, getReportTableConfig());
 }
 
 /** 
@@ -68,7 +83,7 @@ function getOpenChangeRequests() {
             openChangeRequestsData.push(data[rowIdx].slice(0, -5));
         }
     }
-    return buildTableHTML(openChangeRequestsData, "table-sm");
+    return buildTableHTML(openChangeRequestsData, getReportTableConfig());
 }
 
 // ------------------------------------------------- update here
@@ -79,7 +94,6 @@ function getOpenChangeRequests() {
 */
 function getAllFabLogs() {
     var data = getSheetInfo(MAIN_SHEET_ID_STR, FAB_WELD_STR, DATA_STR);
-    // update data with transofrmToHyperlinks
     transformToHyperLinks(projectList, ["Links"]);
-    return buildTableHTML(data, "table-sm");
+    return buildTableHTML(data, getReportTableConfig());
 }

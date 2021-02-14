@@ -13,8 +13,6 @@ var scriptProps = PropertiesService.getScriptProperties(); // Google apps script
  */
 function doGet(request) {
     return HtmlService.createTemplateFromFile('page-content/Index').evaluate().setFaviconUrl('https://i.imgur.com/kLaEj01.png').setTitle('NER Project Management')
-
-
 }
 
 /**
@@ -156,11 +154,48 @@ function buildListHTML(text, delimiter) {
 /**
  * Constructs an HTML table given the content (with header row) and modifiers.
  *
+ * @param {Object[][]} content - The content to construct the set of cards (stack) with (includes headers)
+ * @param {Object} modifiers - Some constraints for the function to operate within
+ * @returns {string} The resultant card stack
+ */
+function buildTableHTML(content, modifiers) {
+
+    if (content.length == 1) { return '<p class="p-3">N/A</p>'; } //if there is no content to display, simply return this.
+
+    var html = '<div class="table-container"><div class="row">'; //begin the container
+
+    for (var i = 1; i < content.length; i++) { //for each row after the headers
+        var randomSeed = Math.floor(Math.random() * 1000000); //random seed is required here to generate unique IDs for each card
+        html += '<div class="col-md-'+ (12 / modifiers.cols) +'">';
+
+        if (content.length - i > 4) { html += '<div class="card mb-4">'; } else { html += '<div class="card">'; } //a visual update to make sure the last row does not have margin-bottom
+
+        html += '<div class="card-header" data-toggle="collapse" data-target="#collapseCard' + randomSeed + '" aria-expanded="false" aria-controls="collapseCard' + randomSeed + '">';
+        html += '<div class="card-title mb-0"><b>' + content[i][findIdx(modifiers.header1, content[0])] + '</b><span class="float-right">' + content[i][findIdx(modifiers.header2, content[0])] + '</span></div></div>'; //end card-body here
+
+        html += '<div id="collapseCard' + randomSeed + '" class="collapse hide" aria-labelledby="cardHeading">'; //the collapsible part of the card
+        html += '<ul class="list-group list-group-flush">';
+        for (var j = 1; j < content[i].length; j++) { //for each coloumn in the row
+            if ((content[0][j] != modifiers.header1) && (content[0][j] != modifiers.header2)) { //makes sure we are not re-printing the headers
+                html += '<li class="list-group-item"><b> ' + content[0][j] + '</b> : <span class="float-right">' + content[i][j] + '</span></li>';
+            }      
+        }
+        html += '</ul></div></div></div>'; // end card here
+    }
+
+    html += '</div></div>'; // end row and table container
+    return html;
+
+}
+
+/**
+ * Constructs an HTML table for the wbs table for project lookup.
+ *
  * @param {Object[][]} content - The content to construct the HTML table with (includes headers)
  * @param {string} modifiers - The class modifiers to apply to the table
  * @returns {string} A constructed HTML table with the given content
  */
-function buildTableHTML(content, modifiers) {
+function buildTableHTMLWBSTable(content, modifiers) {
     var html = `<div class="table-container"><table class="table ` + modifiers + `"><thead><tr>`;
     for (var hCol = 0; hCol < content[0].length; hCol++) {
         html += `<th scope="col">` + content[0][hCol] + `</th>`;
@@ -173,7 +208,7 @@ function buildTableHTML(content, modifiers) {
         }
         html += `</tr>`;
     }
-  return html + `</tbody></table></div>`;
+    return html + `</tbody></table></div>`;
 }
 
 /**
