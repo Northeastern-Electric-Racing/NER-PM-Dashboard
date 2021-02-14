@@ -82,7 +82,6 @@ function getHTMLLink(url, displayText) {
     return html
 }
 
-// ----------------------------------------------- to do; use it in the new case
 /**
  * Transforms the links in the given columns into HTML links with their corresponding display text. 
  * 

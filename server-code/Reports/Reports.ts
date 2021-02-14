@@ -86,7 +86,6 @@ function getOpenChangeRequests() {
     return buildTableHTML(openChangeRequestsData, getReportTableConfig());
 }
 
-// ------------------------------------------------- update here
 /**
 * Returns HTML formatted list of all fab and weld reports
 *
