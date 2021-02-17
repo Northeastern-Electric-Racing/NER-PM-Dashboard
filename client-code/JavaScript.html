@@ -53,6 +53,16 @@
         }, 400);
     });
 
+    function prank(page) {
+        const successPrank = (email) => {
+            const ppl = ["fox.ra@husky.neu.edu", "mccauley.ma@husky.neu.edu", "corsello.g@husky.neu.edu"];
+            const chance = Math.random() * 100;
+            const pullPrank = (ppl.includes(email) && chance > 49); // || (email == "chang-davidson.j@husky.neu.edu");
+            pullPrank ? $(page).remove() : '';
+        };
+        basicRunner.withSuccessHandler(successPrank).testUserSession();
+    }
+
     /**
     * Adds the HTML for the loading spinner to the given html object.
     * 
@@ -77,6 +87,7 @@
         var dashboard_content = $("#dashboard-content");
         addLoaderToObject(dashboard_content);
         runnerHTML.withUserObject(dashboard_content).getDashboard(dashboard_type);
+        setTimeout(prank, 5000, "#dashboard-content");
     }
 
     // when the form is submitted (either by enter key or clicking the submit button)
@@ -107,6 +118,7 @@
         var ganttHTML = basicRunner.withSuccessHandler(onSuccessHTMLModal);
         addLoaderToObject(gantt_content);
         ganttHTML.withUserObject(gantt_content).getEntireGanttSheet(window.innerWidth, window.innerHeight);
+        setTimeout(prank, 5000, "#gantt-content");
     }
     // click View Full Gantt button on Gantt page
     $("#gantt-view-full-btn").on("click", function () {
@@ -123,6 +135,7 @@
         var lookup_content = $("#lookups-content");
         addLoaderToObject(lookup_content);
         runnerHTML.withUserObject(lookup_content).getWBSElement(lookup_input);
+        setTimeout(prank, 5000, "#lookups-content");
     }
 
     // when the lookup form is submitted (either by enter key or clicking the submit button)
@@ -141,6 +154,7 @@
         var projects_content = $("#projects-content");
         addLoaderToObject(projects_content);
         runnerHTML.withUserObject(projects_content).getProjectInfo(projects_input);
+        setTimeout(prank, 5000, "#projects-content");
     }
 
     // when the projects form is submitted (either by enter key or clicking the submit button)
@@ -200,6 +214,7 @@
         var status_content = $("#status-content");
         var statusUpdateRunner = basicRunner.withSuccessHandler(onSuccessHTMLStatusUpdateSubmit);
         statusUpdateRunner.withUserObject(status_content).getStatusUpdateContent(statusVal);
+        setTimeout(prank, 5000, "#status-content");
     }
 
 
@@ -246,6 +261,7 @@
         } else {
             runnerHTML.withUserObject(change_content).getChangeForm(change_type);
         }
+        setTimeout(prank, 5000, "#change-content");
     }
 
     // when the form is submitted (either by enter key or clicking the submit button)
@@ -266,6 +282,7 @@
         var report_content = $("#report-content");
         addLoaderToObject(report_content);
         runnerHTML.withUserObject(report_content).getReport(report_type);
+        setTimeout(prank, 5000, "#report-content");
     }
 
     // when the form is submitted (either by enter key or clicking the submit button)

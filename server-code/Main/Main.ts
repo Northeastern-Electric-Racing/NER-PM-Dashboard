@@ -271,4 +271,5 @@ function getPlaceholderHTML(text) {
 function testUserSession() {
   var email = Session.getActiveUser().getEmail();
   Logger.log(email);
+  return email;
 }
