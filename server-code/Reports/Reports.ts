@@ -93,6 +93,6 @@ function getOpenChangeRequests() {
 */
 function getAllFabLogs() {
     var data = getSheetInfo(MAIN_SHEET_ID_STR, FAB_WELD_STR, DATA_STR);
-    transformToHyperLinks(projectList, ["Links"]);
+    transformToHyperLinks(data, ["Links"]);
     return buildTableHTML(data, getReportTableConfig());
 }
