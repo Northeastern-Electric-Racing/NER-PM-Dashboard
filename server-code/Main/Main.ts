@@ -223,3 +223,5 @@ function getPlaceholderHTML(text) {
                 </div>`;
     return html;
 }
+
+export { validateWbsNum };
