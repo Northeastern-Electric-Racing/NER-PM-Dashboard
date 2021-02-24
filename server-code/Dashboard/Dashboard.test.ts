@@ -1,41 +1,41 @@
 import { getMondayOfCurrWeek } from './Dashboard'
 
 test('Getting monday from monday', () => {
-    expect(getMondayOfCurrWeek(new Date("2020-10-05"))).toEqual(new Date("2020-10-05"));
+    expect(getMondayOfCurrWeek(new Date("October 5, 2020"))).toEqual(new Date("October 5, 2020"));
 });
 
 test('Getting monday from tuesday', () => {
-    expect(getMondayOfCurrWeek(new Date("2020-10-06"))).toEqual(new Date("2020-10-05"));
+    expect(getMondayOfCurrWeek(new Date("October 6, 2020"))).toEqual(new Date("October 5, 2020"));
 });
 
 test('Getting monday from wednesday', () => {
-    expect(getMondayOfCurrWeek(new Date("2020-11-11"))).toEqual(new Date("2020-11-09"));
+    expect(getMondayOfCurrWeek(new Date("November 11, 2020"))).toEqual(new Date("November 9, 2020"));
 });
 
 test('Getting monday from thursday', () => {
-    expect(getMondayOfCurrWeek(new Date("2020-09-10"))).toEqual(new Date("2020-09-07"));
+    expect(getMondayOfCurrWeek(new Date("September 10, 2020"))).toEqual(new Date("September 7, 2020"));
 });
 
 test('Getting monday from friday', () => {
-    expect(getMondayOfCurrWeek(new Date("2020-12-25"))).toEqual(new Date("2020-12-21"));
+    expect(getMondayOfCurrWeek(new Date("December 25, 2020"))).toEqual(new Date("December 21, 2020"));
 });
 
 test('Getting monday from saturday', () => {
-    expect(getMondayOfCurrWeek(new Date("2020-09-12"))).toEqual(new Date("2020-09-07"));
+    expect(getMondayOfCurrWeek(new Date("September 12, 2020"))).toEqual(new Date("September 7, 2020"));
 });
 
 test('Getting monday from sunday', () => {
-    expect(getMondayOfCurrWeek(new Date("2020-09-13"))).toEqual(new Date("2020-09-07"));
+    expect(getMondayOfCurrWeek(new Date("September 13, 2020"))).toEqual(new Date("September 7, 2020"));
 });
 
 test('Getting monday across a month', () => {
-    expect(getMondayOfCurrWeek(new Date("2020-07-03"))).toEqual(new Date("2020-06-29"));
+    expect(getMondayOfCurrWeek(new Date("July 3, 2020"))).toEqual(new Date("June 29, 2020"));
 });
 
 test('Getting monday across a year', () => {
-    expect(getMondayOfCurrWeek(new Date("2021-01-03"))).toEqual(new Date("2020-12-28"));
+    expect(getMondayOfCurrWeek(new Date("January 3, 2021"))).toEqual(new Date("December 28, 2020"));
 });
 
 test('Getting monday in 2023', () => {
-    expect(getMondayOfCurrWeek(new Date("2023-05-17"))).toEqual(new Date("2023-05-15"));
+    expect(getMondayOfCurrWeek(new Date("May 17, 2023"))).toEqual(new Date("May 15, 2023"));
 });
