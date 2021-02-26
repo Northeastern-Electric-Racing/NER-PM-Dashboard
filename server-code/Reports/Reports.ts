@@ -93,6 +93,13 @@ function getOpenChangeRequests() {
 */
 function getAllFabLogs() {
     var data = getSheetInfo(MAIN_SHEET_ID_STR, FAB_WELD_STR, DATA_STR);
-    transformToHyperLinks(data, ["Links"]);
-    return buildTableHTML(data, getReportTableConfig());
+    var headers = data[0];
+    var filteredData = [headers];
+    for (var rowIdx = 1; rowIdx < data.length; rowIdx++) {
+        if (!(data[rowIdx][0] == "")) {
+            filteredData.push(data[rowIdx]);
+        }
+    }
+    transformToHyperLinks(filteredData, ["Links"]);
+    return buildTableHTML(filteredData, getReportTableConfig());
 }
