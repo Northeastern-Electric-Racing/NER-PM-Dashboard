@@ -151,3 +151,5 @@ function buildStatusDashboard(data) {
                      ` + behindTable + `
             </div>`;
 }
+
+export { getMondayOfCurrWeek };
