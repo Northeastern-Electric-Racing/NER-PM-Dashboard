@@ -72,14 +72,19 @@ function getProjectTable(desiredProjectStatus) {
 
 /**
  * Creates an HTML hyperlink, given the display text, that requests the given url.
+ * If the url given is blank, return an empty string
  * 
  * @param {String} url – The url to link to
  * @param {String} displayText – The text that will be displayed
  * @return {String} – The corresponding HTML hyperlink
  */
 function getHTMLLink(url, displayText) {
-    var html = `<a href="${url}" target="_blank" rel="noopener noreferrer">${displayText}</a>`;
-    return html
+    if (url != " " && url != "") {
+        var html = `<a href="${url}" target="_blank" rel="noopener noreferrer">${displayText}</a>`;
+        return html
+    } else {
+        return '';
+    }
 }
 
 /**
